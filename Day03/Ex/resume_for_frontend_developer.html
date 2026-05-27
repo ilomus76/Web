@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Front End resume</title>
+    </head>
+    <body>
+        <h1>프런트엔드 개발자 지원서</h1>
+        <p>HTML,CSS,자바스크립트의 기술을 이해하고 실무 경험이 있는 분을 찾습니다.</p>
+        <hr>
+
+       
+            <fieldset>
+                <legend>개인정보</legend>
+                <form action="./resume_for_frontend_developer.php" method="get">
+                    <label>이름: <input type="text" name="user_name"></label>
+                    <label>연락처: <input type="text" name="user_phone_number"></label>
+            
+
+                    <fieldset>
+                        <legend>지원분야</legend>
+                         <!-- <p>지원분야: <br> -->
+                            <label><input type="radio" name="user_applicaiton" value="웹 퍼플리싱">웹 퍼플리싱</label>
+                            <label><input type="radio" name="user_applicaiton" value="웹 어플리케이션 개발">웹 어플리케이션 개발</label>
+                            <label><input type="radio" name="user_applicaiton" value="개발 환경 개선">개발 환경 개선</label> 
+                         <!-- </p> -->
+
+                    </fieldset>           
+
+
+
+                    <p>지원동기 : </p>
+                    <textarea name="user_target" cols="80" rows="5">지원동기</textarea>
+                    <br>
+                    
+                    <input type="submit" value="접수하기">
+                    <input type="reset" value="다시쓰기">
+                </form>
+            </fieldset>
+
+
+
+
+        
+    </body>
+</html>

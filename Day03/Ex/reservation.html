@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Reservation</title>
+    </head>
+    <body>
+        <h4>예약 정보</h4>
+        <p>아래의 form 요소에 고객님의 정보를 입력해 주세요</p>
+        <form action="./reservation.php" method="get">
+            <!-- post 방식전에 get으로 매개변수들이 url로 잘 넘어 오는지 확인하자.. -->
+            <label for="page_id_user_name">이름:&nbsp;</label>
+            <input type="text" name="user_name" id="page_id_user_name">
+            <!-- input 의 text 창에 글을 입력할 경우 label 을 클릭해도 input 이 선택이 되어 유저가 글을 입력할 준비가 된다. -->
+            <br>
+            <!-- input 은 블락요소가 아니라 인라인요소여서 br 태그로 줄을 변경시킴. 이것은 브라우저에서 보이게 하기 위한것. -->        
+            <label>전화:&nbsp;<input type="text" name="user_phone_number" ></label>
+            <br>
+            <label for="">이메일:&nbsp;<input type="text" name="user_email"></label>
+            <br>
+            <input type="submit">
+        </form>
+
+        <!-- ftp 서버에 만든 파일 업로드 해서 브라우저로 보려면 html 파일의 이름이 index.html이면 브라우저에서 해당 폴더만 쓰면 되지만 아니라면 해당 html의 full name을 적어줘야 한다. -->
+    </body>
+</html>
