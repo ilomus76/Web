@@ -1,0 +1,356 @@
+<!-- Chat GPT 바이브코딩 -->
+<!-- * 폼 요소를 이용해서 사용자의 관심사의 주제를 입력하고 해당 관심사와 관련된 각종 url을 입력받는 프론트엔드 HTML 게시판을 만들어 주세요.  -->
+<!-- * 필요하다면 pdf, 동영상 , 음원 등등의 파일도 첨부하는 기능을 넣어 주세요 -->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>관심사 게시판</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      margin:0;
+      padding:30px;
+      background:#f4f6f9;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:30px;
+      color:#222;
+    }
+
+    .board-form{
+      background:#fff;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom:30px;
+    }
+
+    .form-group{
+      margin-bottom:18px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+      color:#333;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    textarea,
+    select{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:15px;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+
+    input[type="file"]{
+      padding:8px 0;
+    }
+
+    .url-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .btn{
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:bold;
+      transition:0.2s;
+    }
+
+    .btn-primary{
+      background:#2563eb;
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      background:#1d4ed8;
+    }
+
+    .btn-secondary{
+      background:#e5e7eb;
+      color:#111;
+      margin-top:10px;
+    }
+
+    .btn-secondary:hover{
+      background:#d1d5db;
+    }
+
+    .post-list{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .post-card{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .post-card h2{
+      margin-top:0;
+      color:#1e3a8a;
+    }
+
+    .category{
+      display:inline-block;
+      background:#dbeafe;
+      color:#1d4ed8;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+
+    .links{
+      margin-top:15px;
+    }
+
+    .links a{
+      display:block;
+      margin-bottom:8px;
+      color:#2563eb;
+      text-decoration:none;
+      word-break:break-all;
+    }
+
+    .links a:hover{
+      text-decoration:underline;
+    }
+
+    .file-info{
+      margin-top:15px;
+      color:#555;
+      font-size:14px;
+    }
+
+    .empty{
+      text-align:center;
+      color:#777;
+      margin-top:20px;
+    }
+
+    @media(max-width:768px){
+      body{
+        padding:15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>관심사 공유 게시판</h1>
+
+  <!-- 입력 폼 -->
+  <div class="board-form">
+
+    <div class="form-group">
+      <label for="title">관심사 제목</label>
+      <input type="text" id="title" placeholder="예: AI, 음악, 여행, 영화">
+    </div>
+
+    <div class="form-group">
+      <label for="category">카테고리</label>
+      <select id="category">
+        <option>기술</option>
+        <option>음악</option>
+        <option>영화</option>
+        <option>게임</option>
+        <option>여행</option>
+        <option>운동</option>
+        <option>기타</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="content">관심사 설명</label>
+      <textarea id="content" placeholder="관심사에 대해 자유롭게 작성해 주세요."></textarea>
+    </div>
+
+    <!-- URL 입력 -->
+    <div class="form-group">
+      <label>관련 URL</label>
+
+      <div class="url-list" id="urlList">
+        <input type="url" class="url-input" placeholder="https://example.com">
+      </div>
+
+      <button class="btn btn-secondary" onclick="addUrlField()">
+        + URL 추가
+      </button>
+    </div>
+
+    <!-- 파일 첨부 -->
+    <div class="form-group">
+      <label for="files">
+        파일 첨부 (PDF, 이미지, 영상, 음원 등)
+      </label>
+
+      <input 
+        type="file" 
+        id="files"
+        multiple
+        accept="
+          .pdf,
+          image/*,
+          video/*,
+          audio/*
+        "
+      >
+    </div>
+
+    <button class="btn btn-primary" onclick="submitPost()">
+      게시글 등록
+    </button>
+
+  </div>
+
+  <!-- 게시글 출력 영역 -->
+  <div class="post-list" id="postList">
+    <div class="empty">
+      아직 등록된 게시글이 없습니다.
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+  // URL 입력칸 추가
+  function addUrlField() {
+    const urlList = document.getElementById('urlList');
+
+    const input = document.createElement('input');
+    input.type = 'url';
+    input.className = 'url-input';
+    input.placeholder = 'https://example.com';
+
+    urlList.appendChild(input);
+  }
+
+  // 게시글 등록
+  function submitPost() {
+
+    const title = document.getElementById('title').value.trim();
+    const category = document.getElementById('category').value;
+    const content = document.getElementById('content').value.trim();
+
+    const urlInputs = document.querySelectorAll('.url-input');
+    const files = document.getElementById('files').files;
+
+    if(title === '' || content === ''){
+      alert('제목과 설명을 입력해 주세요.');
+      return;
+    }
+
+    const postList = document.getElementById('postList');
+
+    // 빈 메시지 제거
+    const empty = document.querySelector('.empty');
+    if(empty){
+      empty.remove();
+    }
+
+    // 카드 생성
+    const card = document.createElement('div');
+    card.className = 'post-card';
+
+    // URL 리스트 생성
+    let linksHTML = '';
+
+    urlInputs.forEach(input => {
+      if(input.value.trim() !== ''){
+        linksHTML += `
+          <a href="${input.value}" target="_blank">
+            ${input.value}
+          </a>
+        `;
+      }
+    });
+
+    // 파일명 생성
+    let fileHTML = '';
+
+    if(files.length > 0){
+
+      fileHTML += '<div class="file-info"><strong>첨부 파일:</strong><br>';
+
+      for(let i=0; i<files.length; i++){
+        fileHTML += `📎 ${files[i].name}<br>`;
+      }
+
+      fileHTML += '</div>';
+    }
+
+    card.innerHTML = `
+      <div class="category">${category}</div>
+      <h2>${title}</h2>
+      <p>${content}</p>
+
+      ${
+        linksHTML !== ''
+        ?
+        `<div class="links">
+          <strong>관련 링크</strong>
+          ${linksHTML}
+        </div>`
+        :
+        ''
+      }
+
+      ${fileHTML}
+    `;
+
+    postList.prepend(card);
+
+    // 폼 초기화
+    document.getElementById('title').value = '';
+    document.getElementById('content').value = '';
+    document.getElementById('files').value = '';
+
+    // URL 초기화
+    document.getElementById('urlList').innerHTML = `
+      <input type="url" class="url-input" placeholder="https://example.com">
+    `;
+  }
+
+</script>
+
+</body>
+</html>

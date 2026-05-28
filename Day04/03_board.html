@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>게시판</title>
+    </head>
+    <body>
+        <h2>게시판 글쓰기</h2>
+        <!-- 서버로 전송 -->
+         <form action="./ccc.php" method="post" enctype="multipart/form-data">
+            <!-- 파일 글자 다됨. -->
+            <input type="text" placeholder="이름" name="name"> <br>
+            <input type="text" placeholder="글 제목" name="title"> <br> <br>
+            <textarea name="msg" placeholder="글 내용" cols="40" rows="5"></textarea> <br>
+            <label>첨부파일: <input type="file" name="img1"></label>
+
+            <hr>
+            <input type="submit" value="작성완료">
+            <input type="reset" value="초기화">
+         </form>
+
+         <hr>
+         <h2>게시글 확인하기</h2>
+         <form action="./ddd.php" method="get">
+            <!-- 읽어오는 기능. ccc.php는 저장기능 -->
+            <input type="submit" value="게시글 리스트 페이지로 이동(사실 요청)">
+         </form>
+
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>관심사 게시판</title>
+
+  <style>
+
+    *{
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      margin:0;
+      padding:30px;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .form-box{
+      background:#fff;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .form-group{
+      margin-bottom:20px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    textarea,
+    select{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:15px;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .url-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .btn{
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:bold;
+    }
+
+    .btn-add{
+      background:#e5e7eb;
+      margin-top:10px;
+    }
+
+    .btn-submit{
+      background:#2563eb;
+      color:white;
+      width:100%;
+    }
+
+    .btn-submit:hover{
+      background:#1e40af;
+    }
+
+    .message{
+      margin-top:20px;
+      padding:15px;
+      border-radius:8px;
+      display:none;
+    }
+
+    .success{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .error{
+      background:#fee2e2;
+      color:#991b1b;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>관심사 게시판</h1>
+
+  <!-- PHP 전송을 위한 form -->
+  <form 
+    id="interestForm"
+    class="form-box"
+    action="save_post.php"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+
+    <!-- 제목 -->
+    <div class="form-group">
+      <label for="title">관심사 제목</label>
+
+      <!-- name 속성 중요 -->
+      <input 
+        type="text"
+        id="title"
+        name="title"
+        required
+        maxlength="200"
+        placeholder="예: AI, 음악, 여행"
+      >
+    </div>
+
+    <!-- 카테고리 -->
+    <div class="form-group">
+      <label for="category">카테고리</label>
+
+      <select id="category" name="category">
+
+        <option value="기술">기술</option>
+        <option value="음악">음악</option>
+        <option value="영화">영화</option>
+        <option value="게임">게임</option>
+        <option value="여행">여행</option>
+        <option value="운동">운동</option>
+        <option value="기타">기타</option>
+
+      </select>
+    </div>
+
+    <!-- 설명 -->
+    <div class="form-group">
+      <label for="content">관심사 설명</label>
+
+      <textarea
+        id="content"
+        name="content"
+        required
+        placeholder="관심사 설명을 입력하세요."
+      ></textarea>
+    </div>
+
+    <!-- URL -->
+    <div class="form-group">
+
+      <label>관련 URL</label>
+
+      <div class="url-list" id="urlList">
+
+        <!-- name="urls[]" 배열 처리 -->
+        <input
+          type="url"
+          name="urls[]"
+          class="url-input"
+          placeholder="https://example.com"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-add"
+        onclick="addUrlField()"
+      >
+        + URL 추가
+      </button>
+
+    </div>
+
+    <!-- 파일 업로드 -->
+    <div class="form-group">
+
+      <label for="files">
+        첨부 파일
+      </label>
+
+      <input
+        type="file"
+        id="files"
+        name="files[]"
+        multiple
+        accept=".pdf,image/*,video/*,audio/*"
+      >
+
+    </div>
+
+    <!-- 전송 -->
+    <button
+      type="submit"
+      class="btn btn-submit"
+    >
+      게시글 저장
+    </button>
+
+    <div id="message" class="message"></div>
+
+  </form>
+
+</div>
+
+<script>
+
+  // URL 입력칸 추가
+  function addUrlField(){
+
+    const urlList = document.getElementById('urlList');
+
+    const input = document.createElement('input');
+
+    input.type = 'url';
+    input.name = 'urls[]';
+    input.className = 'url-input';
+    input.placeholder = 'https://example.com';
+
+    urlList.appendChild(input);
+  }
+
+</script>
+
+</body>
+</html>
