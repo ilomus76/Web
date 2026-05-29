@@ -1,0 +1,144 @@
+/* 문자 인코딩 */
+@charset "UTF-8";
+
+/* 전체 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body */
+body {
+    background-color: #f4f4f4;
+
+    /* 한글 폰트 */
+    font-family:
+        "Malgun Gothic",
+        "맑은 고딕",
+        Arial,
+        sans-serif;
+}
+
+/* 상단 메뉴 */
+.navbar {
+    width: 100%;
+    background-color: #222;
+
+    position: sticky;
+    top: 0;
+
+    padding: 15px 0;
+
+    z-index: 999;
+}
+
+/* 메뉴 */
+.menu {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+/* 메뉴 li */
+.menu li {
+    list-style: none;
+}
+
+/* 메뉴 a */
+.menu li a {
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 15px;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+/* hover */
+.menu li a:hover {
+    background-color: #00bfff;
+}
+
+/* 본문 */
+.container {
+    width: 80%;
+
+    margin: 40px auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 제목 */
+h1 {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+/* 로그인 */
+.login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+/* 입력창 */
+.login-form input {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+}
+
+/* 버튼 */
+.login-form button {
+    padding: 12px;
+
+    border: none;
+
+    background-color: #0066cc;
+
+    color: white;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+

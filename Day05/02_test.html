@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css 적용방법 연습</title>
+        <!-- 스타일을 적용하는 3가지 방법 -->
+
+        <!-- 1.외부 스타일시트(별도의 .css문서를 작성하고 연결) -->
+         <!-- 이 link는 body에 있어도 됨. 아무데나 써도 됨. 가급적 head에 써라. -->
+         <link rel="stylesheet" href="./02_test.css">
+
+        <!-- 2.내부 스타일 시트 -->
+         <style>
+            /* 이 영역 안에서는 css언어의 문법체계를 따름 */
+            /* h2 : 여기는 css 문법이라서 html 안먹음. */
+            /* p{font-style: italic;color:red  */
+            p{font-style: italic;color:red !important}
+            /* !important 를 쓰면 가장 우선 순위가 높아 red는 무조건 정의 */
+            /* 우선순위가 같다면 마지막 적용 된것이 적용.  */
+
+
+            /* <link rel="stylesheet" href="./02_test.css"> */
+            /* 외부 스타일이 헤드의 마지막에 있으면 이것이 적용 .. 우선순위가 같은 경우 마지막에 적용한 것이 적용. */
+         </style>
+    </head>
+    <body>
+        <!-- 3. 인라인 스타일 -->
+
+        <p style="font-weight: bold;color:green">Hello world</p> 
+        <!-- 인라인이 우선순위가 높아 id보다 높아 green으로 적용됨. p 요소가.. -->
+    </body>
+</html>
+
+<!-- 우선순위 !important > 인라인 > id > class > 타입... -->

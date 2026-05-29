@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>font text style</title>
+
+        <!-- /* 내부 스타일시트 */ -->
+        <style>
+            /* 이 영역안에서는 css 언어의 문법 체계를 따름 */
+            /* 1. 폰트(글꼴) 지정 */
+            p{font-family: 'Times New Roman', Times, serif;}
+            p{font-family: 'Blackadder ITC', monospace;}
+            p{font-family: '휴먼옛체', serif;}
+            /* C:\Windows\Fonts : 윈도우즈가 가지고 있는 폰트 */
+            /* 폰트의 정확한 이름은 속성/자세히에서 확인. */
+
+
+            /* 언제나 마지막 글꼴은 서체로 마무리 권장 */
+            p{font-family: serif;}
+            p{font-family: sans-serif;}
+            p{font-family: monospace;}
+            p{font-family: fantasy;}
+            p{font-family: cursive;}
+
+            /* 결국 사용자의 플랫폼마다 다름. 사용자의 플랫폼 환경 상솽없이 같은 글꼴이 보여지려면... */
+            /* 본인만의 글껄을 만들어 지정해야 함. 이를 웹폰트라고 부름. */
+            /* 별도의 폰트파일(.ttf .otf)이 필요함.  */
+            /* open type : otf , ttf : true type */
+            /* 빌라봉은 유료 */
+            
+            /* 웹폰트 제작 : 나만의 폰트이름 만들기 */
+            @font-face{
+                font-family: 'my font';
+                src:url("./font/billabong.otf") 
+                /* css의 경로는 전부 url */
+            }
+
+            /* 웹폰트를 p요소에 적용 */
+            p{font-family: 'my font',monospace;}
+
+            @font-face{
+                font-family: 'my font2';
+                src:url("./font/Swagger.ttf") 
+                /* css의 경로는 전부 url */
+            }
+
+            /* 웹폰트를 p요소에 적용 */
+            p{font-family: 'my font2',monospace;}          
+            
+            /* 책에는 Google font, 아이콘폰트 등을 적용하는 예제도 있음. */
+
+            /* 2.글씨 크기 */
+
+            p{font-size: 1px;}
+            p{font-size: 150%;} 
+            /*원래 폰트 사이즈의 150% 크기*/
+            p{font-size: 1.5em;} 
+            /* 원래 폰트 사이즈의 1.5배 (권장 단위)*/
+            p{font-size: medium;}
+            p{font-size: small;}
+            p{font-size: large;} 
+            
+
+            /* 무료폰트 사이트 : 산돌구름, 눈누 : 구글에서 무료폰트 다운로드 로 검색 */
+
+            /* 3. 볼드체 */
+            p{font-weight: bold;}
+            p{font-weight: normal;} 
+            /* 원래대로 */
+
+            /* 4. 이탤릭체 */
+            p{font-style: italic;}
+            p{font-style: normal;}
+
+            /* 1~4까지의 속성을 한번에 축약으로... 순서가 있음 그리고 띄어 써야 함 [(weight/style) size family]*/
+            p{font:bold italic 1.5em "my font2",serif;} 
+            /*  my font2로 하고 없으면 serif체로 해달라.. */
+            /* 필요한 것만 순서대로 써도 됨 */
+
+            p{font: 1.3em "my font",sans-serif;}
+            /* font style -------------------- */
+
+
+            /* text style */
+            /* 1. 텍스트 정렬 ( 수평정렬 ) , css 는 수직정렬이 없음.*/
+            p{text-align: right;}
+            p{text-align: center;}
+            p{text-align: justify;} /*양쪽정렬*/
+            /* justify : 알맞게... 양쪽정렬시 줄마다 양쪽 간극이 다를 경우가 있다.  */
+
+            /* 2. 대소문자 변환 (영어만 가능) */
+            p{text-transform: lowercase;}
+            p{text-transform: uppercase;}
+            p{text-transform: capitalize;}
+            /* 파스칼 표기법 스타일 */
+            p{text-transform: none;} 
+            /* 원래대로 */
+
+            p{text-decoration: overline;}
+            p{text-decoration: underline;}
+            p{text-decoration: line-through;} 
+            /* 취소선 */
+            p{text-decoration: none;}
+
+            /* 4. 텍스트에 그림자 효과 */
+            p{text-shadow: 5px 3px 5px red;} 
+            /* x축 ,y축 떠있는정도 색상 */
+
+
+            /* 5. 워드 랩 */
+            p.aa{
+                width: 5em;  
+                /* 세로 기준으로 하기 때문에 가로로 더 나옴. */
+                border: 1px solid blue;
+                word-wrap: break-word;
+            }
+            /* 영어는 단어 띄어 쓰기 안하면 박스 밖으로 나감... 이럴때 사용. */
+
+            /* 5. 다중 컬륨(칸) */
+            p.bb{
+                column-count: 2;
+                column-gap: 80px;
+                column-rule: 4px dotted green;
+            }
+
+        
+        
+        
+            
+
+        </style>
+    </head>
+    <body>
+        <p>Hello World</p>
+        <p>한글은 어떠한가? </p>
+        <!-- 글꼴은 영어, 한글 이 각자가 되는 것 과 둘다 되는 것이 있다.  -->
+
+
+        <p class="aa">
+            한글은 전혀 문제 없이 자동으로 워드랩 됩니다. (글자를 깜쌋다는 뜻)
+            aalka;lkdf;alkdf;lakdfj;lkadsj;flkasdl;fj;lasdkfj;laskdf;als
+
+        </p>
+
+        <p class="bb">
+            <!-- 로렘입숨 : 출판사에서 흔한 말 -->
+             <!-- lorem을 치면 임의이 글을 써줌 -->
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quod. Quis, asperiores perspiciatis? Nemo necessitatibus suscipit amet iusto tempora consectetur dolorum reiciendis, debitis, blanditiis neque, quo accusamus? Quae, eum aliquid?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas atque culpa repudiandae modi rerum minus. Vitae eaque, corrupti quidem sint incidunt accusamus maiores aut veritatis quae dolorem beatae quas reiciendis?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea eaque cum, mollitia id ratione nesciunt illum. Amet atque libero obcaecati corporis suscipit id repellat natus, possimus dolores, cumque ducimus?
+        </p>
+
+
+        <hr>
+
+        <!-- text-align은 글씨정렬이 아니라.. 자식요소의 (수평)정렬도 됨. -->
+         <p style="text-align: center;background-color: aquamarine;">
+            <!-- 블럭요소 -->
+             <a href="">naver</a>
+         </p>
+         <!-- 단 , 인라인요소안의 콘텐츠를 text-aligh으로 수평정렬되지 않음.  -->
+
+         <span style="background-color: antiquewhite;text-align: center;">
+            Hello
+         </span>
+         <!-- span은 인라인요소  -->
+
+         <!-- 인라인요소를 가운데 배치 하려면... -->
+          <div style="text-align: center;">
+            <span>Hello</span>
+          </div>
+        <!-- 인라인 요소는 text-align이 불필요함.  -->
+
+
+    </body>
+</html>

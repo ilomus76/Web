@@ -1,0 +1,334 @@
+/* 문자 인코딩 */
+@charset "UTF-8";
+
+/* 전체 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body */
+body {
+    background-color: #f4f4f4;
+
+    /* 한글 폰트 */
+    font-family:
+        "Malgun Gothic",
+        "맑은 고딕",
+        Arial,
+        sans-serif;
+}
+
+/* 상단 메뉴 */
+.navbar {
+    width: 100%;
+    background-color: #222;
+
+    position: sticky;
+    top: 0;
+
+    padding: 15px 0;
+
+    z-index: 999;
+}
+
+/* 메뉴 */
+.menu {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+/* 메뉴 li */
+.menu li {
+    list-style: none;
+}
+
+/* 메뉴 a */
+.menu li a {
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 15px;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+/* hover */
+.menu li a:hover {
+    background-color: #00bfff;
+}
+
+/* 본문 */
+.container {
+    width: 80%;
+
+    margin: 40px auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 제목 */
+h1 {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+/* 로그인 */
+.login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+/* 입력창 */
+.login-form input {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+}
+
+/* 버튼 */
+.login-form button {
+    padding: 12px;
+
+    border: none;
+
+    background-color: #0066cc;
+
+    color: white;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+/* end of date */
+
+
+
+/* 달력 테이블 */
+
+.calendar {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+    background-color: white;
+}
+
+/* 요일 */
+.calendar th {
+    background-color: #0066cc;
+
+    color: white;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+}
+
+/* 날짜칸 */
+.calendar td {
+    width: 14%;
+
+    height: 120px;
+
+    vertical-align: top;
+
+    border: 1px solid #ddd;
+
+    padding: 10px;
+
+    position: relative;
+
+    background-color: #fafafa;
+}
+
+/* hover 효과 */
+.calendar td:hover {
+    background-color: #eef7ff;
+}
+
+/* 일요일 */
+.sun {
+    color: red;
+}
+
+/* 토요일 */
+.sat {
+    color: blue;
+}
+
+/* 오늘 */
+.today {
+    background-color: #dff0ff !important;
+
+    border: 2px solid #0066cc;
+}
+
+/* 일정 */
+.schedule {
+    margin-top: 10px;
+
+    background-color: #0066cc;
+
+    color: white;
+
+    padding: 5px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+}
+
+/* 모바일 */
+@media screen and (max-width: 768px) {
+
+    .calendar td {
+        height: 80px;
+
+        font-size: 12px;
+    }
+
+    .schedule {
+        font-size: 10px;
+    }
+}
+
+/* end of 달력 */
+
+
+/* 막대바, 상황체크바 */
+
+/* 진행상황 영역 */
+.status-area {
+
+    background-color: #ffffff;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 제목 */
+.status-area h3 {
+
+    margin-bottom: 25px;
+
+    color: #0066cc;
+}
+
+/* 각 항목 */
+.progress-item {
+
+    margin-bottom: 25px;
+}
+
+/* 제목 + 퍼센트 */
+.progress-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+/* 전체 바 */
+.progress-bar {
+
+    width: 100%;
+
+    height: 25px;
+
+    background-color: #e0e0e0;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+}
+
+/* 실제 진행 */
+.progress {
+
+    height: 100%;
+
+    border-radius: 30px;
+
+    transition: 0.5s;
+}
+
+/* 각각의 진행률 */
+.html-progress {
+
+    width: 80%;
+
+    background: linear-gradient(90deg, #00bfff, #0066cc);
+}
+
+.css-progress {
+
+    width: 100%;
+
+    background: linear-gradient(90deg, #28a745, #006400);
+}
+
+.python-progress {
+
+    width: 40%;
+
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+}
+
+.ai-progress {
+
+    width: 65%;
+
+    background: linear-gradient(90deg, #9c27b0, #673ab7);
+}

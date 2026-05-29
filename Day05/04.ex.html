@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ex</title>
+
+        <!-- 내부 스타일 -->
+         <style>
+            /* 의사 선택자는 순서가 있음. */
+            /* 원하는 의사선택자만을 써도 되지만 이 순서대로 해야 함.  */
+            #aa:link{color:blue}
+            #aa:visited{color: green;}
+            #aa:hover{color: red;font-size: 2.0em;}
+            #aa:active{color: yellow;}
+
+            p:hover{background-color: green;}
+
+            img{width:100px;border: 3px solid black;}
+            img:hover{width:150px;border: 5px solid lawngreen;}
+
+            /* 리스트 스타일 */
+            ul{list-style: circle;}
+            ul{list-style: disc;} 
+            /* default */
+            ul{list-style: square;}
+            /* 이미지로 블릿기호를 대체하는 방식은 잘 사용안함. 사이즈 문제나 꾸밈이 어려움 */
+            /* ul{list-style-image: url('../Day01/image/paris.jpg');} */
+            /* 캐릭터 그림이여야 한다. */
+            /*  */
+
+            ul{list-style-type: disc;list-style-position: inside;}
+             /*원래는 list-style-tpye의 속성을 써야함. 하지만 우리는 그것을 줄여쓴거다.list-style   */
+             /* inside 들여쓰기 */
+
+             ul{list-style: none;}
+
+             ol{list-style-type: lower-alpha;}
+             ol{list-style-type: lower-latin;}
+             /* latin은 영어가 모방을 해서 비슷함. */
+             ol{list-style-type: lower-roman;}
+             ol{list-style-type: lower-greek;}
+             ol{list-style-type: upper-alpha;}
+             ol{list-style-type: decimal;}
+             ol{list-style-type: decimal-leading-zero;}
+         </style>
+    </head>
+    <body>
+        <a href="https://www.daum.net" id="aa">다음 포털</a>
+        <!-- 파란색으로 있으면 언제가 들어갔다는 뜻.. 쿠키를 제거하고 들어가면 됨.  -->
+
+        <p>Hello</p>
+        <img src="../Day01/image/newyork.jpg" alt="newyork">
+
+        <hr>
+
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+
+        </ul>
+
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+    </body>
+</html>

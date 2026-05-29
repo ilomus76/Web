@@ -39,6 +39,7 @@ echo "$name , $message";
 $db= mysqli_connect('localhost','ilomus76','a1s2d3f4!','ilomus76');   // 객체를 $db로 받음. 
 // 참고로 주석은 // 나 # 둘다 됨. 
 // 닷홈은 DB 컴퓨터를 따로 놔야 하는데,,, 작은 곳은 php랑 DB를 같은 컴퓨터를 사용...
+// 즉 php와 database 의 컴퓨터가 같기 때문에 ip 주소를 내것으로 지정해야 함. 이것을 루프백이라고 함.
 // '127.0.0.1' 이것은 내 컴퓨터... 루프백이라고 함.. 이것도 도메인이 있다... localhost 
 
 

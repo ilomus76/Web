@@ -1,0 +1,46 @@
+/* 한글 폰트 깨짐 방지 */
+@charset "UTF-8";
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+body {
+    margin: 40;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.8;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #0066cc;
+    border-left: 5px solid #0066cc;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
