@@ -1,4 +1,6 @@
 <?php
+
+
 // save_post.php
 
 // DB 연결 정보
@@ -66,8 +68,9 @@ if (!empty($_FILES['files']['name'][0])) {
 $fileString = implode(",", $uploadedFiles);
 
 // SQL 저장
+//INSERT INTO posts
 $sql = "
-INSERT INTO posts
+INSERT INTO board2
 (
     title,
     category,
@@ -103,7 +106,8 @@ if ($stmt->execute()) {
     echo "
     <script>
       alert('게시글 저장 완료');
-      location.href='index.html';
+      location.href='AI_board2.html';
+      //location.href='index.html';
     </script>
     ";
 
