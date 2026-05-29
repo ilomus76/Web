@@ -1,0 +1,89 @@
+/* 주석 */
+/* 기본문법  선택자{속성:값} -> 이것이 유일한 문법 */
+
+/* 선택자의 종류 */
+/* 1. 타입(요소) 선택자 */
+
+h2{color:red;}
+p{color:blue;font-family: serif;}  
+/* serif : 꺽임이 있다라는 뜻  */
+p{font-size: 16px;color:green}   
+/* 위에 있는 blue , serif 적용되고 그 다음 p의 속성이 추가가 됨. 덮어 씌우는 건 아님. 하지만 마지막 속성값으로 적용됨.  */
+/* 같은 속성을 또 지정하면 마지막 값으로 적용 */
+
+
+/* 2.전체 선택자 */
+*{font-style: italic;color: yellow;}/*선택자마다 적용 우선순위가 존재함. [개별선택자가 더 우선시 됨.] */
+/* 같은 속성을 쓸때는 우선순위를 고려해라. */
+/* 위에서 p 의 색깔이 마지막 green이었고 전체 선택자에서 노랑으로 했지만 우선순위때문에 녹색으로 설정됨. */
+/* 가장 작은 것은 우선순위가 높다. */
+
+/* 3. 아이디 선택자 ( 선택자 중에 우선순위가 가장 높음 )*/
+#p1{color:blue} 
+/* # 은 id를 뜻함.  */
+
+
+/* 4. 클래스 선택자 (id 선택자 다음의 우선 순위 .. 개별요소보다 우선 순위 높다.) */
+/* .이 클래스를 의미 */
+.aa{color: violet;} 
+
+
+
+/* 2교시 */
+/* 요소 + 클래스 선택자 */
+/* p요소 중에서 클래스명이 aa인 요소 선택 */
+p.aa{background-color: yellow;}
+p#p1{font-size: 18px;} /*되긴 하지만 .. 의미없음.. 아이디는 어차피 1개이므로. #p1{} 로 가능.*/
+
+
+/* 5.선택자 그룹(다중 선택) */
+li,a{color:gray}
+
+
+/* 6. 자식, 자손 선택자 */
+#kk>p{color:black} /* 이런걸 해야 웹 크롤링이 가능, kk아이디의 자식 p의 속성*/
+#kk p{color:lime} /* 자손의 속성 : 자손은 자식을 포함함. kk아이디의 자손의 속성
+
+/* 주의할 선택자 사용 모습 */
+p.aa{} /* p 요소 중에서 클래스명이 aa*/
+p .aa{} /* p요소의 자손 중에서 클래스명이 aa*/
+
+
+/* 조금 더 복잡한 선택자 모습 */
+#ss ul.gg>li{background-color: aqua;} 
+/* ss 손자 중 ul의 클래스를 가지놈의 자식 속성 */
+
+/* 7. 속성 선택자 */
+p[class]{font-size: 30px;} 
+/* p요소 중에서 class 라는 속성이 부여된 녀석 */
+/* div[id] div의 모든 id */
+div[id="ss"]{font-weight: bold;} /*  id 속성값이 ss인 div요소  */
+
+
+/* 8.의사(pseudo-class) 선택자(추후 더 수업 예정) */
+/* 기능이 없는데 있는것 처럼 사용한다고 해서 의사라고 함.  */
+a:link{color:blue}
+a:visited{color:brown}
+a:hover{color:green}
+a:active{color:red}
+
+#ss ul li:first-child{color:red}
+/* ss 아이디 */
+/* 각 집의 첫째들이니 지금 2명이다... */
+#ss ul li:last-child{color:blue}
+#ss ul li:nth-child(2){color:green} 
+/* n번째 차이드 함수에 2번째라고 지정 */
+
+/* nth를 수식으로.. 적용할 수도 있음. */
+/* #ss ul li:nth-child(1){background-color: lightgreen;} */
+/* 1번 */
+/* #ss ul li:nth-child(n){background-color: lightgreen;} */
+/* n번 */
+/* #ss ul li:nth-child(2n){background-color: lightgreen;}  */
+/* 짝수번 */
+#ss ul li:nth-child(2n+1){background-color: lightgreen;} 
+/* 홀수번 */
+
+
+/* 외부 스타일 시트. */
+/* 외부 스타일 시트 / 내부 스타일 시트 /인라인 스타일 시트  */

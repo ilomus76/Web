@@ -8,18 +8,19 @@
   <title>관심사 게시판</title>
 
   <style>
-
+    /* 모든 선택자 : 우선 순위 낮음. */
     *{
       box-sizing:border-box;
       font-family:Arial, sans-serif;
     }
-
+    /* 타입(요소) 선택자 */
     body{
       background:#f3f4f6;
       margin:0;
       padding:30px;
     }
 
+    /* . : 클래스 선택자  : 선택자의 클래스 이름이 container 인것들... */
     .container{
       max-width:1000px;
       margin:auto;
@@ -30,13 +31,14 @@
       margin-bottom:30px;
     }
 
+    /* 클래스 선택자 */
     .form-box{
       background:#fff;
       padding:25px;
       border-radius:12px;
       box-shadow:0 4px 10px rgba(0,0,0,0.08);
     }
-
+    /* 클래스 선택자 */
     .form-group{
       margin-bottom:20px;
     }
