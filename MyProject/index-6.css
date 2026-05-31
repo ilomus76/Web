@@ -145,62 +145,26 @@ h2 {
 /* 로그인 */
 .login-form {
     display: flex;
-    text-align: left;
     flex-direction: row;
     /* flex-direction: column; */
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    /* justify-content: center; */
-    align-items: center;
-    gap: 5px;
-    /* width: 100%; */
-    overflow-x: auto;
+    gap: 15px;
 }
-      
-
-
-
-
 
 /* 입력창 */
 /* login-form 클래스 자손 선택자 */
 .login-form input {
-    /* padding: 12px; */
-    padding:6px 8px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    /* width:100%; */
 }
-
-
 
 .login-form label{
     font-family: 'Times New Roman', Times, serif;
-    /* font-size: small; */
-    font-size: 12px;
+    font-size: small;
     text-align: center;
     color: #28a745;
-    /* padding-top: 12px; */
-    padding-top: 0;
-    white-space: nowrap;
+    padding-top: 12px;
 }
-
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    width: 70px;
-    /* min-width: 70px; */
-    /* padding: 5px; */
-}
-
-
-
-.login-form input[type="submit"] {
-    width: auto;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-
 
 /* 버튼 */
 .login-form button {
@@ -231,71 +195,25 @@ h2 {
     
 
     .login-form {
-        display: flex;
-        flex-direction: row;
-        /* flex-direction: column; */
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        text-align: left;
-        align-items: center;
-        gap:5px;
-        /* width: 100%; */
+        flex-direction: column;
+        width: 100%;
     }
-
-    .login-form label {
-        font-size: 6px;
-        /* white-space: nowrap; */
-        padding-top: 0;
-    }
-
 
     .login-form input {
-        
-        padding:6px 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        /* width: 100%; */
+        width: 100%;
     }
 
-
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-        width: 50px;
-        padding: 5px;
-    }
-
-    .login-form input[type="submit"] {
-        width: auto;
-        padding: 6px 12px;
-        /* cursor: pointer; */
-    }
-
-    
 
     .calendar {
         width: 100%;
-
         /* font-size: 12px; */
     }
 
-    .calendar th {
-        padding:5px;
-        font-size: 12px;
-        text-align: center;
+    /* .calendar td {
+        height: 60px;
+        padding: 3px;
+    } */
 
-    }
-
-    .calendar td {
-        height: 50px;
-        padding: 2px;
-        font-size: 11px;
-    }
-
-    .schedule{
-        font-size: 8px;
-        padding:2px;
-        margin:2px;
-    }
     .status-area {
     width:100%;
     }
