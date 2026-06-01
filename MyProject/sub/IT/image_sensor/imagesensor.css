@@ -1,0 +1,48 @@
+
+/* body{
+
+} */
+
+/* nav */
+
+/* div element */
+#header{
+    /* 블럭요소 박스모델- 한자리를 다 차지하고 옆에 요소를 배치하려면 display를 사용해야 함.  */
+    background-color: #88888811; 
+    /* RGB-A : A투명도  */
+
+    color:#111111;
+    color:#888888;
+    color:#bbbbbb;
+    /* div의 글자 색깔 */
+    
+    
+    text-align: center;
+    /* 텍스트가 중앙에 배치됨. ul 리스트에서 보면 마크는 좌측에 있지만 글씨만 중앙에 배치됨. */
+    padding:3em 1em;
+    /* contents의 상하 3글자, 좌우 1글자 정도 */
+
+
+    /* css 속성은 casecade방식이라서 나중에 적용한 것이 적용됨. 아래의 3중에 하나를 선택하라. */
+    background-image: url('./resources/images/imagesensor_package.jpg');
+    /* 이미지가 배경보다 작을 경우 반복될수 있음.  */
+    /* background-size: auto; */
+    /* 이미지의 경우 고정자리에 있고 div영역이 변함에 따라 글자의 위치가 변경되고 이미지의 갯수가 더 나온다. */
+    /* 이미지 사이즈가 div보다 크면 짤림 */
+    /* background-size: contain; */
+    /* 이미지를 div가 포함하는 형태임. */
+    /* background-size: cover; */
+    /* 하나의 이미지가 전체 영역을 cover하는 느낌.  */
+}
+
+ul{
+    list-style: none;
+    /* list-style:decimal; */
+    /* unorderlist의 마크를 숫자로 만듦. */
+
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    
+    
+
+}

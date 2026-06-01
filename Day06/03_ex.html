@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css ex</title>
+
+        <style>
+            #header{
+                background-color: #cccccc;
+                text-align: center;  
+                padding: 3em 0em; 
+                /* 위아래로 3글자 정도 , 좌우로 0글자 */
+                background-image: url('./image/image.png');
+                background-size: auto;
+                /* 기본값 */
+                background-size: contain;
+                /* 영역안에 표시될 사이즈로 축소 */
+                background-size: cover;
+                /* 긴쪽을 기준으로 챕터 9페이지... */
+                color:white
+
+            }
+            ul{
+                list-style:none;
+                border-top:1px solid red;
+                border-bottom: 1px solid red;
+                padding:10px 0; 
+                /* 0이면 자동으로 px이 값 */
+                text-align: center;
+
+            }
+            ul li{
+                display: inline; 
+                /* 블럭 요소를 인라인으로 바꿈 */
+                padding: 0 10px;
+                letter-spacing: .025em; 
+                /* 0.25em 글자사이즈 */
+        
+            }
+            ul li a{
+                text-decoration:none;
+                color:black;
+            }
+            ul li a:hover{
+                text-decoration: underline;                
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <h1>HOME PAGE</h1>
+            <p>This is my home page</p>
+        </div>
+        <ul>
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./blog.html">BLOG</a></li>
+            <li><a href="./about.html">ABOUT US</a></li>
+            <li><a href="./contact.html">CONTACT</a></li>
+        </ul>
+    </body>
+</html>

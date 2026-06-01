@@ -15,11 +15,14 @@ if ($user_id === $correct_id && $user_password === $correct_password) {
     $_SESSION['login'] = true;
     $_SESSION['user_id'] = $user_id;
 
-    header("Location: /myhome/");
+    header("Location: /myhome/sub/IT/index.html");
     exit;
 
 } else {
-    echo "LOGIN FAIL";
+
+    header("Location: /myhome/index.html");
+    // echo "LOGIN FAIL";
+    exit;
 }
 
 

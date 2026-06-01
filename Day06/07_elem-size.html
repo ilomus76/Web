@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>element size</title>
+    </head>
+
+    <body>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nam quas maiores necessitatibus, nulla ipsa porro culpa sunt ab dignissimos enim temporibus esse similique rem dolor ipsum! Autem, porro harum!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque tempore illum non repellat quidem quaerat eveniet aut nobis, sequi sed omnis itaque sit quasi iste exercitationem ipsa velit labore sunt.
+        </p>
+        <style>
+            p{
+                background-color: yellow;
+
+                /* 네이버의 경우 페이지를 줄여도 사이즈가 변하지 않고 고정됨.  */
+                min-width: 600px;
+                /* 작아져도 600px 보다 작아지지마.. 스크롤이 생김, 그보다 크면 커지고 적어지면 스크롤 생김... */
+                min-height: 200px;
+                /* 넌 무조건 200px은 먹어라... 최소... */
+
+            }
+        </style>
+        <br>
+        <!-- box sizing : width 는 요소의 너비가 아니라.. 콘텐츠의 너비임. 그래서 주의 -->
+         <div>
+            <input type="text" placeholder="글씨를 입력하세요">
+         </div>
+         <style>
+            div{
+                width: 300px;
+                border:1px solid black;
+                padding:10px;
+            }
+            input{
+                width: 100%; 
+                /* 원래는 width는 콘텐츠의 너비임. 패딩, 경계선 두께는 제외됨 */
+                /* 나의 부모요소의 100% 하겠다. contents가 100% */
+                padding: 5px 10px; 
+                /* 위아래 5px , 좌우 10px */
+
+                /* 박스의 width를 콘텐츠 + 패딩 + 경계선까지 포함시키도록.. */
+                /* 우리가 보이는 부분는 부분을 보이도록.. */
+                box-sizing:border-box; 
+                /* default 는 contents-box이다.. 컨텐츠를 기준으로 하는 것... */
+
+            }
+         </style>
+
+
+
+    </body>
+</html>

@@ -1,11 +1,11 @@
 <?php
 
-session_start();
+// session_start();
 
-echo "IT PAGE<br>";
-echo session_id();
-echo "<br>";
-var_dump($_SESSION);
+// echo "IT PAGE<br>";
+// echo session_id();
+// echo "<br>";
+// var_dump($_SESSION);
 
 
 // session_start();
@@ -28,13 +28,14 @@ var_dump($_SESSION);
 // require_once("../../auth.php");
 // var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . "/myhome/auth.php"));
 // exit;
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/myhome/auth.php");
 
 require_login();
 
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+// var_dump($_SESSION);
+// echo "</pre>";
 
 
 

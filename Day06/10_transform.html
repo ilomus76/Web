@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>변환 속성</title>
+        <style>
+            div{
+                width:50px;
+                height: 50px;
+                background-color: yellow;
+                border:1px solid black;
+                text-align : center;
+                 /*수평정렬만가능, 수직정렬은 안됨.  */
+
+            }
+            #b2{
+                background-color: blue;
+                transform: translate(100px,0px);
+                /* 이동 : x축 100px , y축 0px로 변환 */
+            }
+            #b3{
+                background-color: red;
+                transform: scale(1.2,1.5);
+                /* 마우스 올리면 사이즈가 커지게 하는 효과 */
+            }
+            #b4{
+                background-color: green;
+                transform: rotate(30deg);
+                /* 각도단위 : deg, rad* */
+            }
+            /* skew : 밑변은 가만있고 위에가 찌그러 짐. */
+
+            /* 변환 tranform, 전환 : transition */
+        </style>
+    </head>
+    <body>
+        <!-- div 블럭요소 -->
+        <div id="b1">BOX1</div>
+        <div id="b2">BOX2</div>
+        <div id="b3">BOX3</div>
+        <div id="b4">BOX4</div>
+        
+    </body>
+</html>

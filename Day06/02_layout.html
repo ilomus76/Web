@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 3교시  -->
+        <meta charset="utf-8">
+        <title>layout css property</title>
+
+        <style>
+            /* display 실습 연습 */
+            #aa{display: inline;width:300px;} 
+            /* 인라인은 width heght 안됨. */
+            #aa{display: inline-block; } 
+            /* 이렇게 해도 width가 적용됨 위에서 설정했기 때문에 casecade이기때문에.. */
+            #aa{display: inline-block; width:300px;} 
+
+            img{display: block;} 
+
+            #kk{display: none;}
+            /* 화면에 그려내지 말아라. 공간 차지 않함. */
+            #kk{display: hidden;} 
+            /* 이것은 바뀌었다.. 안된다. */
+            /* 책에는 나와 있지만 안된다.  */
+            #kk{visibility: hidden;} 
+            /* 이것으로 바뀐것이다.  */
+            /* 이것은 있는데 안보이는것이다. */
+
+
+        </style>
+
+    </head>
+    <body>
+        <!-- display 속성 연습 -->
+         <p id="aa">Hell world!</p>
+         <!-- 블럭요소인 p -->
+          <!-- 한줄에 하나 다 먹음.  -->
+         <a href="">Good day</a>
+         <!-- 인라인요소 -->
+         <strong>good morning.</strong>
+         <!-- 인라인요소 -->
+            
+         <!-- 배치는 인라인 , 블럭요소에 따라 달라짐. -->
+
+
+         <img src="./image/border.png" alt="image">
+         <!-- 한줄 다 먹고 공간 없으면 내려감. -->
+
+         <ul>
+            <li>aaa</li>
+            <li id="kk">bbb</li>
+            <li>ccc</li>
+         </ul>
+
+         <hr>
+         <!-- 블럭요소와 인라인요소를 혼합하여 사용할때 고려할 것들... -->
+          <!-- 블럭요소안에 인라인요소를 넣을 수 있음. -->
+           <div style="background-color: tomato;border:solid;padding:5px;">
+            <!-- div 는 블럭요소 -->
+             Nice <em>aaaa</em>world
+           </div>
+
+           <!-- 인라인요소안에 블럭요소는 넣으면 안됨. 에러는 아닌데 .. 이상해 짐. -->
+            <span style="background-color: teal;border:solid;padding: 5px;">
+                <!-- span은 인라인 요소 -->
+                 Nice <p>aaa</p> world
+                 <!-- 인라인은 부분을 먹는데 블럭은 한라인을 다 먹어서 갈라짐. -->
+            </span>
+
+            <!-- 블럭안에 다른 블럭요소를 넣을 수 있음. -->
+             <div style="background-color: azure;border:solid;padding:5px;">
+                Nice <p>aaaa</p>world
+
+             </div>
+             
+             <!-- 블럭안에 인라인/블럭은 다 감싸준다. -->
+
+             <!-- 블력안에 같은 블럭요소를 넣으면.. 조심.. -->
+            <p style="background-color: aqua;border:solid;padding:5px;">
+                Nice <p>aaaa</p>world
+
+            </p>
+            <!-- 텍스트 수업때 권장하지 않지만 end tag를 쓰지 않아도 p 요소로 동작함.  -->
+             <!-- p 태그가 종료 -->
+              <!-- p오다가 다음 p를 만났는데 그것을 종료로 보고 그다음에 다시 p요소가 있다고 보는 것임. -->
+         
+            <h2 style="background-color: aqua;border:solid;padding:5px;">
+                Nice <h2>aaaa</h2>world
+
+            </h2>
+
+            <!-- p안에 p는 자식/자손관계 안됨 .. 형제임. 계층 구조가 안됨-->
+
+            <!-- div 블럭요소안에 div블럭요소가 존재하는 것은 허용됨. -->
+            <div style="background-color: bisque;border:solid;padding:5px;">
+                Nice <div>aaaa</div>world
+
+            </div>
+
+            <hr>
+            <!-- position 속성 & 위치지정속성(left, right, top, bottom) -->
+            <div class="region">
+                <p id="p1">block #1</p>
+                <p id="p2">block #2</p>
+                <p id="p3">block #3</p>
+            </div>
+
+            <style>
+                .region{
+                    background-color: black;
+                    position: relative;
+                }
+                #p1{
+                    background-color: aqua;
+                    width:200px;
+                    height: 200px;
+                }
+                #p2{
+                    position:static; 
+                    /* 정적위치 -default: 원래 놓여져야 할 위치에 놓여짐. 그래서 고정됨. 1번 다음에 2번 , 2번다음에 3번 , 그리고 겹치지 않음 마진을 주지 않는 이상. */
+                    position:relative;
+                    /* 상대위치 -원래 놓여질 위치에서 위치지정 속성값을 반영함. */
+
+                     position: absolute; 
+                     /* 절대위치 -웹문서의 좌상단을 기준으로 배치(위치 지정 속성이 없으면 그려지지 않음.) */
+                     /* 위치 지정을 안하면 보이지 않음. */
+                     /* 절대위치를 사용할때 부모요소의 position이 static이 아니면 ... 부모요소의 좌상단을 기준으로 함.  */
+                     /* 이게 아니면 문서 좌상단에서.... */
+
+                     position: fixed; 
+                     /* 고정위치 - 웹 브라우저창을 기준으로 배치 */
+                     /* 광고배너 같은 느낌. */
+
+
+
+                    /* 위치 지정 속성 (position:static에서는 무시됨.*/
+                    /* relative, absolute,fixed와 같이 사용. */
+                    /* left:50px; */
+                    /* top:30px; */
+                    right:10px;
+                    bottom: 20px;
+
+                    /* margin-left:50px;
+                    margin-top:30px; */
+                    /* 마진은 내 요소가 움직이면 주변의 요소가 밀리기 때문에 화면의 구조가 이상해짐.  */
+
+                    /* 실제로 웹페이지로 할대 헤드 메인 사이드 식으로 위치가 다름.이때 absolute를 많이 사용. 어딜 기준으로 해서 위치 잡음.. */
+                    
+                             
+
+
+
+
+                    background-color: yellow;
+                    width:150px;
+                    height: 50px;
+                }
+                #p3{
+                    background-color: lightgreen;
+                    width:200px;
+                    height: 50px;
+                }
+            </style>
+
+
+    </body>
+</html>
