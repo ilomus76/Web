@@ -1,5 +1,34 @@
 <?php
 
+// ver 201
+// session_start();
+
+// if (!isset($_SESSION['userid'])) {
+//     //세션에 userid가 있나? 
+//     header("Location: login.php");
+//     // 없으면 login.php로 가라..
+//     exit;
+// }else{
+//     // 로그인 성공 후
+//     // 성공하면 userid를 가지고 있어라.. 
+//     $_SESSION['userid'] = $userid;
+// }
+
+// ver202
+// 여기서 $userid가 어디에도 정의되어 있지 않습니다.
+// 즉, 이미 로그인된 상태인지 확인하는 페이지에서 다시 세션값을 설정하고 있는데, 오히려 문제가 될 수 있습니다.
+// IT/index.php는 아래처럼 단순해야 합니다.
+session_start();
+
+// if (empty($_SESSION['login'])) { // 아래와 같은 표현
+if (!isset($_SESSION['user_id'])) {
+    // header("Location: /myhome/login.php");
+    header("Location: /myhome/sub/IT/index.php");
+    
+    exit;
+}
+
+
 // session_start();
 
 // echo "IT PAGE<br>";
@@ -28,10 +57,12 @@
 // require_once("../../auth.php");
 // var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . "/myhome/auth.php"));
 // exit;
-session_start();
-require_once($_SERVER['DOCUMENT_ROOT'] . "/myhome/auth.php");
 
-require_login();
+// version 200
+// session_start();
+// require_once($_SERVER['DOCUMENT_ROOT'] . "/myhome/auth.php");
+
+// require_login();
 
 // echo "<pre>";
 // var_dump($_SESSION);
@@ -40,7 +71,7 @@ require_login();
 
 
 
-$user = current_user();
+#$user = current_user();
 // echo "LOGIN OK";
 // echo $_SERVER['REQUEST_URI'];
 // exit;

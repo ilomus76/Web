@@ -35,14 +35,98 @@
     /* 하나의 이미지가 전체 영역을 cover하는 느낌.  */
 }
 
-ul{
+#sensor_vendor{
     list-style: none;
     /* list-style:decimal; */
     /* unorderlist의 마크를 숫자로 만듦. */
 
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
-    
-    
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    padding:10px 0; 
+    /* 이걸 하는 순간 div의 영역이 상하로 늘어남 왜그럴까?  */
+    text-align: center;
+    /* 수평정렬 */
+} 
 
+/* 블럭요소 */
+#sensor_vendor li{ 
+    /* ul 자손중 li */
+    display: inline; 
+    /* 블럭 요소를 인라인으로 바꿈 */
+    padding: 0 10px;
+    letter-spacing: .025em; 
+    /* 0.25em 글자사이즈 */
+        
 }
+#sensor_vendor li a{
+          text-decoration:none;
+          color:black;
+}
+#sensor_vendor li a:hover{
+           text-decoration: underline;                
+}
+
+/* div */
+#evaluation { 
+    /* display: inline; */
+    box-shadow: 5px 5px 10px black;
+    border-color: #111111;
+    border-radius: 10px;
+    background-color: #22222222;
+    width:400px;
+
+    position: relative;
+    z-index: 5;
+    /* z-index는 position이 설정된 요소에서만 동작한다는 것 */
+}
+
+#evaluation {
+    text-align: center;
+}
+
+#evaluation ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+
+
+#evluation p{
+    /* position: relative;
+    left: auto;
+    right:auto */
+}
+#evluation ul{
+    list-style: none;
+    text-align: center;
+
+
+
+
+    /* display: inline;
+    background-color: #88442211; */
+}
+#evaluation ul li{
+    
+    /* ul 자손중 li */
+    display: inline; 
+    /* 블럭 요소를 인라인으로 바꿈 */
+    padding: 0 10px;
+    letter-spacing: .025em; 
+    /* 0.25em 글자사이즈 */
+}
+
+#evaluation ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+#evaluation ul li a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+/* 모바일 스러운
+반응형 웹 . */

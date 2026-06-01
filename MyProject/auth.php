@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+
+
+// 이 함수는 세션에
+// $_SESSION['login'] = true;
+// 가 있으면 통과시킵니다.
 function require_login() {
     if (empty($_SESSION['login'])) {
         header("Location: /myhome/login.php");
