@@ -18,15 +18,27 @@
 // 여기서 $userid가 어디에도 정의되어 있지 않습니다.
 // 즉, 이미 로그인된 상태인지 확인하는 페이지에서 다시 세션값을 설정하고 있는데, 오히려 문제가 될 수 있습니다.
 // IT/index.php는 아래처럼 단순해야 합니다.
-session_start();
 
-// if (empty($_SESSION['login'])) { // 아래와 같은 표현
-if (!isset($_SESSION['user_id'])) {
-    // header("Location: /myhome/login.php");
-    header("Location: /myhome/sub/IT/index.php");
+// require_once '/home/hosting_users/계정명/www/myhome/auth.php';
+// require_once '../../../auth.php';
+session_start();
+// var_dump($_SESSION);
+// exit;
+require_once '../../auth.php';
+require_login();
+$user = current_user();
+
+
+
+// session_start();
+
+// // if (empty($_SESSION['login'])) { // 아래와 같은 표현
+// if (!isset($_SESSION['user_id'])) {
+//     // header("Location: /myhome/login.php");
+//     header("Location: /myhome/sub/IT/index.php");
     
-    exit;
-}
+//     exit;
+// }
 
 
 // session_start();

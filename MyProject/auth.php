@@ -1,14 +1,19 @@
 <?php
+
+// session_set_cookie_params([
+//     'path' => '/myhome/'
+// ]);
+
 session_start();
-
-
 
 // 이 함수는 세션에
 // $_SESSION['login'] = true;
 // 가 있으면 통과시킵니다.
 function require_login() {
     if (empty($_SESSION['login'])) {
+        // header("Location: /myhome/sub/login/index.html");
         header("Location: /myhome/login.php");
+        // header("Location: /myhome/sub/login/index.html");
         exit;
     }
 }
@@ -16,6 +21,18 @@ function require_login() {
 function current_user() {
     return $_SESSION['user_id'] ?? null;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 // session_start();
 
 // function require_login() {
