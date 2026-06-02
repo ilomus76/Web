@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>layout test</title>
+
+        <style>
+            #wrapper {
+                width : 600px;
+                border: 1px solid black;
+                margin-left: auto;
+                /* 오른쪽 끝까지 밀림 */
+                margin-right: auto;
+                /* 왼쪽 끝까지 밀림 */
+                /* 브라우저 움직여도 사이즈 최소는 정해지고 찌그러 지지 않음. */
+            }
+            #header {
+                background-color: yellow;
+                width:100%;
+                height: 50px;                
+            }
+            #nav{
+                background-color: pink;
+                width:30%;
+                height: 150px;
+                float:left;
+            }
+            #main{
+                background-color: aquamarine;
+                width:70%;  
+                height:150px;
+                /* 이렇게 하면 위의 float 밑을로 들어감 */
+                float:right;
+                /* 이렇게 하면 위의 float 옆에 붙음. */
+                /* 70%가 아니면 아래의 footer가 옆에 있는 것으로 보임 */
+
+            }
+
+            #footer{
+                background-color: black;
+                color:white;
+                width: 100%;
+                height:50px;
+                clear:both
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">HEADER</div>
+            <div id="nav">NAV MENU</div>
+            <div id="main">CONTENT</div>
+            <div id="footer">FOOTER</div>
+        </div>
+    </body>
+</html>
+
+<!-- 시맨틱으로 바꾸자... -->

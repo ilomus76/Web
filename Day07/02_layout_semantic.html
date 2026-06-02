@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>sematic tag</title>
+        <style>
+            #wrapper {
+                width: 680px;
+                border : 1px solid black;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+            header{
+                background-color: antiquewhite;
+                width:100%;
+                /* height:50px;                 */
+                padding: 3em;
+                box-sizing: border-box;
+            }
+            nav{
+                background-color: yellow;
+                width: 100%;
+                /* height: 30px; */
+                padding: 1em;
+                /* 경계선을 넘어감 */
+                box-sizing: border-box;
+                /* 경계선 넘어가지 않게 함. */
+            }
+            main{
+                background-color: azure;
+                padding: 1em ;
+                display: table-cell;
+                box-sizing: border-box;
+            }
+            aside{
+                background-color: aquamarine;
+                padding:1em; 
+                /* 한글자 띄움.  */
+                display: table-cell;
+                box-sizing: border-box;
+            }
+            footer{
+                background-color: black;
+                color:white;
+                padding : 2em;
+                text-align: center;
+            }
+
+            nav ul{list-style: none;}
+            nav ul li{display: inline-block;}
+            nav ul li a{text-decoration: none;color:blue}
+            nav ul li a:hover{text-decoration: underline;color:red}
+
+            aside img{
+                width:150%;
+            }
+
+            main{
+                width: 70%;
+
+            }
+            aside{
+                width:30%
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <!-- 1교시 끝.. -->
+        <!-- 2교시  -->
+
+        <div id="wrapper"> 
+        <!-- 시맨틱 태그는 그냥 능력이 좋아지는 것이 아니라 div와 같다. 단지 id 를 않쓸뿐 -->
+        <header>
+            <h1>MY HOME PAGE</h1>
+            <p>This is sematic tag test page.</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="">뉴스</a></li>
+                <li><a href="">스포츠</a></li>
+                <li><a href="">연애</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section>
+                <article>
+                    <h3>HTML5</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio mollitia provident officiis non, tempora fuga ipsa quisquam laboriosam nobis facilis, eaque explicabo. Consequuntur omnis quos dolor, mollitia tempora impedit!</p>
+                </article>
+                <article>
+                    <h3>CSS</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non, labore! Facilis accusamus itaque odit officia maxime non quidem dolores officiis delectus, libero voluptas laboriosam doloremque alias consectetur est, incidunt expedita.</p>
+                </article>
+            </section>
+        </main>
+        <aside>
+            <input type="text" placeholder="검색어 입력하세요">
+            <figure>
+                <img src="../Day06/image/image.png" alt="paris">
+                <figcaption>파이이미지</figcaption>
+            </figure>
+        </aside>
+        <footer>
+            <h5>COPYRIGHT &copy; MBCA</h5>
+        </footer>
+        </div>
+    </body>
+</html>
+
+<!-- 책의 72페이지 부분  -->
+ <!-- 이제부터 책의 10챕터. 스라이드 8 -->

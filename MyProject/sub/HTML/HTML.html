@@ -1,47 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>html</title>
-    </head>
-    <body>
-        <p> 크롬에서 꼭 해야 하는 것</p>
-        <p>1. 강력 새로고침</p>
-        <p>크롬에서:Ctrl + Shift + R</p> 
-        <p>또는</p>
-        <p>F12 → Network → Disable Cache 체크</p>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 외부 스타일시트 링크하기 -->
+    <link rel="stylesheet" href="./HTML_mobile.css">
+</head>
+<body>
+    <div id="wrap">
+        <!-- 블럭요소 -->
+        <header>
+            <div id="logo">
+                <img src="./resources/images/logo_ilomus76.svg" alt="200x100 svg file">
+            </div>
+            <div id="top_menu">
+                <a href="">HOME</a> |
+                <a href="">NOTICE</a> |
+                <a href="">LOGIN</a> |
+                <a href="">JOIN</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="">COMPANY</a></li>
+                    <li><a href="">PRODUCT</a></li>
+                    <li><a href="">CUSTOMER</a></li>
+                    <li><a href="">SERVICE</a></li>
+                </ul>
+            </nav>
 
+        </header>
+        <main>
+            <section id="content">
+                <img src="./resources/images/sky_logo.svg" alt="sky-logo">
+            </section>
+            <section id="banner">
+                <a href=""><img src="./resources/images/banner1.png" alt=""></a>
+                <a href=""><img src="./resources/images/banner2.png" alt=""></a>
 
+            </section>
+        </main>
+        <footer>
+            <p>COPYRIGHT and DESIGNED by ilomus76 </p>
 
-        <ul>nav
-            <li>
-                질문1 : nav 태그에서 z-index: 999;의 기능은 무엇인가요 <br>
-                답변1:
-                z-index는 요소가 겹쳤을 때 어떤 요소가 위에 표시될지를 결정하는 CSS 속성입니다. 숫자가 클수록 더 위쪽(앞쪽)에 배치됩니다.
-                📌 z-index: 999;의 의미
-                nav 태그에 z-index: 999;를 주면, 다른 요소들과 겹칠 때 nav가 거의 항상 맨 위에 보이도록 합니다.
-                예를 들어, 스크롤 시 배너나 이미지, 달력 같은 요소가 nav와 겹친다면 z-index 값이 높은 nav가 위에 표시됩니다.
-                z-index는 position 속성이 있는 요소(relative, absolute, fixed, sticky)에만 적용됩니다. 따라서 nav에 position: fixed;나 position: relative; 같은 속성
-                이 있어야 효과가 있습니다. <br>
-                예제] <br>
-                .navbar {
-                    position: fixed;   /* 화면 상단에 고정 */   <br>
-                    top: 0; <br>
-                    left: 0; <br>
-                    width: 100%; <br>
-                    z-index: 999;      /* 다른 요소보다 위에 표시 */ <br>
-                }
-                <br>
-                이렇게 하면 스크롤을 내려도 nav 메뉴가 항상 화면 맨 위에 떠 있고, 다른 콘텐츠가 겹쳐도 nav가 위에 보입니다.
-
-            </li>
-            <li>
-   
-
-            </li>
-
-
-        </ul>
-        
-    </body>
+        </footer>
+    </div>
+</body>
 </html>

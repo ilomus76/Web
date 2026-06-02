@@ -1,0 +1,106 @@
+*{margin: 0;padding:0;}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color:black
+}
+
+#container{
+    padding: 20px;
+    max-width:400px;
+    margin:0 auto;
+    /* 커지더라도... 마진주자... */
+}
+
+.toolbar{
+    padding: 1em 16px; 
+    /* 위아래 / 좌우 */
+    margin-bottom: 20px;
+    position: relative;
+
+}
+
+.toolbar-img{
+    width:18px;
+}
+
+.toolbar-btn{
+    font-size: 14px;
+    padding: 4px 10px;
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    position: absolute;
+    right: 16px;
+    top: 1em;
+}
+
+h2{
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.8em;
+    /* 줄간격 150% */
+}
+
+.blue{
+    color: rgb(73,120,14);
+}
+
+.option{
+    display:inline-block;
+    width: 46%;
+    margin: 5px;
+    background-color: #f8f8f8;
+    border: 1.5px solid #ddd;
+    /* #dddddd == #ddd */
+    border-radius: 8px;
+    text-align: center;
+    padding: 16px;
+    box-sizing: border-box;
+    cursor : pointer;
+    /* 마우스 */
+}
+
+.option img{
+    width: 24px;
+    margin-bottom: 8px;   
+}
+
+.option p{
+    font-size: 12px;
+}
+
+.next-btn{
+    /* inline 요소 */
+    display:block;
+    width: 100%;
+    background-color: #0078FF;
+    color:white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px;
+    font-size:14px;
+    margin-top: 40px;
+    box-sizing: border-box;
+
+}
+
+
+.selected{
+
+border: 2px solid #0078FF;
+background-color: #E6F0FF;
+color: #0078FF;
+
+
+}
+/* 검수 받고 싶다 */
+/* chat gpt 
+사진검수...blue
+사진 첨부하면서 ...blue
+너는 주니어 프론트엔드 개발자야...blue
+첨부한 사진은 웹 페이지 사진이야...
+html , css 만으로 화면을 만들어줘...blue
+
+이제 숙달의 시대는 끝남...blue
+ */

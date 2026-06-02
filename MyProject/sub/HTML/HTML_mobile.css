@@ -1,0 +1,67 @@
+*{margin:0 ; padding:0;}
+/* 1. 모든 요소에 마진과 패딩을 0로 함. 좌측으로 요소들 붙임 */
+/* 특이사항 */
+/* 리스트의 마커도 보이지 않음. */
+ul {list-style: none;}
+a{text-decoration: none;}
+
+header{
+    width:100%;
+    background-color: #dddddd;
+    position: relative;
+    color:white
+}
+
+#logo{
+    padding-top:10px;
+    padding-left:10px;
+}
+
+#top_menu{
+    position: absolute;
+    /* 부모의 좌상단 부분을 기준으로 */
+    right: 10px;
+    top:20px;
+    color: white;
+
+}
+
+#top_menu a{
+    color: black;
+    font-size: 14px;
+}
+nav{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin-top: 10px;
+}
+
+nav ul li{
+    line-height: 3em;
+    /* 3글자 높이 */
+    border-bottom: 1px solid #223344;
+} 
+
+nav ul li a{
+    color:white;
+    display:block;
+    text-align: center;
+    /* anchor는 inline 요소라서 center로 안옴. 그리고 앵커 밖에서는 안먹음. */
+    
+} 
+
+nav ul li a:hover{
+    color: black;
+    background-color: white;
+}
+
+main #content img{width:100%; border: 1px solid gray;}
+
+main #banner li{
+    border-bottom: 1px solid gray;
+}
+
+main #banner li a{
+    display: block;
+    text-align:center;
+} 

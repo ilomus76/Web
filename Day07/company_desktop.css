@@ -1,0 +1,66 @@
+*{ margin: 0px; padding: 0px;}
+ul{list-style: none;}
+a{text-decoration: none;}
+
+
+#wrap{
+    width: 820px;
+    /* 여백을 더 주려고 , 경계선 더 줄까봐 */
+   
+    margin-left: auto; margin-right: auto;    
+}
+header{
+    width: 800px;
+    height: 95px;
+    background-color: #2d3a4b;
+
+    position: relative;
+    /* 안의 요소가 나를 기준으로 잡으라고 하기 위해서 */
+}
+
+#logo{
+    position: absolute;
+    top: 30px;
+    left : 30px;
+}
+
+#top_menu{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 12px;
+    color:white;
+}
+
+#top_menu a{color:white;}
+
+nav{
+    position: absolute;
+    bottom: 10px;
+    /* 헤더의 아래 */
+
+    left : 220px;
+    font-size: 16px;
+}
+
+nav li{
+    display: inline;
+    margin-left:30px;
+
+}
+
+nav li a{color: white;}
+#banner li{
+    display: inline;
+    margin-left:50px;
+
+}
+
+footer{
+    width: 800px;
+    height:90px;
+    margin-top: 20px;
+    background-color: #f1f1f1;
+}
+
+footer img{margin: 10px 0px 0px 60px;}
