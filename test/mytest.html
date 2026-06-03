@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My test field</title>
+        <style>
+            p{color:red; background-color: yellow;}
+            strong{
+                font-weight: 
+                bold;
+                font-size: 20px; 
+                color:blue;
+                display:inline-block;
+                width:100px;
+            }
+            em{
+                color:aqua;
+            }
+            sup{
+                color:black;
+            }
+            hr{
+                color:black;
+                 border:5px dotted #444444;
+            }
+
+
+
+            
+            ol {
+                /* dl */
+                background-color: #aaa;
+                color:aqua;
+                border: 10px double #888800;
+                width:1200px;
+            }
+            
+            ul {
+                /* dl */
+                background-color: orange;
+                color:aqua;
+                border: 10px double #888800;
+            }
+            #id1 {
+                /* hr */
+                background-color: #888;
+                color:aqua;
+                border: 1px double #888800;
+            }
+
+            a{text-decoration: none;
+               color: green;
+               font:bold;
+               font-family: 'Times New Roman', Times, serif;
+               font-weight: bold;
+               font-style: italic;
+               font-size: 20px;
+            }
+
+            img{
+                border:10px dashed blueviolet;
+            }            
+        </style>
+    </head>
+    <body>
+
+        <div style="background-color: #444444;border: 2px solid red;padding-left: 20px;">
+                <h1>test of div</h1>
+                <p>여기는 테스트 하는 장소여서 <span style="color: yellow;font-family: 'Times New Roman', Times, serif;">홍길동</span>으로 외쳐주세요</p>
+
+
+        </div>
+        <!-- <table border="1" width="100%"> -->
+        <table border="4" width="600px">
+            <caption>table</caption>
+            <tr>
+                <th rowspan="2" width="10%">1</th>
+                <th>audio</th>
+                <th>video</th>
+                <th colspan="2">4</th>
+                <th>5</th>
+                
+            </tr>
+            <tr>
+                <td><audio src="./image/old_pop.mp3" controls>audio</audio></td>
+                <td>
+                    <video controls width="240" height="100" poster="./image/logo.png" autoplay muted>
+                        <source src="./image/trailer.mp4" type="video/mp4">
+                        <source src="./image/trailer.ogv" type="video/webm">
+                        <source src="./image/trailer.ogv" type="video/ogg">
+
+                    </video>
+                </td>
+                <td>가나다라마바사아자차파타파하가나다라마사방라마라</td>
+                <td>cccccc cccccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccccccccccccccc</td>
+                <td>wwwwwwww</td>
+                
+                
+            </tr>
+            <tr>
+                <td>aaaa</td>
+                <td>
+                    <audio controls>
+                        <source src="./image/old_pop.mp3" type="audio/mp3">
+                        <source src="./image/old_pop.ogg" type="audio/ogg">
+                        <source src="./image/old_pop.wav" type="audio/wav"
+                    </audio>
+                
+                
+                </td>
+                <td>
+                    <embed src="./image/SQL.pdf" type="application/pdf">
+                </td>
+                <td><object data="./image/SQL.pdf" type="application/pdf" width="500%" height="300%"></object></td>
+                <td><iframe src="./01_table.html" ></iframe></td>
+                <td><iframe src="http://ilomus76.dothome.co.kr/myhome" frameborder="0"></iframe></td>
+            </tr>
+        </table>
+        <iframe src="" frameborder="2" width=500px name="aaa" width="2"></iframe>
+        <iframe src="./image/SQL.pdf" frameborder="0" width="20%" height="10%"></iframe>
+
+        이곳에 글씨를 쓰면 ...
+        두번째 줄이빈다.                    띄어쓰기 테스트..
+        
+
+        <h1>리스트 테스트</h1>
+        <p>방송에 관심 있는 새내기 여러분 <strong><em>정말로</em></strong>환영합니다.</p>
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+        <hr id="id1">
+        <ol>
+            <li><a href="./image/logo.png">이미지다운로드</a></li>
+            <li><a href="mailto: ilomus76@gmail.com">나에게 메일</a></li>
+            <li><img src="./image/logo.png" alt="로고2" width="100%"></li>
+            <li><img src="./image/logo.png" alt="로고2" width="45%"><img src="./image/logo.png" alt="로고" width="45%"></li>
+        </ol>
+        <hr>
+        <dl>
+            <dt>네이버</dt>
+            <dd><a href="https://www.naver.com" target="_blank">naver</a></dd>
+            <dt><a href="https://ilomus76.dothome.co.kr/myhome" target="aaa">ilomus</a></dt>
+            <dd>bbb는 나쁘다.</dd>
+        </dl>
+        <hr>
+        <h2>제목</h2>
+        <h3>제목</h3>
+        <h4>제목</h4>
+        <h5>제목</h5>
+        <h6>제목</h6>
+        <hr>
+
+        <p>Hello Web</p>
+        <p>단락요소</p>
+        <p >여백생김 사랑하지만 <strong>강하게</strong> 표현 하지 마세요....</p>
+        <p>저를 너무 <em>강조<sup>참고1</sup></em>하지 말아<sup>2</sup> 주세요</p>
+        <p>ㅋㅋㅋㅋㅋ&nbsp;&nbsp;&nbsp;&nbsp;ㅋㅋㅋㅋㅋ</p>
+        <p>zzzzzz <br>zzzzzz</p>
+        <p>aaaaa
+
+        <pre>
+            이 안에 써있는 데로 ..
+            보ㅇ네요.
+            줄바꿈도 
+            다되요... 
+        </pre>
+
+
+        
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My test field2</title>
+        <style>
+            p{color:red; background-color: #cccccc}
+
+        </style>
+    </head>
+    <body>
+        <p>Hello Web &nbsp; 2</p>
+        
+    </body>
+</html>
+Good job
+<h1>HTML5</h1>

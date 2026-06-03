@@ -3,229 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-
-        <!-- 외부 스타일시트 연결 -->
-    <link rel="stylesheet" href="./index.css">
-    <script>
-    if (location.search.includes("login=success")) {
-    alert("로그인 성공");
-    }
-    </script>
+    <title>ILOMUS</title>
+    <!-- 외부 스타일 시트 연결 -->
+    <!-- Mobile Device -->
+    <link rel="stylesheet" href="./index_mobile.css" media="(max-width:600px)">
+    <!-- PC Device -->
+    <link rel="stylesheet" href="./index_pc.css" media="(min-width:601px)">
 
 </head>
-
 <body>
+    <div id="intra_body">
+        <header>
+            <!-- 블럭요소 : 한라인 다 차지함. -->
+            <div id="logo"><a href=""><img src="./resources/images/logo2.png" alt=""></a></div>
+            <div id="top_right_menu">
+                <a href="">HOME</a> |
+                <a href="/myhome/sub/IT/index.php">IT</a> |
+                <a href="">NETWORK</a> |
+                <a href="">Search</a> |
+                <a href="">Sports</a>
 
-    <!-- 상단 메뉴 -->
-    <nav class="navbar">
-        <ul class="menu">
-            <li><a href="https://ilomus76.dothome.co.kr" target="_self">HOME</a></li>
-            <li><a href="#">LOGIN</a></li>
-            <li><a href="./sub/HTML/HTML.html">FRONTEND</a></li>
-            <li><a href="#">BACKEND</a></li>
-            <li><a href="#">IT</a></li>
-            <li><a href="#">TECH</a></li>
-            <li><a href="/myhome/sub/IT/index.php">IT</a></li>
-        </ul>
-    </nav>
+            </div>
+            <nav id="top_low_menu">
+                <ul>
+                    <!-- <a href="#"></a> -->
+                    <!-- <a href="javascript:void(0)"></a> -->
+                    <li><a href="">IT</a></li>
+                    <li><a href="">NETWORK</a></li>
+                    <li><a href="">Market</a></li>
+                    <li><a href="">Schedule</a></li>
+                    <li><a href="">Blank</a></li>
+                    <li><a href="">Blank</a></li>
+                    <li><a href="">Blank</a></li>
 
-<!-- <form action="/myhome/login.php" method="POST"> -->
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="sky_logo">
+                <a href=""><img src="./resources/images/sky_logo.svg" alt="image sensor world"></a>
+                
+            </section>
+            <section id="evaluation">
+                <ul>
+                    <li><a href=""><img src="./resources/images/photon.svg" alt="image evaluation standard"></a></li>
+                    <li><a href=""><img src="./resources/images/science.svg" alt="image evaluation tool"></a></li>
+                
+                </ul>
+                <ul id="search">
+                    <li><a href="https://www.naver.com" target="_blank">Naver</a></li>
+                    <li><a href="https://www.google.com" target="_blank">Google</a></li>
+                    <li><a href="https://www.msn.com" target="_blank">MSN</a></li>
+                    <!-- edge://newtab/ -->
+                </ul>
+            </section>
 
-    <!-- <h2>Login</h2> -->
-
-    <!-- <input type="text" name="user_id" placeholder="ID"> -->
-    <!-- <input type="password" name="user_password" placeholder="PW"> -->
-
-    <!-- 🔥 핵심 -->
-    <!-- <input type="hidden" name="redirect" value="/myhome/sub/IT/index.php"> -->
-
-    <!-- <button type="submit">Login</button> -->
-
-<!-- </form> -->
-
-
-    
-    <div class="container content-box">
-        <h1> Login Page ! </h1>
-        <hr>
-
-        <br>
-
-        <!-- 달력 -->
-        <section>
-            <h2>일정 선택</h2>
-
-            <input type="date">
-        </section> 
-        <br>
-
-        
-        <!-- 스케줄 달력 -->
-        <section>
-            <h2>스케줄 달력</h2>
-
-            <table class="calendar">
-
-                <thead>
-                    <tr>
-                        <th class="sun">일</th>
-                        <th>월</th>
-                        <th>화</th>
-                        <th>수</th>
-                        <th>목</th>
-                        <th>금</th>
-                        <th class="sat">토</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td class="sat">4</td>
-                    </tr>
-
-                    <tr>
-                        <td class="sun">5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td class="today">
-                            8
-                            <div class="schedule">
-                                HTML 공부
-                            </div>
-                        </td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td class="sat">11</td>
-                    </tr>
-
-                    <tr>
-                        <td class="sun">12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>
-                            15
-                            <div class="schedule">
-                                Python
-                            </div>
-                        </td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td class="sat">18</td>
-                    </tr>
-
-                    <tr>
-                        <td class="sun">19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>
-                            23
-                            <div class="schedule">
-                                AI 프로젝트
-                            </div>
-                        </td>
-                        <td>24</td>
-                        <td class="sat">25</td>
-                    </tr>
-
-                    <tr>
-                        <td class="sun">26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
+        </main>
+        <footer>
+            <p>COPYRIGHT designed by ILOMUS</p>
+        </footer>
     </div>
-
-
-    <!-- 막대바 -->
-
-<!-- 스케줄 진행상황 -->
-<div class="status-area content-box">
-
-    <h3>나의 스케줄 진행상황</h3>
-
-    <!-- HTML -->
-    <div class="progress-item">
-
-        <div class="progress-title">
-            HTML 공부
-            <span>80%</span>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress html-progress"></div>
-        </div>
-
-    </div>
-
-    <!-- CSS -->
-    <div class="progress-item">
-
-        <div class="progress-title">
-            CSS 공부
-            <span>100%</span>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress css-progress"></div>
-        </div>
-
-    </div>
-
-    <!-- Python -->
-    <div class="progress-item">
-
-        <div class="progress-title">
-            Python 공부
-            <span>40%</span>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress python-progress"></div>
-        </div>
-
-    </div>
-
-    <!-- AI -->
-    <div class="progress-item">
-
-        <div class="progress-title">
-            AI 프로젝트
-            <span>65%</span>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress ai-progress"></div>
-        </div>
-
-    </div>
-
-</div>
-<!-- 막대바 끝 -->
-
-     
-
-
-
-
 </body>
 </html>
-

@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<!-- HTML 5 입니다라는 뜻 -->
+ <!-- 화면 작성 -->
+<html>
+    <head>
+        <meta charset="utf-8">  
+        <!-- 기본적으로 영어로 되어 있어 한글이 깨짐. 그래서 utf-8이라는 인코딩 방식을 넣어야 함.  -->
+         <title>table ex </title>
+    </head>
+    <body>
+        <h2>table 요소 연습</h2>
+        <table border="1">
+            <!-- css로 경계 작업은 나중에 , boarder 는 픽셀단위 , 속성에서 이탤리체로 나오면 가급적 사용하지 말라는 뜻-->
+            <!-- 주석 : ctrl + / -->
+
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>메세지</th>
+                <!-- tablehead -->
+            </tr>
+            <!-- table row -->
+             <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>hello table</td>
+             </tr>
+             <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>nice to meet you</td>
+                <!-- 각행(row)의 셀(칸)갯수가 달라도 됨 -->
+                <!-- 전체 테이블을 그리고 각 칸을 하나씩 넣은것이다. 그래서 칸이 2줄로 보임. 이것을 예쁘게 하려면 css사용해라. -->
+                <td>2026-05-26</td>
+             </tr>
+
+            <!-- 표제목 표시하기( 작성 위치와 상관없이 무조건 표의 상단에 표시됨) , css 를 통해 위치 조정 가능함 -->
+            <caption>테이블 제목표시영역</caption>
+        </table>  
+        <!-- 엔드태그 -->
+        <hr>
+
+        <!-- 테이블 칸(셀)안에 다른 요소를 넣어보기 , 요소 안에 요소넣을 수 있다.-->
+         <table border="1" width="100%">
+            <!-- 사이즈는 웹 브라우저의 100%로 설정 -->
+            <tr>
+                <td width="30%"><a href="https://www.naver.com" >네이버로 이동</a></td>
+                <!-- hyper reference -->
+                <td>
+                    <ul>
+                        <li>aaaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>테이블안에 어떤 요소든 넣을 수 있음. 한글이면 자동 줄바꿈.</p>
+                    <p>adaf dasfadfasdfadsfasdfasdfasafadfafdadfadfa</p>
+                    <!-- 영단어는 띄어쓰기가 없으면 칸을 바꾸지 않음. , 영어는 띄워쓰기가 있어야 줄바꿈을 함. -->
+                </td>
+                <td>
+                    <img src="./image/newyork.jpg" alt="뉴욕이미지" width="70%">
+                    <!-- 나한테 할당된 네모박스의 70% 를 의미. 웹브라우저가 아님.  -->
+                    <!-- 웹브라우저와 같은 폴더안의 image 폴더안의 이미지 파일 -->
+                </td>
+            </tr>
+         </table>
+
+         <hr>
+
+         <table border="1">
+            <tr>
+                <!-- 다음줄이 없으면 span은 반영되지 않음 -->
+                <td rowspan="2">111</td>
+                <!-- 2줄 병합 -->
+                <td colspan="3">222</td>
+                <!-- 3칸 병합 -->
+                <td>333</td>
+                
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666</td>
+            </tr>
+
+         </table>
+
+
+    </body>
+</html>
+
+<!-- open in browser 를 설치하고 오른쪽 클릭 -->

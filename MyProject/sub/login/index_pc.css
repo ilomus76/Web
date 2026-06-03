@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{list-style: none;}
+a{text-decoration: none;}
+
+body{
+    /* font-family:Arial, sans-serif; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+/* 전체 영역 */
+#intra_body{
+    /* width:100%; */
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 헤더 상단 */
+header{
+    padding:10px 20px;
+}
+
+/* 로고 + 우측메뉴 */
+/* 블럭요소 */
+header{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* 로고 */
+/* 인라인요소-위에서 flex하게 바뀐듯. heght 속성이 동작해서... */
+#logo img{
+    height:60px;
+}
+
+/* 우측 메뉴 */
+#top_right_menu{
+    
+    text-align:right;
+    
+}
+
+#top_right_menu a{
+    font-family:'Times New Roman', Times, serif
+    font-weight: bold;
+    text-decoration: none;
+    color: #ccc;
+}
+
+/* 하단 메뉴 */
+/* 블럭요소 */
+#top_low_menu{
+    
+    width:100%;
+    margin-top:10px;
+    
+}
+
+/* 블럭요소 */
+#top_low_menu ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    /* justify-content: space-between; */
+    /* 브라우저 전체 공간활용 */
+    justify-content: center;
+    margin-bottom: 0px;
+    /* border: 1px solid black; */
+}
+
+
+#top_low_menu a{
+    color: #777777;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+
+
+/* //////////////////////////////////////////////////////// */
+/* 메인 */
+main{
+    margin-top: 0px;
+    padding:0px; 
+    /* 상하좌우에 전부 20px씩  */
+}
+
+/* 중앙 로고 */
+#sky_logo{
+    /* border: 1px solid black; */
+    text-align:center;
+    /* 브라우저의 중앙 */
+    /* margin:50px 0; */
+    /* margin-bottom: 0px; */
+    margin:0 auto;
+    /* 상하 좌우 */
+  
+    padding-bottom: 0px;
+    /* border-bottom: white; */
+    /* 만약 빨간 테두리와 파란 테두리는 가까운데 그림만 멀리 보인다면 SVG 파일 안에 빈 공간이 있는 것입니다. */
+
+    width:800px;
+    
+   
+
+}
+
+#sky_logo img{
+    /* max-width:100%; */
+    /* 자기 자신의 100% */
+    display:block;
+    width:100%;
+    /* 부모의 100% */
+ 
+}
+
+
+
+/* evaluation */
+/* 블럭요소 */
+
+#evaluation{
+    width:800px;
+    margin:0 auto;
+}
+
+
+#evaluation ul{
+    /* border: 1px solid black; */
+    padding-top: 0;
+    margin-top: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 2px;
+    list-style:none;
+}
+
+#evaluation li{
+    /* width:50%; */
+    flex:1;
+}
+
+
+#evaluation img{
+    display:block;
+    width:100%;
+    height:auto;
+    /* max-width:250px; */
+    /* max-width:50%; */
+    /* width:100%; */
+    /* height:auto; */
+}
+
+
+#search{
+    padding:40px;
+    margin-top: 10px;
+    display:flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* text-align: center; */
+    gap:0px;
+    list-style:none;
+}
+
+#search li{
+    text-align: center;
+    
+}
+#search a{
+    text-decoration:none;
+    font-family: 'Times New Roman', Times, serif;
+    color:#777;
+    font-weight:bold;
+    font-size:medium;
+}
+
+#search a:hover{
+    color:blue;
+}
+
+
+
+
+/* footer */
+footer{
+    margin-top:50px;
+    padding:20px;
+    text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+}
+
+#intra_body{
+    margin:0;
+    padding:0;
+} */
+
+
+
+/* 
+html, body{
+    margin: 0;
+    padding: 0;
+} */
+
+
+
+/* 
+#top_right_menu{
+    display:flex;
+    list-style:none;
+}
+
+#top_right_menu li:not(:last-child)::after{
+    content:" | ";
+} */
+
+
+
+
+/* 
+#evaluation ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+} */

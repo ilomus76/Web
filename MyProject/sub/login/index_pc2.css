@@ -1,0 +1,71 @@
+*{margin:0;padding:0;}
+ul{list-style: none;}
+a{text-decoration: none;}
+
+
+#intra_body{            
+    width:800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:0;
+    position:relative;
+}
+
+
+
+
+/* div 요소 */
+#intra_body #logo {
+    margin:0;
+    padding:0;    
+    display: inline;
+
+    position: absolute;
+    left:0px;
+    top:0px;  
+    box-sizing: 20%;     
+}
+
+/* 이미지 요소 */
+#intra_body #logo img{
+    width:200px;
+    height:100px;
+}
+
+#intra_body #top_right_menu{
+    position: absolute;
+    right:20px;
+    top: 10px;
+    color : black;
+}
+
+#intra_body #top_right_menu a{
+    text-decoration: none;
+    color:black;
+    right:20px;
+    top:10px;
+}
+
+nav{
+    position:absolute;
+    right:20px;
+    top:50px;
+}
+
+#intra_body #top_low_menu{
+    position: absolute;
+
+} 
+ 
+#intra_body #top_low_menu ul li{
+    display:inline-block;
+    /* right:20px;
+    top:50px; */
+}
+
+#sky_logo{
+    position:absolute;
+    left:10px;
+    top:80px;
+    
+}
