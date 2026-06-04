@@ -1,0 +1,127 @@
+<!-- wwit site execise -->
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template #1</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #intra_container{
+            margin-left: auto;
+            margin-right: auto;
+            width:800px;   
+            color:white         
+        }
+        #intra_container header{
+            margin-top: 0;
+            border-top: 2px dashed white;
+            /* line style 찾아보기 */
+            /* color: white */
+        }
+        #intra_container>header>h3{
+            text-align: center;
+            margin-bottom: 100px;
+        } 
+
+        /* main */
+        main{
+            margin:100px ;
+            text-align: center;
+        }
+        /* #intra_container>main>section{
+            text-align:center;
+        } */
+
+        #intra_container>main>#sect1>div>#menu1,#menu2{
+            list-style: none;
+            display:flex;
+            flex-direction: row;
+            /* 디폴트 값  */
+            justify-content: space-evenly;            
+        }
+        
+        #intra_container>main>#sect2>#favorite{
+            margin-top: 50px;
+            display: flex;     
+            flex-direction: column;  
+            justify-content: center;
+            align-items: flex-start;
+
+            margin-left: 130px;               
+            color:white;
+        }
+
+        #intra_container>main>#sect2>#favorite>div{
+            margin-left: 5px;
+        }
+
+        #intra_container>main>#sect2>#favorite>div>label{
+            margin-left: 20px;
+        }
+       
+       
+        
+    </style>
+ </head>
+ <body>
+    <div id="intra_container">
+        <header>
+            <h3>내가 좋아하는 알람 소리로 <br>하루를 시작하세요</h3>
+
+        </header>
+        <main>
+            <section id="sect1">
+                <div>
+                    <ul id="menu1">
+                        <li>시끄러운</li>
+                        <li>차분한</li>
+                        <li>POP</li>
+                        <li>타일</li>
+                        
+                    </ul>
+                    <ul id="menu2">
+                        <li>랑응</li>
+                        <li>경쾌한</li>
+                        <li>목소리</li>
+                        <li>KPOP</li>
+                        <li>무음</li>
+                    </ul>
+                </div>
+
+            </section>
+            <section id="sect2">
+                <div id="favorite">
+                    <p id="title1">요즘 인기</p>  
+                    <div>
+                        <input type="radio" name="rlist" value="rlist" id="ls1">
+                        <label for="ls1"> Squid Game  Round and Round </label> 
+                    </div>   
+                    <div>
+                        <input type="radio" name="rlist"  value="Squid Game - Round and Round" id="ls2">
+                        <label for="ls2"> Squid Game - Round and Round </label> 
+                    </div>    
+                    <div>                                   
+                        <input type="radio" name="rlist"  value="Kompa" id="ls3">
+                        <label for="ls3"> Kompa </label> 
+
+
+                    </div>           
+  
+                    
+                </div>
+                           
+
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+
+    </div>
+
+    
+ </body>
+ </html>
