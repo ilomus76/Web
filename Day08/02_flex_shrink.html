@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex flex-shrink</title>
+    <style>
+        #container{
+            display: flex;
+            /* 기본이 row 방향. */
+        }
+        #container>div{
+            background-color: dodgerblue;
+            color: white;
+            width:100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <div>1</div>
+        <div>2</div>
+        <div style="flex-shrink: 0;">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div style="flex-shrink: 2;">6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>
+
+<!-- 어떤 영역을 고정시키거나 영역을 빠르게 없애고 싶을때.. -->

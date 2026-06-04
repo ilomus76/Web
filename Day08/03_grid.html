@@ -1,0 +1,106 @@
+<!-- 1차원 레이아웃은 flex, 2차원 레이아웃 구조는 grid(격자, 테이블보다 쉽다.) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid layout</title>
+    <style>
+        .container{
+            /* 자식요소들의 배치를 격자모양으로.... */
+            display: grid;
+            border: 2px solid black;
+            /* 아무런 차이없다. */
+            /* tip1 으로*/
+
+            /* tip2  */
+            /* 자식요소들을 한줄에 몇개씩 놓을지 결정(방법. 각 칸(column)들의 너비를 지정) */
+            /* grid-template-columns: 100px 150px 200px 300px; */
+            grid-template-columns: 100px 150px 200px;
+            /* 템플릿 : 뼈대 */
+
+            /* 모든 요소의 너비를 자동으로 같게 */
+            grid-template-columns: auto auto auto;
+
+            /* 비율로 너비를 지정하는 단위(fr:fraction 일부분이란 뜻) */
+            grid-template-columns: 1fr 2fr 1fr;
+            /* 1:2:1 의 너비 비율 */
+            grid-template-columns: 1fr 1fr 1fr;
+            /* 1:1:1의 너비 비율 */
+
+            /* 줄 높이를 지정하기 */
+            grid-template-rows: 150px 200px;
+            /* 3번째는 지정하지 않아서 wrap이 됨. */
+
+
+            /* 격자 사이의 간격지정 가능 */
+            column-gap: 1rem; 
+            /* rem : root em 단위 : 최상위요소의 글자크기를 기준으로.. */
+            /* 요즘은 rem을 많이 사용 */
+            /* 원래 m은 부모의 단위 */
+
+            row-gap: .5rem;
+
+            /* 축약 */
+            gap:.5rem 1rem;/ 
+            /* row column 행 열 순으로.. */
+            /* 표만드는 개념 */
+            /* 병합은 요소가 해야함. tip3로 */
+            
+        }
+        .container>div{
+            /* tip1 */
+            background-color: aqua;
+            margin: 4px;
+            text-align: center;
+            padding: 8px;
+            /* 여기까지는 grid에 대한 영향이 없다. */
+            /* tip2로 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="c1">1</div>
+        <div id="c2">2</div>
+        <div id="c3">3</div>
+        <div id="c4">4</div>
+        <div id="c5">5</div>
+        <div id="c6">6</div>
+        <div id="c7">7</div>
+    </div>
+
+    <style>
+        /* 아이디 지정후 여기로 tip3 */
+        /* 자식 요소들의 셀 위치지정 및 셀병합 tip3 */
+
+        #c1{
+            /* 위에서 오르쪽으로 순서 */
+            grid-column-start: 1;
+            grid-column-end:3;
+            /* 1~2칸 */
+        }
+
+        #c3{
+            grid-column-start: 2;
+            grid-column-end:4;
+            /* 2~3칸 */
+            
+        }
+
+        #c5{
+            grid-column: 3 / span 3;
+            /* 3번 위치부터 2칸 [4번째 칸이 없으면 생성.] */            
+        }
+
+        /* 특정 row 위치 및 병합 */
+        #c6{
+            grid-row-start: 2;
+            grid-row-end: 5;
+            /* 2~4번 줄까지. */
+        }
+
+
+    </style>
+</body>
+</html>

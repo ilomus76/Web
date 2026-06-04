@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid layout</title>
+
+    <style>
+        /* 자식 요소들의 특정 영역 별명을 지정하고 이 별명으로 grid를 차지하는 위치 지정 */
+        header{
+            grid-area: aa; 
+            /* 이름을 aa라고 부른다 */
+        }
+        nav{
+            grid-area: bb;
+        }
+        main{
+            grid-area: cc;
+            
+        }
+        aside{
+            grid-area: dd;
+        }
+        footer{
+            grid-area: ee;
+        }
+        /* tip2 */
+        #wrap{
+            display: grid;
+            grid-template-areas: 
+                'aa aa aa aa aa'
+                /* aa칸을 5개 넣겟다. */
+                'bb cc cc cc dd'
+                'ee ee ee ee ee';   
+                
+                grid-template-rows: auto 300px auto;
+        }
+        /* tip3 로*/
+
+        #wrap>*{
+            background-color: aquamarine;
+            text-align: center;
+            padding: 20px 0px;
+            font-size: 30px;
+            border: 1px solid black;
+            /* 모두 블럭 요소라 아래로 배열됨.  tip 2로*/
+        }
+
+        /* tip4 */
+        header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h2>Grid area를 이용한 layout 구조</h2>
+
+    <div id="wrap">
+        <!-- <header>HEADER</header>
+        <nav>MENU</nav>
+        <main>CONTENT</main>
+        <aside>SIDE</aside>
+        <footer>FOOTER</footer> -->
+
+        <!-- tip3  -->
+        <header>
+            <header>LOGO</header>
+            <nav>TITLE</nav>
+            <main>OPTION</main>
+            <!-- tip4 -->
+
+        </header>
+        <nav>MENU</nav>
+        <main>CONTENT</main>
+        <aside>SIDE</aside>
+        <footer>FOOTER</footer>
+
+
+    </div>
+</body>
+</html>
