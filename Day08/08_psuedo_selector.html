@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>의사 선택자</title>
+</head>
+<body>
+    <!-- 1. has() : 특정 요소를 가지고 있는 요소를 선택 -->
+     <!-- 의사는 의족할때 의... -->
+     <div>
+        <p>Hello world</p>
+     </div>
+     <div>
+        <a href="">link</a>
+     </div>
+
+     <style>
+        /* a 앵커를 가지고 있으면 */
+        div:has(a){background-color: lightblue;
+        }
+     </style>
+
+     <hr>
+
+     <!-- 예) 메뉴 항목 위로 마우스 커서를 올렸을 때 해당 메뉴가 잘 보이도록 나머지 요소들을 반투명하게... -->
+
+     <nav>
+        <ul>
+            <li><a href="">HOME</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">PORTPOLIO</a></li>
+            <li><a href="">CONTACT</a></li>
+        </ul>
+     </nav>
+
+     <style>
+        nav ul{
+            background-color: black;
+            display: flex;
+            list-style: none;
+            flex-direction: row;
+            justify-content: space-evenly;
+            padding: 1rem;
+            /* 상하좌우 한글자 들어갈 정도 */
+        }
+        nav ul li a{
+            color:white;
+            text-decoration: none;
+            display: inline-block;
+            /* 패딩 영역을 감싸지 않기 때문에 감싸기 위해서 설정. */
+
+        }
+
+        nav ul li a:hover{
+            color:orange;
+        }
+        /* nav:hover{opacity: 0.4;} */
+         /* nav:has(a){ */
+            /* nav가 a 중에서 hover 된 것들의 속성 */
+            /* opacity: 0.4; */
+        /* } */
+        /* nav:has(a:hover){ */
+            /* nav가 a 중에서 hover 된 것들의 속성 */
+            /* opacity: 0.4; */
+        /* } */
+
+        /* nav:has(a:hover) a{ */
+            /* nav가 a 중에서 hover 된 것들의 속성 */
+            /* opacity: 0.4;
+        } */
+
+        nav:has(a:hover) a:not(a:hover){
+            /* nav가 a 중에서 hover 된 것들의 속성 */
+            opacity: 0.4;
+        }
+     </style>
+</body>
+</html>

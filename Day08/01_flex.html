@@ -1,0 +1,299 @@
+<!-- 요즘 가장 인기있는 css -->
+<!-- 1차원 레이아웃을 효율적으로 유연하게 해 주는 스타일: flex -->
+<!-- 2차원 레이아웃 구조를 효율적으로 만들 수 있는 스타일 : grid -->
+<!-- 둘다 같이 사용하는것이다.  -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Style</title>
+    
+    <!-- 내부 스타일 시트 -->
+    <style>
+        /* #container > div{ : 이것도 자식이다 . 띄어 쓰기 있어도.. */
+        #container>div{
+            background-color: aqua;
+            margin: 10px;
+            padding: 20px; 
+            /* 블럭 요소여서 한칸 다 가짐. */
+
+            /* height: 100px; */
+        }
+
+        #container{
+            /* 자식요소들의 배치방식을 부모요소가 제어하도록.. */
+            display: flex;
+            /* 자식 요소들의 배치가 유연하게... */
+
+            /* 자식 요소의 배치방향을 설정 */
+            flex-direction: row; 
+            /* 기본 : default : 옆으로 배치 */
+
+            flex-direction: column;
+            /* 자식의 배치를 열방향으로 밑으로 배치 */
+            flex-direction: row-reverse;
+            /* 옆으로 배치하는데 역으로 배치 */
+
+            flex-direction: column-reverse;
+
+            flex-direction: row;
+            /* 반응형 만들때 이것만 사용하면 배치를 바꿀수 있음. */
+
+            /* tip1 자식요소가 많아서 부모요소의 영역을 벗어날때 처리히 방식을 정할 수 있음. */
+            flex-wrap: nowrap; 
+            /* default */
+            flex-wrap:wrap;
+            /* 화면을 조정하면 거기에 맟춰서 자동으로 밑으로 가게 할수 있음. */
+            /* 반응형 웹을 쉽게 만들 수 있다. */
+            flex-wrap: wrap-reverse;
+            /* 줄바꿈 될때 .. 새로 생기는 줄이 위촉으로.. */
+
+            /* -direction -wrap을 축약으로... */
+            flex-flow: column wrap;
+            /* 여러 사진을 갤러리를 보여줄때 */
+
+            flex-flow: nowrap column; 
+            /* 순서 상관없음. */
+            /* 아래로 나열.. 부모보다 많으지 넘어감. */
+
+            /* default값 */
+            flex-flow: row nowrap;
+
+            /* tip2 */
+            /* 자식요소들의 정렬 속성 2개 */
+            /* 가로정렬 세로정렬이 있는데 그런 용어를 쓰지 않음. */
+            /* justify-content, align-items : 자식 요소의 정렬*/
+
+            /* 1.justify-content : direction (배치)방향의 정렬 */
+            /* 요소의 방향에 맞게 알맞게 놓겠다. */
+            /* 1.1 수평배치일때 수평축 정렬 */
+            flex-direction: row;
+            /* 수평배치 : 왼쪽부터 있음.*/
+            justify-content: center;
+            justify-content: flex-end;
+            /* 배치방향의 끝에.. */
+            justify-content: flex-start; 
+            /* default */
+            justify-content: space-between;
+            /* 사이 간격을 똑같이 */
+            /* 가장 많이 사용... */
+            /* 첫째와 마지막이 왼쪽과 오른쪽 끝으로 배치. */
+            justify-content: space-around;
+            /* 둘러싸 around */
+            /* 둘러싼 간견을 똑같이... */
+            /* 양쪽보다 가운데가 더 넓어 보임. 옆의 것과 내것이 같이 들어가기 때문 */
+
+            justify-content: space-evenly;
+            /* 양쪽과 가운데가 거의 비슷. */
+
+
+            /* flex-direction: row-reverse; */
+            /* 수평배치 : 왼쪽부터 있음.*/
+            /* justify-content: center;
+            justify-content: flex-end; */
+
+
+            /* 1.2 수직배치일때.. 수직 정렬*/
+            flex-direction: column;
+            justify-content: flex-start;
+            /* 위에서 아래로... 여백이 있을때 위에 쏠림 */
+            justify-content: center;
+            /* justify는 수직 수평 정렬이 아니고 방향에 알맞게 배치하는 것임. */
+            justify-content: flex-end;
+            justify-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly;
+
+
+            /* 2.align-items : direction(배치방향)과 교차축 정렬 */
+            /* 2.1 수평배치일때.. 수직축 정렬 */
+            justify-content: flex-start;
+            flex-direction: row;
+            /* 높이가 꽉참...  */
+            /* 원래는 요소의 사이즈 만큼이어야 하는데 꽉차.align-items:stretch; 때문 */
+            align-items:flex-start;
+            /* 수평정렬일때 수직축으로 처음부터... */
+            align-items:center;
+            align-items:flex-end;
+            align-items: stretch; 
+            /* default : 늘려서 맞추겠다.. 그래서 처음에 요소가 꽉차 있었던거임 */
+            /* 단 사직요소의 높이 속성이 명시적으로 있다면.. 무시됨.. */
+
+            align-items: baseline;
+            /* 요소박스 기준이 아니라.. 그 안에 있는 글씨의 하단을 맞추기 */
+            /* <div style="font-size: 30px;">bbb</div>  */
+            /* 위의 코드를 하면 글자 하단을 기준으로 정렬되지만 요소가 살짝 변함. */
+
+            align-items: flex-start;
+            
+
+            /* 2.2 수직배치일때 .. 수평축 정렬 */
+            flex-direction: column;
+            align-items: center;
+            align-items:flex-end;
+            align-items: stretch;
+            /* default 단, 요소 width가 명시적으로 있다면 무시됨. */
+            align-items: baseline;
+            /* 무의미! .. 수평축 정렬이기에 글씨 하단을 맞출 수 없음. */
+            /* 여기까지가 배치에 대한 내용.. */
+
+            /* ex.1로 */
+
+            height: 350px;
+            border:2px solid black;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- flex 스타일 :  자식 요소들의 배치 [layout]를 부모요소에서 결정하는 방식 -->
+     <!-- 요소가 블럭인지 인라인인지 중요하지 않다.. -->
+    <!-- 부모요소 -->
+    <div id="container">
+        <!-- 1. 자식요소 -->
+         <div>aaa</div>
+         <div style="font-size: 30px;">bbb</div>
+         <div>ccc</div>
+
+         <!-- tip2 : 주석 -->
+        <!-- <div>aaa</div>
+         <div>bbb</div>
+         <div>ccc</div>
+        <div>aaa</div>
+         <div>bbb</div>
+         <div>ccc</div> -->
+         <!-- 부모 사이즈보다 크면 넘어감..  tip1으로.. -->
+    </div>
+    <hr>
+
+    <!-- ex.1 -->
+     <div id="header">
+        <h2>Hello</h2>
+        <p>This is flex style</p>
+     </div>
+
+     <style>
+        #header{
+            background-color: blueviolet;
+            color:wheat;
+            height:200px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 수직 정렬은 엄청 난제였는데 2019년도에 해결됨. */
+            /* 앱 로그인 할때 입력화면 중앙배치... */
+            /* wwit의 정가운데 모습. https://wwit.design/*/
+
+            /* text-align: center;
+            vertical-align: middle; */
+            /* 이건 텍스트를 정렬하는게 아니다. */
+            /* 수직 정렬은 안되었다...  */
+        }
+     </style>
+
+     <hr>
+     <!-- flex 스타일을 기본적으로 부모요소가 자식요소들의 배치와 정렬을 결정. -->
+     <!-- 자식 요소들만의 개별단위 flex 스타일 속성들을 사용하면 더 풍부하게 더 다양한 레이아웃(배치)이 가능  -->
+
+     <div id="container2">
+        <div id="c1">aaa</div>
+        <div id="c2">bbb</div>
+        <div id="c3">ccc</div>
+
+     </div>
+
+     <style>
+        #container2>div{
+            background-color: aquamarine;
+            padding: 20px;
+            margin: 10px;            
+        }
+
+        #container2{
+            display: flex;
+            /* 기본 row 수평 방향 */
+            border:2px solid blue;
+            
+        }
+
+        /* 자식요소들만의 flex 스타일속성들 알아보기 */
+        /* 1. order : 배치순서 결정 - 숫자 낮은 것이 먼저 배치됨 */
+        /* 먼저 만들어 진것이 순서 처음. */
+        #c1{order:5;}
+        /* html의 순서가 바뀜 */
+        #c2{order:3}
+
+        /* 2.flex-grow : 너비를 상대적인 값의 비례[1:3:2]로 지정 */
+        #c1{
+            order:0;
+            flex-grow:1;
+        }
+        #c2{
+            order:0;
+            flex-grow:3;
+        }
+        #c3{
+            order:0;
+            flex-grow:0;
+            /* 성장하지 않을 거다라는 뜻이니. 원래 사이즈임. 나머지는 너희가 나눠먹음. */
+        }
+        /* 순서가 똑같으면 만든 순서되로... */
+
+        /* 3.flex-shrink : 다른 요소들에 비해 얼마나 줄어들을지...를 결정(별도 예제 02.html로).. */
+        /*  */
+
+        /* 4.flex-basis(기반): 요소의 초기 길이값을 지정 - 화면이 작아지면 flex-basi로 지정한 요소들만 먼저 축소됨. */
+        #c1{
+            flex-grow: 0;
+        }
+        #c2{
+            flex-grow: 0;
+            flex-basis: 200px;
+
+        }
+        #c3{
+            flex-grow: 0;
+            flex-basis: 300px;
+
+        }
+
+        /* 5.위 3개의 속성을 축약형으로 ..flex(- grow -shrink -basis) */
+
+        #c1{flex:0 0 0px;}
+        #c1{flex:1 0 0px;}
+        #c1{flex:1 0 0px;}
+        /* shrink와 basis는 자주 사용되지 않기에 . 일반적으로 grow값만 사용함. */
+        #c1{flex:2;}
+        #c1{flex:1;}
+        #c1{flex:1;}
+
+
+        /* 6.요소 개별 단위 정렬하기 */
+        #container2{
+            flex-direction: row;
+            height: 300px;
+        }
+        #container2>div{
+            height: 100px;
+            /* 부모의 요소를 무시 시킴. */
+        }
+
+        #c1{
+            align-self: center;
+            /* 나 자신 스스로 어라인할게.. 가운데로.. */
+        }
+        #c3{
+            align-self: flex-end;
+            /* 나 자신 스스로 어라인할게.. 가운데로.. */
+        }
+
+        /* justify-self도 같은 방식 */
+
+
+     </style>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid layout</title>
+
+    <style>
+        #wrap{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            /* 5개가 균등하게 분할 */
+            grid-template-rows: auto 300px auto;
+        }
+        #wrap>div{
+            background-color: aquamarine;
+            text-align: center;
+            padding: 20px 0px;
+            font-size: 30px;
+            border: 1px solid black;
+        }
+        #header{
+            grid-column-start: 1;
+            grid-column-end: 6;
+            /* gce라고 하면 단축키 보임. */
+        }
+        #main{
+            grid-column-start: 2;
+            grid-column-end: 5;
+        }
+        #footer{
+            grid-column: 1 / span 5;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 네이버가 쓰는 방법 -->
+     <div id="wrap">
+        <div id="header">HEADER</div>
+        <div id="nav">NAV</div>
+        <div id="main">CONTENT</div>
+        <div id="aside">SIDE</div>
+        <div id="footer">FOOTER</div>
+
+        <!-- 격자와 같음. -->
+     </div>
+</body>
+</html>
