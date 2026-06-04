@@ -65,6 +65,104 @@
     </head>
     <body>
 
+        <input type="color"> <br>
+        <input type="email"> <br>
+        <input type="tel"> <br>
+        <input type="search"> <br>
+        <input type="url"> <br>
+
+        <input type="range" min="0" max="10" step="2" value="4">
+        <input type="number" min="210" max="300" step="10" value="230">
+        <input type="date"> <br>
+        <input type="datetime"> <br>
+
+        <input type="datetime-local"> <br>
+
+        <input type="month"> <br>
+        <input type="week"> <br>
+        <br>
+        <input type="file" accept="image/png">
+        <input type="file" accept="image/*" multiple="multiple">
+        <br>
+        <textarea cols="40" rows="5" id=""></textarea>
+
+        <select >
+            <option value="aa">사과</option>
+            <option value="bb">바나나</option>
+            <option value="cc">오렌지</option>
+
+
+        </select>
+
+
+
+
+        <select >
+            <optgroup label="중식">
+                <option value="a">짜장면</option>
+                <option value="b">짬뽕</option>
+                <option value="c">볶음밥</option>
+            </optgroup>
+                      <optgroup label="일식">
+                <option value="d">초밥</option>
+                <option value="e">회</option>
+                <option value="f">덮밥</option>
+            </optgroup>
+        </select>
+        <br>
+        <fieldset>
+            <legend>개인정보</legend>
+            <label >이름: <input type="text" name="name"></label>
+            <label>나이 : <input type="text" name="age"></label>
+                  
+
+        </fieldset>
+        <br>
+        <input type="text" size="40">
+       
+
+        <br>
+        <br>
+         <input type="password" size="20">
+         <br>
+         <input type="radio" name="rg" value="aaaa">aaa
+         <input type="radio" name="rg" value="bbbb">bbb
+         ccc <input type="radio" name="rg" value="cccc">
+
+         <hr>
+
+         <input type="radio" name="gender" value="male" id="rb1" checked>
+         <label for="rb1">남성</label>
+         <input type="radio" name="gender" value="female" id="rb2" >
+         <label for="rb2">여성</label>
+
+        <br>
+        <p>check box</p>
+        <label><input type="checkbox" value="apple" name="fruits"  checked>사과</label>
+        <label><input type="checkbox" value="banana" name="fruits" checked>바나나</label>
+        <label><input type="checkbox" value="orange" name="fruits" >오렌지</label>
+
+
+        <br>
+        <form action="./aaa.php" method="get">
+            <label">입력:<input type="text" name="title"></label>
+            <label for="">비번:<input type="password" name="pw"></label>
+            <input type="submit" value="보내기">
+            <input type="reset" value="취소">  
+            <input type="image" src="./image/logo.png" width="50">  
+            
+        
+
+        </form>
+
+        <button onclick="alert('눌렀다')">눌러주세요</button>
+        <button>
+            <img src="./image/logo2.png" alt="image" width="50">
+        </button>
+<br>
+
+
+
         <div style="background-color: #444444;border: 2px solid red;padding-left: 20px;">
                 <h1>test of div</h1>
                 <p>여기는 테스트 하는 장소여서 <span style="color: yellow;font-family: 'Times New Roman', Times, serif;">홍길동</span>으로 외쳐주세요</p>
