@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control</title>
+
+    <script>
+        //제어문 [ 조건문 , 반복문]
+
+        //1. if문 -조건문
+        var age = 15;
+        if(age<20){
+            document.write("미성년자 입니다. 시청지도가 필요합니다.")
+        }
+        document.write('<br>')
+
+        // 짝수인지 홀수 인지?
+
+        var num=25;
+
+        if(num%2 == 0){
+            document.write('even number ');
+        }else{
+            document.write('odd number ');
+        }
+        document.write('<br>')
+
+        // 점수에 따른 학점 출력
+        var score = 75;
+        if(score >=90){
+             document.write('A학점 <br>');
+             document.write('very good <br>');
+        }else if(score>=80){
+             document.write('B학점 <br>');
+             document.write('good <br>');
+
+        }else if(score>=70){
+            document.write('C학점 <br>');
+             document.write('so so <br>');
+
+        }else if(score>=60){
+            document.write('D학점 <br>');
+             document.write('not good <br>');
+
+        }else{
+            document.write('F학점 <br>');
+             document.write('bad <br>');
+        }
+        document.write('<hr>')
+        
+        //2. switch 문 [ 파이썬에서도 이와 유사한 문법 match-case]
+        // if 조건의 == 비교를 조금 더 가독성 좋게.. 하는 문범[분기문]이라고 부름. 
+        var menu=1;
+        switch(menu){
+            case 1: 
+                document.write('walking');                
+            case 2:
+                document.write('running');
+            case 3:
+                document.write('rest');
+        }
+        // break가 없기 때문에 1, 2, 3이 연속적으로 수행.
+        document.write('<br>')
+
+        switch(menu){
+            case 1: 
+                document.write('walking');    
+                break;            
+            case 2:
+                document.write('running');
+                break;
+            case 3:
+                document.write('rest');
+                break;
+            default:
+                document.write('wrong menu')
+        }
+        document.write('<br>')
+        //-------------------------------
+        //3. while 문
+        // ~하는 동안에...
+        var n = 0; 
+        while(n<6){
+            document.write("Hellow<br>");   // 아래의 구문이 없다면 무한루프 걸리면 HTML에서 계속 돌고만 있고 찍을 시간이 없어 무한 루프 걸리면 방법이 없어 브라우저를 꺼야함. 
+            //n = n+1;
+            //n+=1;
+            n++;
+        }
+
+        // 무한 반복문을 통해 특정 입력이 될때까지.. 반복하기.
+        // while(true){
+        //     var name= prompt('당신의 이름을 입력하세요');
+        //     if(name == 'exit' || name=='' || name=='null'){ // 사용자가 입력없이 [확인] 누르면 '' [취소]를 누르면 'null'
+        //         break;    
+        //     }
+        //     document.write(name+"<br>");
+        // }
+        // 여러줄 선택해서 ctrl + / 를 하면 주석이 됨. 
+
+
+        //4. for 문 : [파이썬과 문법차이가 다소 있음.]
+        // 파이썬하고 다르고 php와 비슷함. 
+
+
+        var dan=5;
+        // for(var n=0;n<10;n+=2){ // 파이썬의 range를 풀어썼다고 생각하면 됨.
+        for(var n=1;n<10;n++){ // 파이썬의 range를 풀어썼다고 생각하면 됨.
+            document.write(dan + "x" + n + "=" + (dan*n) +"<br>");  //결합.
+        }
+        document.write('<hr>');
+
+
+        //for 문 사용할때 문법 위치를 조정할 수 있음. (권장하지 않음.. 대신 읽을 수만... 있으면..)
+        var m=0;   // 변수 선언.
+        for(;m<5;){  //자릿수는 맞아야 함..
+            document.write('Nice to meet you.<br>');
+            m++;
+        }
+
+        // for(;;){
+            // 무한루프  - 권장하지 않음.
+        // }
+
+    </script>
+</head>
+<body>
+    
+    <hr>
+    <!-- HTML 요소 태그와 script 문이 혼재되어 사용되는 경우도 있음. -->
+     <!-- 서버사이드 렌더링이라고 서버에서 작업할때 많이 씀. -->
+
+     <table border="1" style="text-align:center">
+        <tr>
+            <th>번호</th>
+        
+        </tr>
+        <script>
+            for(var n=1 ; n<20; n++){
+                //결합 연산자 + 이용
+                // document.write('<tr><td>'+ n +'</td></tr>');
+                //파이썬의 f-string처림. 빽틱 ` 이용 . 탬플릿 기법
+                document.write(`<tr><td>${n}</td></tr>`);
+            }
+            //무한 스크롤 할때 좋음... 
+            
+        </script>
+        <!-- <tr><td>1</td></tr> -->
+        <!-- <tr><td>2</td></tr>
+        <tr><td>3</td></tr>
+        <tr><td>4</td></tr> -->
+     </table>
+
+     <script>
+        // 반복문을 제어하는 기타 제어문: break, continue
+        for(var a=0; a<10; a++){
+            if(a==5){
+                break;
+                // continue;
+            }
+         document.write(a+'<br>');   
+        }
+     </script>
+    <!-- Do it 책. 15~16 챕터까지 완료... -->
+    <!-- 수행 과제 -->
+    <!-- 1. 책읽고 .. 예제 따라하기 -->
+    <!-- 2. 챕터마다 되새김 문제 풀기 -->
+
+    <!-- (추가) 시간 남으면 .. wwit ui 연습 -->
+    <!-- 책에는 ES6도 있어 이것은 나중에 하겠다. -->
+
+    <!-- 서버사이드 렌더링  -->
+    <!-- 서버에서 작업하는 것만 거기에서 코딩하는것 -->
+
+
+</body>
+</html>
