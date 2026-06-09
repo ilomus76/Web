@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자(개발자) 정의 객체Object</title>
+
+    <script>
+        // 이 영역은 자바스크립트 문법
+        // JS 에서 사용자 정의 객체를 만드는 2가지 방법 
+        // 1. 리터럴 객체 : 객체를 생성하면서 멤버를 설계하는 방식 
+
+        // var person = 'sam', 20 ; // 변수에 여러개 값을 넣을 수 없다. 그래서 객체를 만든다.
+        var person ={
+
+            // 멤버 변수 -속성 property - 객체 박에 있는 일반변수는 variable
+            name:'sam', 
+            age:20,
+
+            // 멤버함수 - 메소드 methode - 객체 밖에 있으면 function 
+            show: function(){   // 익명함수ㄴ
+                // document.write('show..<br>')
+                // 멤버변수들을 출력해 보기
+                // document.write("show: "+ name + ","+ age +'<br>');  // 결합 연산자....   //error  -> 브라우저 개발자 모드 F12에서 확인.
+
+                // JS 에서는 객체안에서 멤버를 지칭할때는 반드시 this 키워드 필요. [ 파이썬 self 와 비슷]
+                document.write("show: "+ this.name + ", " + this.age + '<br>'); 
+                // this : 이 객체 안에서.....
+
+
+            }
+        }
+
+        // 객체를 그대로 출력하면.. 멤버값들이 출력되지 않음. 
+        document.write(person + '<br>');  // 멤버값을 출력하지 않고 [object Object] 로 출력
+
+        // 멤버변수 출력
+        document.write('name:' + person.name + '<br>');
+        document.write('age: '+ person.age + '<br>')
+
+        // 위의 출력 변수가 많으면 짜증 .. .간단히 하기 위해 함수 만들자.
+        // 멤버함수 호출 
+        person.show(); 
+
+        document.write('<br>');
+
+        // 새로운 객체를 생성하기.... 
+        var person2={
+            name: 'robin',
+            age:25,
+
+            show: function(){
+                document.write('show: ' + this.name + ', '+ this.age + '<br>');
+            },      // , 콤마를 찍어 분리한다. 
+
+            // 파라미터를 받는 메소드르 만들 수 도 있음.
+            add: function(x,y){
+                document.write('add: ' + (x+y) + '<br>'); // x,y 는 멤버변수가 아니라 매개변수임.
+
+            }
+
+        }
+
+        person2.show();
+        person2.add(50,30);
+
+        // JS 는 매우 유연한 언어여서.. 객체를 생성한 후에 멤버를 새로이 추가할 수 있음. 
+        person.address='seoul'; 
+        document.write('주소: '+ person.address + '<br>'); 
+
+        // person.show(); 
+        // 기존에 만들었던 show() 멤버함수는 [이름,나이]만 출력해줌. 
+        // person객체에 새로이 멤버함수를 추가하기.
+        person.output = function(){
+            document.write('out: ' + this.name + ", " + this.age + " - " + this.address + "<br>");
+        }
+
+        //함수 호출
+        person.output(); // 함수 호출.
+
+        // 존재하지 않는 멤버를 사용하려할때.. 변수와 함수가 약간 다름. 
+        document.write(person.tel); // 이런 변수 만든적 없다. 이때 결과는 -> undefined.
+        // person.display(); // 이것은 에러임.  error ---여기서 코드가 멈춤.  그래서 아래의 hr 코드가 동작 안함. 
+
+        document.write('<hr>');
+
+        // 세번째 .. 네번째.. 객체를 만들려면.. 도 멤버들을 설계해야 함.. -> 짜증..
+        // 이거 짜증..
+        // 그래서 미리 멤버구조를 설계하고.. 설계대로 객체를 생성하는 문법.  - > 그게 생성자 함수...
+         
+        //-----------------------------------------
+        // 2. 생성자 함수 : 멤버구조 설계도를 미리 작성하고 .. new 키워드로 객체를 생성하는 방식
+        // 미리 설계도를 만들고 제품을 찍어 내면 되는데 이때 찍어내는 명령어가 new.
+
+        // [이름 , 나이, 전공] 데이터를 저장하는 객체의 멤버구조를 설계
+        function Student(name='익명', age=0 , major='정공 미선택'){ //첫글자를 대문자로 쓰는 것을 권장..[ 일반 함수와 구별하기 용이]
+            // default value 
+
+            // 멤버 변수 - propoerty
+            // this.name = 'sam';
+            // this.age = 20;
+            // this.major ='web';
+
+
+            this.name = name;
+            this.age = age;
+            this.major = major;
+
+            // 멤버 함수 -- method
+            this.show = function(){
+                document.write('student show: ' + this.name + ", " + this.age + ", " + this.major + '<br>');
+            }
+        }
+        // 위 설계대로 객체를 생성하기.
+
+        var stu = new Student();  // 멤버 4개중 멤버변수 3개 멤버변수 1개.     // 파라미터를 건네주지 않으면 초기값이 있으니 그 값으로 하게 되고 초기값이 없으면 undefined로 됨. 
+        stu.show();
+
+        // 두번째 학생 객체 생성하기.
+
+        var stu2 = new Student();
+        stu2.show();
+
+        // 멤버 변수값 변경
+        stu2.name = 'robin';
+        stu2.age=25;
+        stu2.major = 'AI';
+        stu2.show(); 
+        // 이런 식이면 만들고 항상 초기화 해야 함.. 불편... 
+
+        // 2교시.
+
+        // 세번째 학생객체를 생성할때도 멤버변수값을... 하나씩 넣기 짜증... 
+        // 객체를 생성할 때 값을 전달하여 그 값으로 생성하도록... 
+        var stu3 = new Student(); 
+        stu3.show() ; 
+
+        // 위의 것은 항상 같은 값을 주니 파라미터를 넣게 하면 되겠다.. 
+        var stu3 = new Student('hong',23,'AI'); 
+        stu3.show() ; 
+
+        document.write('<hr>');
+
+        // 존재하지 않는 멤버를 사용하면 undefined 거나 dpfj...
+        // 그래서 안전하게 사용하려면.. 객체안에 그 멤버가 있는지 확인 후 사용...
+
+        if ( 'name' in stu) { // stu 안에 name 이 있니? 
+            document.write('name 멤버 변수가 있어요..');
+
+        }
+
+        if('tel' in stu){
+            document.write('tel 멤버가 있어요~~');
+        }
+
+        document.write('<hr>');
+
+        // 객체의 멤버가 또 다른 객체일 수 있음.
+        var fleight = {
+
+            airline : 'korean air',
+            number : 777,
+            arrival : {
+                nation: 'japan',
+                city: 'tokyo'
+            }
+        }
+        document.write(fleight.arrival.nation + '<br>');
+        document.write(fleight.arrival.city+'<br>');
+
+        document.write('<hr>');
+
+        // 변수는 크게 2종류가 존재함... 
+
+        // 1. 기본 변수..(기초타입변수) : 데이타를 저장하고 있는 변수
+        // 기초타입 : 정수 실수 논리값
+        var a = 10; 
+        var b;  // 실제 메모리에 아무값이나 있는데 이것을 가비지.. 쓰레기 값이 들어가 잇음.. 
+        b = a;  // a 라는 주소에 있는 값을 b라는 주소에 대입하라... 
+
+        document.write('a: ' + a + '<br>');
+        document.write('b: ' + b + '<br>');
+
+        b=20;
+        document.write('a: ' + a + '<br>');
+        document.write('b: ' + b + '<br>');
+        document.write('<hr>');
+
+
+        // 2. 참조 변수  (참조타입변수) : 객체의 메모리 주소를 저장하고 있는 변수 
+        // 참조타일 : 배열, 객체들... [ 객체를 저장한게 아닐... 객체의 위치(메모리 주소)를 저장하여 이를 통해 제어..]
+
+        // p1 변수는 사이즈가 엄청 큼.. 대략 300번지 정도에 있다. 그런데 객체가 들어가지 않음...
+        // p1은 객체를 가지고 있는 것처럼 보이지만 그렇지 않고 그 주소를 가지고 있음. 즉 그 친구의 위치를 안다는 것.
+        // 예전에 이 개념을 포인터라고 함. 그 이후 포인터라는 말 대신에 참조한다라고 해서 참조 변수라고 함.... 
+        // p1. 이라고 하면 p1이 가리키는 주소를 참조한다라는 것...
+        // 변수를 담는 창고 (stack),,, 객체를 담는 창고(heap)가 따로 있음... 
+        var p1 = { 
+            name: 'aaa',
+            age: 20,
+            show: function(){
+                document.write('show: ' + this.name + ": " + this.age + '<br>');
+            }
+        }
+
+        var p2; // 400번지 공간에 쓰레기 값을 가지고 있는 상태.. 
+
+        p2=p1; // 얕은 복사...  p1은 객체의 주소,, 그게 1000번지... 그 주소를 p2에 대입 .. 이 주소를 p2에 복사가 아니라 공유라고 함... 
+        p1.show();
+        p2.show();  
+        // 둘다 같은 주소를 공유하니 위의 결과는 같음.
+
+        p2.name = 'bbb'; // p2에서 바꿨지만 p1이 공유하는 참조하는 주소가 같아서 p1도 바뀜.
+        p1.show();
+        p2.show();       // 얕은 복사...     
+
+
+        // 복제 : 깊은 복사.. 안에 있는 내용까지 복사... deep copy.
+        // 깊은 복사를 하려면 .. 객체 자체를 복제(clone) 해야 함.
+        // 이 복제 기능을 JS에 내장된 Object 라는 녀석(생성자 함수)이 가지고 있음.
+        // 질문을 통해서 강사님과 일치된 것은 깊은 복사는 결국 new와 같음. 
+
+        // var p3 = p1; // 공유 , 얕은 복사. 
+        var p3 = Object.create(p1); // p1을 복제한 새로운 객체를 생성! 
+        p1.show();
+        p3.show(); 
+
+        p3.name = 'ccc';
+        p1.show();
+        p3.show();
+
+
+        var aaa = [ 10,20,30];
+        var bbb = aaa; 
+        // 이것도 참조변수... 
+
+        bbb[1] = 800;
+        document.write(aaa); // 참조 변수의 역할 .. bbb를 바꿨지만 aaa도 바뀜. 그래서 참조 타입은 조심해야 함.. 
+
+
+
+        // 함수가 코드 덩어리인데 객체마다 큰 메모리 공간을 차지하는 이걸 따로 가지고 있으면 좋나? 그냥 밖에 만들어 놓고 객체에서 연결해서 사용하는 것이 어떨까... 
+        // 대신 객체가 밖에 있는 함수를 자기가 꼭 가지고 있는 것처럼 하는 기술이 있는데 이것을 prototype이라는 것이 있음. 
+        // prototype은 내장 기능이다.. 
+
+        // 객체마다 멤버 함수를 가지고 있으면 메모리 공간을 비효율적으로 사용하게 됨. 
+        // 그래서 특정 객체가 공유할 수 있는 함수를 등록하는 문법
+        // prototype 
+
+        // 책에 있지만 설명이 별로다..
+
+        function User(name, age){
+            this.name = name;
+            this.age = age;            
+        }
+
+        // User 객체들이 멤버 함수인것처럼 사용할 수 있는 함수를 등록..
+        //User에 멤버 2개가 있는데...
+        User.prototype.show=function(){
+            document.write('user: ' + this.name + ' : ' + this.age + '<br>');
+        }
+        // User에 show라는 함수를 선언할거야... 
+        // 동작은 똑같다.. 사용방법에는 똑같다.. 하지만 메모리 공간을 효율적으로 사용함... 하지만 ES6에서 class에서 이 방법을 개선하는 것이 있어 사용하지 않음. 
+
+        var u1= new User('sam',20);
+        var u2 = new User('robin',20);
+
+        u1.show();
+        u2.show();
+
+        // 매우 중요... 
+        // 2교시 끝.
+
+        // 3교시..
+        // 자바 스크립트 내장 객체.
+        // 이미 만들어 놓은 설계도가 몇 있음.
+        // Date 객체.., Number 객체 : cosin 등등,,,,  string 객체,,, Math.. Array... 객체... 
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
