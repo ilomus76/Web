@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js 예외처리</title>
+
+    <script>
+        // JS 스크립트는 에러가 발생하면.. 그 자리에서 코드실행이 멈춤. 
+
+        document.write('예외처리에 대해 알아봅니다.<br><br>')
+        // alert('aaa');
+        //aler('aaa'); // 예외발생!!!
+
+        // 예외처리 문법 try ... catch [파이썬은 try.. except..]
+        //를 사용하면 예외가 발생해도 다운되지 않고..다음 코드들을 실행시킴...
+        //안되지만 밑에까지 안되는건 문제 있다.. 
+        try{
+            aler('aaa');
+        }catch(error){
+            document.write('예외가 발생했어요...<br>');
+        }
+        document.write('<hr>');
+        //예외가 발생하든 안하든 무조건.. 실행되는 영역 finally
+        try{
+            // aaa();
+            document.write('이건 정상 !!!<br>')
+        }catch(error){
+            document.write('예외 발생 : ' + error + '<br>');
+        }finally{
+            document.write('여기는 무조건 실행<br>'); // 이것은 에러가 나든 안나든 무조건 실행됨. 
+        }
+
+        // finally는 네트워크 연결 작업같은 곳에서 .. 정송 성공여부와 상관없이 
+        // 서버 연결을 종료하는 코드등을 작성하는 목적으로 사용함. 
+
+        document.write('<hr>');
+
+        // 예이가 아닌데.. 억지로 예외로 만들어서 던지는 문법 throw.. [파이썬 에서는 raise]
+        // 던지고 받는다해서 catch라고 함. 
+
+        try{
+            var a=10;
+            var b= 20;
+            var c = a-b;
+            if(c<0){
+                // 에러가 아닌데 에러라고 던짐.
+                throw "음수는 나오면 안돼 !!!!" ; // 예외가 발생한 것으로 ... JS에서 에러는 아니지만 예외로 처리해서 catch인 e로 넘김. 
+                // 이 경우 catch로 감.
+            }
+
+            document.write('결과:' + c + '<br>');
+        }catch(e){
+            document.write('에러: ' + e + '<br>');
+        }
+        document.write('script 종료');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- 책의 18-2이지만 내용이 미흡해서 강의 슬라이드를 좀 봐라.. -->
