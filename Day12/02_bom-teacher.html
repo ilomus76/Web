@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BOM</title>
+</head>
+<body>
+
+    <!-- BOM : 브라우저를 관리하는 내장된 JS 객체들 -->
+
+    <!-- 1. window : 최상위 객체(브라우저 창 전체를 관리)-->    
+
+    <!-- 주요기능들 -->
+    <!-- 1) open(), close() : 새로운 웹문서 열기/닫기 -->
+    <button onclick="aaa()">naver</button>
+    <script>
+        function aaa(){
+            //window.open('https://www.naver.com'); //기본: 새탭으로 열림 [target="_blank"]
+            //window.open('https://www.naver.com', '_self'); //두번째 파라미터: target 속성
+
+            //세번째 파라미터로 옵션을 추가하면..새 창으로 웹문서를 열수 있음.
+            var option= 'width=500, height=200, left=200, top=150';
+            window.open('https://www.naver.com', '_blank', option);
+        }
+    </script>
+
+    <hr>
+    <button onclick="bbb()">메세지 윈도우창 띄우기</button>
+    <button onclick="ccc()">메세지 윈도우창 닫기</button>
+    <script>
+        var win;
+        function bbb(){
+            if(win!=undefined) return;
+
+            win= window.open('','','width=500, height=200, left=150, top=100');
+            //새창의 제어는 win 객체가 처리..
+            win.document.write('<h2>Hello new window</h2>');
+        }
+        function ccc(){
+            win.close();
+            win=undefined;
+        }
+    </script>
+
+    <hr>
+    <!-- 윈도우 창 이동시키기 -->
+    <button onclick="eee()">open window</button>
+    <button onclick="fff()">move window</button>
+    <script>
+        var win;
+        function eee(){
+            win= window.open('','','width=400, height=200');
+            win.document.write('오늘의 특가 세일 제품!'); 
+
+            //특정 위치로 이동
+            win.moveTo(300, 100); //x축, y축           
+        }
+        function fff(){
+            //현재 위치기준으로 조금씩 이동..
+            win.moveBy(10, 20); //x축, y축  
+            //움직였을때 브라우저창이 앞으로 보이게..
+            win.focus();          
+        }
+    </script>
+    <hr>
+
+    <!-- 일정시간 후에 특정 함수가 실행되도록.. setTimeout, setInterval, clearInterval  -->
+    <button onclick="ggg()">3초 후에 경고창 띄우기</button>
+    <script>
+        function showAlert(){
+            alert('3초경과!!!');
+        }
+        function ggg(){
+            //3초후에 showAlert 이라는 이름의 함수를 실행해라!!!
+            window.setTimeout(showAlert, 3000); //3000ms --> 3s
+        }
+    </script>
+    <br>
+
+    <h3 id="hh">0</h3>
+    <button onclick="hhh()">1초 마다 카운트 증가 시작!!!</button>
+    <button onclick="iii()">카운트 멈추기</button>
+    <script>
+        function showCount(){
+            //h3요소에 써있는 숫자에 1 더하기
+            var h3= document.querySelector('#hh');
+            //h3.innerHTML= h3.innerHTML + 1;
+            h3.innerHTML= parseInt(h3.innerHTML) + 1;
+        }
+
+        var interval_id;
+        function hhh(){
+            //1초마다.. showCount 라는 이름의 함수를 실행
+            interval_id= window.setInterval(showCount,1000); //식별자 리턴됨.
+        }
+        function iii(){
+            window.clearInterval(interval_id);
+        }
+    </script>
+    
+
+
+
+
+
+
+    
+</body>
+</html>

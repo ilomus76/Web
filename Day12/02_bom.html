@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BOM</title>
+</head>
+<body>
+    <!-- BOM browser object model : 브라우저를 관리하는 내장된 JS 객체들 -->
+     <!-- 1. window : 최상위 객체(브라우저 창 전체를 관리) -->
+      <!-- 주요 기능들  : 함수들-->
+       <!-- 1) open(), close() ; 새로운 웹문서 열기 / 닫기 -->
+        <button onclick="aaa()">naver</button>
+        <!-- 앵커가 아닌데 앵커같은 것을 만들겠다 -->
+    <script>
+        function aaa(){
+            // window.open('https://www.naver.com') // 이미 객체가 있음. 내장객체. new를 사용하지 않아도 됨. 
+            // 웹브라우저를 여는것이라 주소를 씀. // 새탭으로 열림. 
+            // 기본 새탭으로 열림 [ target ="_blank"]
+            
+            // window.open('https://www.naver.com','_self'); // 두번째 파라미터 : target 속성. 
+            // 뒤로가기 버튼이 생김. // 꾹 누르면 히스토리가 뜨는데 이것을 히스토리 객체가 담당.
+
+            // 세번째 파라미터로 옵션을 추가하면... 새 창으로 웹문서를 열수 있음.
+            // window.open('https://www.naver.com','_blank','width=500, height=200');
+            // 사이즈를 넣으면 무조건 새창으로 열림. 
+            // window.open('https://www.naver.com','_blank','width=500, height=200 ,left=200, top=150');
+            // 왼쪽에서 열리던 위치를 수정.
+
+            var option = 'width=500, height=200 ,left=200, top=150';
+            window.open('https://www.naver.com','_blank',option);
+            // 왼쪽에서 열리던 위치를 수정.
+
+
+        }
+    </script>
+
+    <hr>
+    <button onclick="bbb()">빈(메세지) 윈도우창 띄우기</button>
+    <button onclick="ccc()">메세지 윈도우 창 닫기</button>
+    <script>
+        // var win = undefined;
+        var win ;
+        function bbb(){
+
+            if(win!=undefined) return ;
+            // 한번 열린것은 또 열리지 않게 하기 위해서..
+            // 그리고 또 열리지 않을 것이다.. 클로우즈를 안했기 때문에....
+
+            // 여러창이 떠 있으면 배열로 제어해야함. 하지만 이렇게 짜면 안됨. 그리고 여러윈도우가 띄워지면 변수에는 마지막 윈도우 값이 들어감...
+
+            // 지역변수를 전역으로 수정하기 위해서 var를 지움. 
+            win = window.open('','','width=500, height=200, left=150, top=100'); 
+            // var win = window.open('','','width=500, height=200, left=150, top=100'); 
+            // 주소 : 빈공간, target은 blank 
+            // win 은 새로 뜨는 윈도우의 객체를 넘겨 방음. 
+            // 새창의 제어는 win 객체가 처리...
+            // wind 안에 document 라는 객체가 있어 태그를 제어할 수 있음. 
+
+            win.document.write('<h2>Hellow new windown</h2>')
+            // 이벤트 페이지 보여줄때 사용.
+        }
+
+        function ccc(){
+            win.close();  // 지역변수라 동작하지 않음. 그래서 전역변수를 만들어야 함. 
+            win=undefined;
+        }
+    </script>
+
+    <hr>
+    <!-- 윈도우 창 이동시키기 -->
+     <button onclick="eee()"> open windown</button>
+     <button onclick="fff()"> move windown</button>
+     <script>
+        var win;
+        function eee(){
+            win=window.open('','','width=400,height=200');
+            win.document.write('오늘의 특가 세일 제품!');
+
+            // 특정 위치로 이동
+            win.moveTo(300,100); // x축, y축
+
+
+        }
+
+        function fff(){
+
+            //현재 위치기준으로 조금씩 이동...
+            win.moveBy(10,20); // x축, y축
+
+            // 움직였을 때 브라우저창이 앞으로 보이게..
+            win.focus();
+            // 윈도우 밖으로는 나가지 못함.
+            // 새창이 뜨면 마지막것만 동작함. 
+
+        }
+     </script>
+
+     <hr>
+     <!-- 일정 시간 후에 특정 함수가 실행되도록.... setTimeout(딱 한번만함 그래서 나온게)  -> setInterval(시작), clearInterval(멈춤)-->
+      <button onclick="ggg()">3초 후에 경고창 띄우기</button>
+      <script>
+        function showAlert(){
+            alert('3초 경과 !!!')
+        }
+        function ggg(){
+            // 3초 후에 showAlert 이라는 이름의 함수를 실행해라.... !!!
+            window.setTimeout(showAlert,3000)// 3000ms --> 3s  앞에 있는 함수를 3초후에. 
+            // //인트로, 디지털 시계 만들때 유용
+        }
+      </script>
+      <br>
+      
+      <h3 id="hh">0</h3>
+      <button onclick="hhh()">1초 마다 카운트 증가 시작!!!</button>
+      <button onclick="iii()">카운트 멈추기</button>
+      <script>
+        function showCount(){
+            // h3 요소에 써있는 숫자에 1 더하기
+            var h3 =document.querySelector('#hh');
+            // h3.innerHTML = h3.innerHTML +1; // innerHTML은 변수임.  문자열이라 결합이 되어 이어짐.
+            h3.innerHTML = parseInt(h3.innerHTML) +1; 
+
+        }
+
+        var interval_id; // 전역변수
+        function hhh(){
+            //1초 마다 showCount라는 이름의 함수를 실행.
+            interval_id = window.setInterval(showCount,1000);// 식별자 리턴됨. 
+        }
+        function iii(){
+            // windown.clearInterval(누구?);
+            window.clearInterval(interval_id);
+
+        }
+      </script>
+
+      <hr>
+
+      <!-- 3교시 , 기타 유용한 메소드들 -->
+    <script>
+        // 웹브라우저의 인터넷 주소창의 URL은 기본적으로 한글이나 띄어쓰기 같은 문자는 사용못함. 
+        // 특수문자중 일부만 사용..
+        // 그래서 만약.. 한글파일명이 있으면 문제가 생김. 
+        // 그래서 만약.. 한글이나 띄어쓰기. 또는 특수문자 중 일부를 사용하고 싶다면...
+        // URL 에서 인식 가능한 문자로 변환해야 함.. 이를 url encoding(암호화)이라고 함. 컴퓨터가 알아듣는 말로 바꿔야 함. 
+
+        //인코딩을 해주는 기능을 windown 최상위책체가 가지고 있음. 
+
+        
+        // var a = window.encodeURI('http://www.aaa.com/가나다 마바사.html'); // 파일명이 한글과 띄어쓰기 -> 이것은 url에 사용 못함. 
+        // 최상위 객체 window 키워드는 생략해도 됨. /// 윈도우는 최상위라 너가 없어도 된다..
+        var a = encodeURI('http://www.aaa.com/가나다 마바사.html'); // 파일명이 한글과 띄어쓰기 -> 이것은 url에 사용 못함. 
+        document.write('인코딩된 URL: ' + a + '<br>');
+
+        // 네이버에서 신림 스타벅스 라고 검색하면 그 사이트에 신림 + 스타벅스라고 인코딩의 흔적이 있음. 그리고 네이버라고 치면 안되야 하지만 그것을 하고 있음. 
+
+        // 반대로 인코딩된 URL를 해동 (decode)해주는 기능도 있음.
+        var b = decodeURI(a);
+        document.write('디코딩된 URL: ' + b + '<br>'); // 내부적으로 하고 있다.. 
+
+
+        // eval() - 문자열 데이터를 JS 코드인것처럼 해독하여 실행해주는 기능. 
+
+        var x= 10+2*6;
+        document.write(x+'<br>');
+
+        var x= '10+2*6';
+        document.write(x+'<br>');
+
+        var x= eval('10+2*6');  // 이 안에 var 등 여러개 쓰면 다 됨. .. 
+        document.write(x+'<br>');
+
+        // 숫자로 변환이 가능한 모양이 아닌지 확인해 주는 기능 [ parseInt()하기전에 확인용도.] // 숫자가 아닌지 확인해 주는 것이 아님.. 
+        // document.write( window.isNaN(10)+'<br>'); // window 생략가능
+        document.write( isNaN(10)+'<br>'); // false
+        document.write( isNaN('10')+'<br>'); // false
+        document.write( isNaN('hello')+'<br>'); // true
+
+
+        // 내장함수인줄 알고 사용했던 모든 기능들은 사실... window의 멤버함수임.
+        // window.alert();
+        // window.prompt(); 
+
+
+    </script>
+
+    <hr>
+    <!-- window 최상위 객체의 멤버변수들... 중 주요한 객체들... 소개 -->
+
+    <!-- 2. document : 웹 문서를 관리하는 여러기능을 가진 객체. -->
+     <script>
+        // 원래는 windown의 멤버이기에...
+        window.document.write("이게 원래... 코드 문법..<br>");
+        // 하지만 우리는 window 를 생략하고 씀. 
+     </script>
+     <hr>
+
+     <!-- 3. screen : 모니터 사이즈 -->
+      <script>
+        //모니터의 해상도 정보... 
+
+        document.write('모니터 해상도 : ' + screen.width + " * " + screen.height + '<br>');
+        // 설정 /시스템// 모니터에서 확인..
+         document.write('작업표시줄 제외한 해상도 : ' + screen.availWidth + " * " + screen.availHeight + '<br>');
+         // 작업 표시줄이 아래가 아니라 옆에 있을 수도 있으니 참조..
+         
+         //웹브라우저 창의 해상도는 window 객체가 가지고 있는 정보.
+         document.write('브라우저 창 크기: '+ window.outerWidth + " * " + window.outerHeight + '<br>')
+         document.write('document영역 크기: '+ window.innerWidth + " * " + window.innerHeight + '<br>')
+
+         // 새로고침하면 값이 이상해지고 새로 띄울때 동작.. 이건 강사님이 확인.예정.
+      </script>
+      <hr>
+
+      <!-- 버튼으로 전체화면으로 확대할때 .. 활용 -->
+
+      <button onclick="jjj()">전체화면 윈도우</button>
+      <script>
+        function jjj(){
+        var option = 'width=' + screen.availWidth + ",height=" + screen.availHeight;
+        open('','',option)
+        // 새로고침해야 뜸. 방화벽에 걸려 그러는듯.
+      }
+      </script>
+
+      <hr>
+      <!-- 4. location : URL 정보 관리 객체 -->
+       <script>
+        // location 객체의 주요 멤버변수(속성)
+        // document.write(window.location.href + '<br>');
+        document.write(location.href + '<br>'); // url에 나오는것과 같은 주소. 현재 주소..
+        document.write(location.protocol + '<br>'); // 
+        document.write(location.pathname + '<br>'); // 
+
+       </script>
+
+       <!-- location 객체의 주요 기능함수들 -->
+        <button onclick="mmm()">새로운 문서 열기</button>
+        <button onclick="kkk()">새로운 문서로 대체하여 열기</button> 
+        <!-- // 기존에걸 없에서 엶/ -->
+         <button onclick="nnn()">현재 문서 다시 열기(새로고침)</button>
+         <script>
+            function mmm(){
+                // location.assign('https://www.naver.com');// 뒤로가기 버튼이 있음. 
+                // url를 바꾸는 것이기에 .. 함수 대신 속성값을 변경해도 됨. 
+                location.href = 'https://www.naver.com'; // 이게 더 많이 사용됨. 
+                
+
+            }
+            function kkk(){
+                location.replace('https://www.naver.com');// 기존 문서가 없어짐. 즉 뒤로가기 없음.
+            }
+            function nnn(){
+                location.reload(); // 새로고침 F5
+            }
+         </script>
+
+         <hr>
+         <!-- 5. history : 방문한 URL 정보를 가지고 있음. -->
+          <script>
+            document.write('방문한 페이지 수 : ' + history.length + '<br>');
+            // 뒤로 가기 버튼을 누르면 페이지 정보가 나오는데 그게 히스토리임. 
+
+          </script>
+            <!-- 인라인 속성?  -->
+          <button onclick="history.back()">뒤로</button>
+          <button onclick="history.forward()">앞으로</button>
+          <button onclick="history.go(-2)">2칸 뒤로</button>
+
+          <!-- 6. navigator : 브라우저의 정보 관리 객체 : 나중에 새로운 기능들이 이 객체의 하위멤버로 추가됨. ( ex) -->
+           <script>
+            document.write(navigator.appCodeName + '<br>');  // 모질라 재단. 
+            document.write(navigator.appName + '<br>');
+            document.write(navigator.appVersion + '<br>');
+            document.write(navigator.platform + '<br>'); // 사용자가 접속하는 환경은 파악할 수 있음.. 대응이 가능... 
+            document.write(navigator.userAgent + '<br>');
+
+            // 맥 사용자면 맥에 맞게,, 윈도우면 윈도우에 맞게
+           </script>
+
+           <!-- 모든것이 BOM DOM으로 되어 있기 때문에 코드로 요소를 제어할 수 있는 것을 보았다.  -->
+            <!-- 이제 이벤트를 처리하는 것을 테스트... 이벤트에 대한 이야기...우리는 click만 해 봤음. 오늘의 핵심. 이벤트.. -->
+
+            <!-- 브라우저에서 확인이 되는지 먼저 테스트 하는게 중요.. -->
+
+            <!-- 오늘 배운것은 몰라도 html 만들수 있지만... 한번정도 살펴보는 정도면 된다.  -->
+             <!-- 오늘의 핵심은 뭔가 조작이 이러나고 상호작용을 통해 이벤트가 나옴.  -->
+
+
+             <!-- onload ; 렌더링이 끝났따는 이벤트... -->
+              <!-- 새로 파일 만들자.. 03... -->
+</body>
+</html>

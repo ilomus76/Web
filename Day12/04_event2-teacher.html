@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 이벤트 종류</title>
+</head>
+<body>
+
+    <!-- 이벤트의 대표적인 종류들..다뤄보기 -->
+
+    <!-- 1. input요소의 입력필드값 변경 이벤트 -->
+    <input type="text" id="in1" onfocus="aaa()">
+    <input type="text" id="in2" onblur="bbb()" onchange="ccc()">
+    <script>
+        function aaa(){
+            document.querySelector('#in1').value= "sam";
+        }
+        function bbb(){
+            alert('blur');
+        }
+        function ccc(){
+            alert('change....');
+        }
+    </script>
+    <hr>
+    <!-- onchange가 활용되는 예제 : 사용자 입력이 완료되면 모두 대문자로 자동 변환 -->
+    <input type="text" placeholder="아이디 입력" id="in3" onchange="ddd()">
+    <script>
+        function ddd(){
+            // input 요소에 써있는 값(value)를 얻어오기
+            var v= document.getElementById('in3').value;
+            document.getElementById('in3').value= v.toUpperCase();
+        }
+    </script>
+    <hr>
+
+    <!-- 2. 마우스 이벤트 : over, out, move -->
+    <div onmouseover="eee(this)" onmouseout="fff(this)" onmousemove="hhh(this)" style="width: 200px; height: 100px; background-color: yellow;"></div>
+    <script>
+        function eee(e){
+            e.style.backgroundColor='lightgreen'; 
+            e.style.border='2px solid red';           
+        }
+        function fff(e){
+            e.style.backgroundColor='yellow'; 
+            e.style.border='';
+        }
+        var n=0;
+        function hhh(e){
+            n++;
+            e.innerHTML= n;
+        }
+    </script>
+    <hr>
+
+    <!-- 마우스의 좌표 확인 -->
+    <div id="kk" style="width: 200px; height: 100px; background-color: aqua;"></div>
+    <script>
+        var div= document.querySelector('#kk');
+        div.addEventListener('mousemove', function(event){ //event정보를 가진 객체
+            var s= `영역안의 좌표 : ${event.offsetX} , ${event.offsetY}<br>`;
+            s += `문서안의 좌표 : ${event.clientX} , ${event.clientY}<br>`;
+            s += `모니터의 좌표 : ${event.screenX} , ${event.screenY}<br>`;
+
+            div.innerHTML= s;
+        })
+    </script>
+    <hr>
+
+    <!-- 마우스 버튼 다운 & 업 이벤트 -->
+    <h4 class="tt">nice to meet you</h4>
+    <script>
+        var h4= document.querySelector('.tt'); //클래스 선택자
+
+        h4.addEventListener('mousedown', function(){
+            h4.style.backgroundColor='#FF0000';
+            h4.style.color='#FFFF00';
+            h4.style.fontSize= '150%';
+        })
+
+        var up= function(){
+            h4.style.backgroundColor='';
+            h4.style.color='';
+            h4.style.fontSize= '100%';
+        }
+        h4.addEventListener('mouseup', up);
+        
+    </script>
+    <hr>
+
+    <!-- 3. 키보드 입력 이벤트 : keydown, keypress, keyup -->
+    <hr>
+    <input type="text" onkeydown="www()">
+    <input type="text" onkeypress="rrr()">
+    <script>
+        function www(){
+            //누를 키보드의 키코드값을 window객체안에 있는 event객체가 가지고 있음.
+            alert(window.event.keyCode); //keydown은 대소문자 구분 안됨. 키보드의 특수키도 모두 번호가 존재함.
+        }
+        function rrr(){
+            //keypress 는 아스키번호로 코드를 인식함. 대신.  방향키와 같은 특수키는 반응 안함.
+            alert(window.event.keyCode); 
+        }
+    </script>
+
+    
+</body>
+</html>

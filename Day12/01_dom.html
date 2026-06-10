@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM document object model </title>
+</head>
+<body>
+    <!-- 1. DOM tree 에 노드를 동적으로 생성/추가/삭제 -->
+     <!-- 요소노드, 속성 노드 , 텍스트 노드 -->
+     <button onclick="aaa()">add text node</button>
+     <button onclick="bbb()">add Element node</button>
+     <button onclick="ccc()">remove child node</button>
+
+     <p id="pp"></p>  
+     <!-- 아무 글자 없는데 텍스트 노드 추가 -->
+     <script>
+        // 바디 영역에 스크립트 있어도 됨. 
+        function aaa(){
+            // 텍스트 노드를 JS로 생성
+            // var node = document.createTextNode('This is text');// 만들게요 글씨를 가지는 노드를 ....  텍스트 노드를 만들었으니 자식으로 추가하는 것을 만들것이다. 
+            // 위의 node 변수가 아래에서 var로 대체됨. (에러아님. let 나오는 개념.)
+            // var node = document.createTextNode('<a href="">This is text</a>')
+            // a 는 요소인데 여기서는 textnode라고 함..  즉 텍스트 를 추가하는것과 요소를 추가하는 것이 다름. 
+
+            // 텍스트 노드를 붙일 요소를 찾아오기.
+            // var p = document.getElementById('pp');
+            // 위에서 만든 텍스트 노드를 p요소 노드의 자식으로 추가하기.
+
+            // p.appendChild(node); 
+            // p 요소에 차일드(자식)을 추가하겠다.. node를 
+
+
+            // 실무에서는 텍스트 노드를 추가할때 아주 간단한 속성하나로 처리.
+            // 위의 것을 다 주석처리..
+
+            var p = document.getElementById('pp');
+            p.textContent='<a href="">this is text</a>';
+
+            // 텍스트로 들어가게 하는 한줄자리 명령어 .. 이것만 알면 위의 것을 안써도 됨. 
+
+        }
+
+
+        function bbb(){
+            // // a 요소노드 객체 만들기
+            // // document.write('<a href="">this is text</a>')를 사용하면 다 지우고 쓰기 때문에 안함.
+            // var a = document.createElement('a'); // ('p') p요소 , ('a') 앵커요소
+
+            // // a 요소노드에 적용할 속성 노드 만들기.
+            // var attr = document.createAttribute('href');// hyper reference : href , target 
+            // attr.value = 'https://www.naver.com';
+
+            // // a 요소노드에 속성 노드 설정. 붙이기.
+            // a.setAttributeNode(attr);
+            // // a 요소가 보여줄 텍스트노드를 만들어서 붙이기.. 위의 예제에서 함.
+            // var text= document.createTextNode('네이버');
+            // a.appendChild(text);
+
+            // // 완성된 a 요소노드를 p요소노드 자식으로 추가.
+            // var p=document.getElementById('pp');
+            // p.appendChild(a);
+
+
+            //실무에서는 위 요소 추가 작업을 속성 하나로 처리...함...
+            //위의 내용 전부 주석
+
+            var p = document.getElementById('pp');
+            // p.innerHTML='<a href="https://www.naver.com">네이버</a>';
+            p.innerHTML +='<a href="https://www.naver.com">네이버</a>';
+
+        }
+
+        function ccc(){
+            var p = document.getElementById('pp');
+            p.removeChild(p.firstChild);
+        }
+     </script>
+
+
+     <hr>
+     <!-- 2. DOM tree 의 계층 구조 관계를 이용하여 특정 요소를 찾아서 제어가 가능함 -->
+      <p>this is paragraph</p>
+      <button onclick="ddd(this)">스타일 변경</button> 
+       <!-- this는 객체 자기 자신,, 즉 button -->
+      <script>
+        function ddd(e){  // e 는 button 요소
+            // 버튼이 클릭되면 버튼의 바로 앞 p 요소를 찾아서 그 스타일 변경
+            // 태그문을로 보면 p 옆에 button이 있는 것임. 부모자식관점에서 형제임. 
+            // 형제 노드로 찾으면 됨. id도 설정 안된 상황.
+            var p = e.previousElementSibling;  // 이전의 형제 요소
+            p.style.color = 'red';
+        }
+      </script>
+
+      <hr>
+      <!-- 결국 DOM tree를 이해하고 있으면 node 간의 관계(부모, 자식 , 형제)를 이용하여 요소들의 선택을 쉽게 할 수 있음. -->
+      <!-- document는 요소노드를 찾아주지 않음.  -->
+      <!--  사실 HTML 요소를 찾는 가장 다양하고 쉬운 방법은 CSS 언어의 선택자를 이용하는 것임. -->
+      <!-- document에서는 이런 기능이 별로 없음 -->
+      <!-- 원래 JS의 document 객체를 부모/자식 등의 요소선택기능을 제공하지 않았었음. 그래서 DOM tree 이해가 필요했었음. -->
+      <!-- 그래서 새로이 ... document 의 기능으로 CSS 선택자를 사용할 수 있도록 개선되었음. -->
+
+      <div id="wrap">
+        <p>nice to meet you</p>
+        <h4>aaa</h4>
+        <h4>bbb</h4>
+        <h4>ccc</h4>
+      </div>
+
+      <script>
+        var p = document.querySelector('#wrap p');  // 자손 선택자. 아이디가 wrap 인 자손 p인 요소.
+        // document.getElement는 없음. 존재하지 않음
+        p.style.color = 'blue';
+
+        // 여러개의 요소 선택은.. ALL
+        var h4s = document.querySelectorAll('#wrap>h4'); // 자식 선택자. 여러개... 
+        h4s[0].style.color='red';
+        h4s[1].style.color='green';
+        h4s[2].style.color='blue';
+        // 이제는 쿼리 셀렉터로 다함. 
+        
+      </script>
+</body>
+</html>
