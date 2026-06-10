@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./mytest02.js"></script>
+    <!-- body를 읽기 전이기 때문에 tag값들이 않일힘. 그래서 body가 로드된 후 처리도도록 메세지 컨트롤 되게 해라. -->
+    <!-- 03_event.html 참조 -->
+</head>
+<body onload="onLoadCompletionOfBody()">
+    <div style="width:50%;">
+        <p id="p1">이 곳은 작업공간 1 입니다.</p><br>
+        <p id="p2">DOM Document Object Model의 공부방입니다.</p>
+        <hr>
+        <button onclick="addTextNode()">텍스트 노드를 추가하기</button>
+        <button onclick="addTextNode2()">텍스트 노드를 추가하기2</button>
+        <button onclick="addNode()">요소 노드 추가하기</button>
+        <button onclick="addNode2()">요소 노드 추가하기2</button>
+        <button onclick="removeChildNode()">자식 노드 추가하기</button>
+    </div>
+    
+    <div style="width:50%">
+        <hr>
+        <p>스타일변경 연습</p>
+        <button onclick="changeStyle(this)">스타일변경</button>
+    </div>
+
+    <!-- <div id="wrap" style="width:50%;border:1px solid #ffffff;"> -->
+    <div id="wrap">
+        <p>옵션</p>
+        <h4>aaa</h4>
+        <h4>bbb</h4>
+        <h4>ccc</h4>
+    </div>
+    
+    
+</body>
+</html>
