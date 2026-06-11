@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas game</title>
+    <!-- 웹 게임을 이렇게 만듦 -->
+
+    <script>
+        //내부 스크립트 
+        // 전역 변수로서 이미지 객체 준비 
+        var imgPlayer = new Image(); // 플레이용 이미지
+        imgPlayer.src="./image/ms_01.png";
+        // 바디를 그려내는 동안 이미지가 그려질것 같아 onload 안하겠다.
+
+
+        // 플레이어가 표시된 이미지의 중심 좌표 변수 
+        // var x= 200;  // 캔버스 중심
+        // var y=250;   // 캔버스 중심
+        var x=200,y=250;
+
+        // 플레이어의 사이즈를 동적으로 변경할 수 도 있으니...
+        // 이미지의 절반 너비와 높이 값 저장.. 위미지 사이즈가 80인데 절반을 저장...
+        // var w = 40;
+        // var h = 40;
+        var w =40, h=40;
+
+
+        // 플레이어의 이동 방향과 속도 변수 
+        var dx =1 ;// 델타x
+        var dy = 1;
+
+        // 배경이미지 준비
+        var imgBg = new Image();
+        imgBg.src = './image/bg.png';
+
+        // 배경이미지의 좌상단 좌표
+        var bx = 0, by=0; 
+
+        // 사이즈는 무조건 400, 500임.. 그래서 설정할 이유없음. 
+
+
+        //그림 도구와 캔버스를 전역변수로 준비
+        var canvas;  // undefined
+        var context; // undefined
+
+        // 이미지를 그려내는 작업은 ... body영역의 로딩이 완료된 후 진행
+        function loaded(){
+            canvas = document.getElementById('c1');
+            context = canvas.getContext('2d');
+            
+            //게임을 진행하는 기능함수 호출
+            runGame(); // 만들어야 함..   -> 단 한번 그림..
+            // 10ms 마다 runGame()함수를 다시 호출
+            setInterval(runGame,10); // 10 ms 마다 runGame 호출 , 즉 1초에 100개.. 100 frame/s (frame per second)
+
+        }// ---------------------------------------
+
+        //
+        function runGame(){
+            // 이미지 그리고 움직이기 보다는 움직이고 그리는 순서로 해라...
+            // 그리고 움직이는 원리는 여러장면을 그리게 해야 하는 것이다... 
+
+            // 움직이기..
+            moveAll();       
+            // 이미지 그리기
+            drawAll();
+            
+        }
+
+        function moveAll(){
+
+            // 배경 이미지 이동 (왼쪽으로....)
+            bx += -1;
+            if(bx <= -400) bx=0;
+
+
+
+            // 플레이어의 위치를 이동  ( 아래는 좌하단으로 이동)
+            // x +=1;  // 값의 크기가 속도,,, 부호가 방향결정...
+            // y +=1;
+            x += dx;
+            y += dy;
+
+            // 벽에 닿으면..반대방향으로...
+            // if(x<0 || x>400) dx = -dx // 좌 우 캔버스 경계
+            // if(y<0 || y>500) dy = -dy // 상 하 캔버스 경계
+            if(x<w || x>400-w) dx = -dx // 좌 우 캔버스 경계
+            if(y<h || y>500-h) dy = -dy // 상 하 캔버스 경계
+                
+
+            // if(x<0 || x>400){ // 좌 우 캔버스 경계
+            //     dx = -dx
+            // }
+
+            // if(x<0 || x>400) // 좌 우 캔버스 경계
+            //     dx = -dx
+            // 
+
+        }// -------------------------------------
+
+        function drawAll(){
+
+
+
+            // 배경부터 그려야 그 위에 이미지가 그려짐.
+            context.drawImage(imgBg,bx,by,400,500); // canvas 사이즈
+            // 두개의 이미지의 사이즈가 정확히 맞게해서 이와 같이 코드를 붙이면 빈자리를 매꾸는 식이 됨. 
+            // 배경의 이미지의 좌/우가 정확히 맞게 되어 있는 경우에 이러함.
+            // 쿠키런이라고 위와 아래의 다른 속도로 하게 되면 원금감. 
+            context.drawImage(imgBg,bx+400,by,400,500); // canvas 사이즈
+
+            // 플레이어 이미지 그려내기
+            // context.drawImage(imgPlayer,200-40,250-40,80,80); //그림의 가운데로 지정하기.. 이미지의 폭만큼이동..
+            context.drawImage(imgPlayer,x-w,y-h,w*2,h*2); //그림의 가운데로 지정하기.. 이미지의 폭만큼이동..
+
+        } // --------------------------------------
+
+
+        function down(){
+            keyCode = window.event.keyCode; // 카멜표기법
+            switch(keyCode){
+                case 37: // 좌측 화살표  left
+                    dx = -2;
+                    break;
+                case 38: // 시계방향으로 돌림.. 위측 화살표  up
+                    dy=-2;
+                    break;
+                case 39: dx=2; break; //right
+                case 40: dy=2; break; // down
+
+                default:dx=1;dy=1; // auto 자동으로 움직여라.. 위의 방향키 이외의 키를 누르면 자동으로 움직여라.
+
+            }
+
+        }//----------
+
+
+        function up(){
+            keyCode = window.event.keyCode;
+            // 방향키를 놓으면 ....멈추도록...
+            if(keyCode>37 && keyCode<40){ // 방향키를 놓으면 스톱.
+                dx=0;dy=0; 
+            }
+
+        }//------------------
+
+    </script>
+</head>
+<body onload="loaded()" onkeydown="down()" onkeyup="up()"> 
+    <!-- 바디 로디가 완료되면 실행 되게.. -->
+    <canvas id="c1" width="400" height="500" style="border:2px solid black"></canvas>
+    
+</body>
+</html>

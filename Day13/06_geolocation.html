@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치기반서비스 LBS</title>
+    <script>
+        function aaa(){
+            // 현재 내 위치 정보를 얻어오는 시간이 걸리기에...
+            // 내 위치 탐색이 완료되면 실행될 콜백함수를 파라미터로 등록...
+            window.navigator.geolocation.getCurrentPosition(function(position){// 1회성.. // 끝나면 자동으로 불러지는데 이런것을 콜백함수라고 함.. 이벤트 처리하는 것들은 전부 콜백함수라 함. 
+            //성공했을때  
+            //파라미터로 전달된 position안에 위도 , 경도 정보가 있음. 이 함수는 자동으로 호출됨. 내가 호출하는 게 아님.
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;           
+
+            document.getElementById('hh').innerHTML = lat + "," + lng;
+            }, function(error){
+                // 에러정보 : 에러났을때
+                alert(error.code + '\n' + error.message);
+                // 허용안하거나 인터넷 상으로 이상이 있을때 1~4까지의 값을 줌. AI에게 물어봐라..
+                // 이 값은 딱 한번만 제공.. 항상 제공은 watchposition으로 해야 함. 
+            })
+        } // 
+
+        var id; // 내가 업데이트하는 것의 식별자
+        function bbb(){
+            id = navigator.geolocation.watchPosition(function(position){
+                //성공하면 function(position) 실행
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                document.getElementById('hh').innerHTML = lat +'<br>' + lng;
+            }); // 실시간 갱신
+
+        }
+
+        function ccc(){
+            navigator.geolocation.clearWatch(id);
+        }
+        // 노트북 들고 나가서 와이파이를 잡으면 실시간으로 보임... 그리고 모바일에서도 볼수 있음. 
+    </script>
+</head>
+<body>
+    <button onclick="aaa()">my location</button>
+    <h3 id="hh">위도(latitude), 경도(longitude)</h3>
+
+    <hr>
+    <button onclick="bbb()">위치자동업데이트</button>
+    <button onclick="ccc()">자동업데이트종료</button>
+
+
+
+</body>
+</html>
+
+<!-- 이런 정보를 지도에 보여주는 방법 -->
+ <!-- 지도는 방대한 정보// 구글, 네이버, 카카오(다음지도)지도 서비스함. -->
+  <!-- 나는 내거 웹사이트안에 조금한 영역에 보여주고 싶음 -->
+   <!-- 그러면 삼사의 사이트를 가져와야 함. 이것을 라이브러리 형태로 제공.. Map API 를 제공함.. 우리는 이것을 라이브러리 ,모듈로 제공 -->
+    <!-- 제공은 하되 하루에 몇번 제한을 검. 카드 정보도 넣게 함. 100만번을 넘으면 돈을 내게.. 카드등록까지... 구글이 시작하다 네이버도 그렇고 -->
+     <!-- 아직 안하는 것 카카오지도는 안함. 제한은 됨 . 네이버.. 구글은 제한 넘으면 돈을 냄 -->

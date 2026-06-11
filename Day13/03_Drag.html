@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & drop</title>
+
+    <style>
+        #cart{
+            width: 400px; height: 150px ; padding : 10px ; border: 1px dotted red;
+        }
+    </style>
+
+    <script>
+
+         // 아무곳이나 내려놓으면 안으로 들어가는 것 방지
+            //cart 위로 올라갔는지 여부
+            var isOver = false;
+        function endDrag(){
+            if(isOver){
+            //드래그가 종료된 요소를 id를 기반으로 찾기.
+            var e = document.getElementById(window.event.target.id); // 윈도우에서 이벤트를 담당하는 것에서 이벤트를 발생시킨 타겟의 id를 가져와라.
+            // cart 아이디를 가진 div요소안에 드래그 한 요소를 자식으로 추가.
+
+            document.getElementById('cart').appendChild(e);
+
+            }          
+
+
+        }
+
+        function overDrag(){
+            //기본적으로 다른 요소가 내 위에 놓여지지 않도록 아이콘이 표시됨.
+            // 이게 싫다면... 이 기본설정을 막아야(방지해야)함.
+            window.event.preventDefault();// 기본을 하지마. 기본값을 막아라... 
+            // 금지 표시를 없애기 위해실행..
+
+            //요소가 올라왔다고..변수에 저장
+            isOver=true;
+        }
+
+        function leaveDrag(){
+            isOver = false; 
+        }
+    </script>
+</head>
+<body>
+    <div id="cart" ondragover="overDrag()" ondragleave="leaveDrag()"></div> 
+    <!-- 드래그가 올라오면 함수 발생 --> 
+     <!-- 드래그가 떠날때 발생 함수도.. -->
+
+    <img src="./image/ms18.png" alt="ms18" width="150" height="150" id="img1" ondragend="endDrag()">
+    <img src="./image/ms19.png" alt="ms19" width="150" height="150" id="img2" ondragend="endDrag()">
+    <!-- // 기본적으로 마우스 드래그 하는것을 막아놈. 아이콘을 브라우저에서 잡아 드래그하면 움직이긴 함.  -->
+
+
+    <!-- 이미지만 div로 움직이게 하면 된다.. 코드로.. -->
+    
+</body>
+</html>
+
+<!-- 이걸 쓰면 사용자 (UX:사용자 경험)가 풍부해짐... -->
+
+<!-- 웹 스토리지 -->
+
+<!-- 웹서버에서 우리가 했던 행동을 저장하는것...  -->
+ <!-- 쿠키와 세션의 용어 중요 -->
+  <!-- statless protocol : 전에 했던 요청을 기억하지 못함. TCP/UDP는 기억함.. state protocol -->
+   <!-- 원래 http는 내가 어디 방문한 것을 모름.. -->
+
+
+   <!-- 쿠키의 특징 -->
+<!-- ● 웹 서버에서 사용자의 웹 브라우저로 보내지는 데이터이다. -->
+<!-- ● 쿠키는 단순한 텍스트 데이터이다. 이진 데이터가 아니다. 이미지 데이타가 아님. -->
+<!-- ● 쿠키는 브라우저에 의해 사용자의 컴퓨터(디스크)에 저장된다. -->
+<!-- ● 웹사이트는 자체 쿠키만 읽을 수 있다. 다른 웹사이트의 쿠키를 읽을 수 없다. -->
+<!-- 이 보안은 브라우저에 의해 보장된다. -->
+<!-- ● 쿠키는 다른 브라우저 간에 공유되지 않는다. 즉, 동일한 도메인이라도 한 -->
+<!-- 브라우저는 다른 브라우저에 저장된 쿠키를 읽을 수 없다. -->
+<!-- ● HTTP 프로토콜에 따라 쿠키의 크기는 4KB를 초과할 수 없다. -->
