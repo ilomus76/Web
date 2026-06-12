@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+    <script>
+        function aaa(){
+            // AJAX 기술을 수행하는 내장된 객체를 생성.
+            var xhr = new XMLHttpRequest(); // xml은 그 당시에 유행했던 것이어서 이름이 정해진 것임. // http로 요청해서 데이타를 xml로 받아라..
+
+
+            // 서버로부터 데이터를 받으면 자동으로 발동하는 함수를 등록
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4 && xhr.status == 200){
+                    document.getElementById('kk').innerHTML = xhr.responseText;
+                }
+                
+                    // 1. 서버 받음
+                // 4 작업완료 
+                //200성공했다.
+            }
+            // 1)
+            // xhr.open('GET', './aaa.txt' , true); // 세번째 파라미터 : 비동기 방식 여부
+            // 파일오픈하는것과 비슷함. 
+            //2)
+            // xhr.open('GET', './01_no_ajax.html',true);
+            // 3) GET 방식으로 서버의 백엔드 프로그램에 데이터를 전송하고 응답결과를 받기
+            // 
+            xhr.open('GET','./getTest.php?name=SAM&pw=1234',true);  // 서버의 php 구동
+            // php를 실행할것인데 name으로 SAM을 보내고 pw는 1234로 보내겠다 라고 이해.. 띄어쓰기는 안됨. 
+            xhr.send(); // 요청보내기
+
+        }
+
+
+        function bbb(){
+            // ajax를 수행하는 객체가 있고 이것을 생성 , 그것을 XMLHttpRequest() 이고 그것으로 자바스크립트로 xml을 요청하는 기술.. 이게 
+            var xhr = new XMLHttpRequest();
+            
+
+            xhr.onreadystatechange = function(){
+                // 요청하기 전에 미리등록
+                if(xhr.readyState==4 && xhr.status==200){
+                    document.getElementById('kk').innerHTML = xhr.responseText; // response된 글씨를 가져와..
+                }
+            }
+
+            xhr.open('POST','./postTest.php', true) ; // post 방식으로 php 를 비동기 방식으로 열겠다고 무지게 다리 를 놓음.
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded'); // html 의 head 와 body가 있는데 head가 뭐인지 알려줘야한다. get 은 안해도 됨.
+            // x : 서버를 넘나들거고 ,, www 형태로 form형식으로 urlencoded  즉 key,value 형식이라고 보낼거라고 마
+            
+            xhr.send('name=ROBIN&pw=2222'); // 요청보내기  -- post방식으로 보낼데이터를 파라미터로 전달. 
+            //xhr.send('name=ROBIN &') -> 이름이 ROBIN 띄어쓰기가 이름이 됨. 
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <button onclick="aaa()">GET 방식으로 데이터 요청</button>
+        <button onclick="bbb()">POST 방식으로 데이터 요청</button>
+    </p>
+    <hr>
+    <div id="kk"></div>
+    
+</body>
+</html>

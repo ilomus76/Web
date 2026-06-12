@@ -1,0 +1,74 @@
+
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax fetch api</title>
+    <!-- fetch는 외장함수 였다 지금은 내장함수가 되었다. -->
+
+    <script>
+        function aaa(){
+            //input 요소를 찾아와서 그 안에 써있는 글씨를 얻어오기.. (서버에 보낼 데이타이기때문에)
+            var name = document.querySelector('#in1').value ; // 아이디가 in1인 선택자로 찾아줘.. 그래서 #이 있음. 없으면 타입션택자로 오해함. 
+            // input 요소의 값
+            var password = document.querySelector('#in2').value; 
+            // 서버로 보낼 값을 두개 가지고 있다.
+
+            // GET방식으로 데이터를 보내기 위해 URL 뒤에 값들을 추가한 경로 만들기..
+            var url= './getTest.php?name=' + name + '&pw=' + password;// 변수 name과 password을 문자열에 결합  
+            // 백틱을 쓰면 더 쉽게 사용가능
+
+            // JS에 내장된 ajax 기능함수 - fetch()를 이용하여 XMLHttpRequest를 대체하기.
+            // 오전에는 전통적인 방식을 사용.. 현업에서는 fetch()가 많이 사용.
+            fetch(url).then( function(response){
+                            // 서버로 open해서 send까지 끝남. 이 url로 , 그리고 나서... 받으면 함수호출.. 즉 결과를 받으면 호출 ,, response로 ....
+            // 내려받아
+
+            // 응답 결과를 파아미터인 response가 받음.. 근데 이 데이터를 2진수로 가지고 있음.
+            // 그래서 응답결과를 글씨로 바꿔달라고 요청한 후 결과를 리턴해줌
+            return response.text(); // 받으면 글씨로 바꿔저.
+
+
+            }).then( function(text){ // 그리고 나서 그 텍스트를 html로 찍어줘... //변환된 글씨데이타
+                document.getElementById('result_area').innerHTML = text;
+            })
+
+
+
+        } 
+
+        function bbb(){
+            // POST방식으로 데이터를 전송해보기
+            var name = document.querySelector('#in1').value;
+            var password = document.querySelector('#in2').value;
+
+            // 보낼데이터를 key=value&key=value 형태로 만들기
+            var data = `name=${name}&pw=${password}` // 백틱 , f-string // 문자열 태플릿(백틱)
+
+            //fetch()기능으로 post 방식의 ajax를 수행
+            fetch('./postTest.php',{    // ./postTest.php에 보낼건데... 파라미터는 3개야..
+                method:'POST', 
+                headers:{'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
+                body:data,
+
+            }).then(function(response){
+                return response.text();  // response는 글씨만 가지고 있지 않다. 기능 많다.
+            }).then(function(text){
+                document.getElementById('result_area').innerHTML = text;
+            })
+
+        }
+    </script>
+ </head>
+ <body>
+    <input type="text" placeholder="이름 입력" id="in1">
+    <!-- // form 안쓸것이기 때문에 name 안씀.. 자바스크립트로 불러올거니 id를 사용 -->
+    <input type="text" placeholder="비밀번호 입력" id="in2">
+    <br>
+    <button onclick="aaa()">GET 방식으로 데이터 전송 by fetch()</button>
+    <button onclick="bbb()">POST 방식으로 데이터 전송 by fetch()</button>
+    <hr>
+    <div id="result_area"></div>
+ </body>
+ </html>
