@@ -1,0 +1,4 @@
+https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=494179480f84ebba867a5d0a4246c609&targetDt=202606111
+
+
+https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=494179480f84ebba867a5d0a4246c609&targetDt=202606111

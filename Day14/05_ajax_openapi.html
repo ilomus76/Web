@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax open api</title>
+    <!-- 서버에서 유용한 공개한 데이타를 가져오는데 그것을 csv, xml, json으로 되어 있다. -->
+</head>
+<body>
+    <button onclick="aaa()">다른 서버의 xml 데이터를 읽어오기</button>
+    <!-- 지금 우리는 내 서버의 것을 가져왔지 다른 서버것을 가져오지 않았는데 지금한다. -->
+     <script>
+        function aaa(){
+            // 원래 키 발급 받아야 함... 이것을 사용할때는 키 발급 받아야 함. 
+            // 연습할 수 있는 사이트가 있다...
+            //http://www.w3schools.com/XML/cd_catalog.xml  
+            // 위의 것은 다른 서버에 있는 xml 페이지다. 
+            // w3schools 서버에 xml이 있다..
+
+            //다른 서버의 유용한 정보를 읽어 오기...
+            // 테스트 용으로 음반 목록 정보를 받아오기
+            fetch('http://www.w3schools.com/XML/cd_catalog.xml') // 자동으로 GET 방식   // CORS 정책 에러 - 다른 서버의 데이터를 클라이언트측의 JS 로 직접 요청하는 것은 금지함.(이건 보안의 문제)
+            .then(function(res){return res.text()})
+            .then(function(text){
+                alert(text); // 에러남... 
+                // CORS policy: No 'Access-Control-Allow-Origin'
+                // cross origin resource share policy 원격을 가로질러 자원을 공유하는 정책을 금지 시킴.
+                // 이게 위험하다고 생각.. 자바스크립트는 열기만 해도 접속이 됨. .악의적인 사람들이 데이타를 탈취할것 같음.
+                // 자바스크립트는 사이트를 열기만해도 실행이됨... 
+                // 그래서 어떤 사람들이 서버에 나를 다른곳에서 데이타를 가져오는 해킹 프로그램을 심어놓음... 이런것을 방지.
+
+                // 국토교통부나 영화진흥위원회 네이버 카카오 같은곳에 데이타는 있지만 직접 우리가 접근하는것은 불가능.
+                //그래서......  
+
+
+            })
+            // 그래서......클라이언트의 JS에서는 다른 서버의 OPEN API정보를 받을 수가 없음...
+            // 그래서 ... 내 서버의 백엔드에게 대신 요청해달라고 해야 함.. (중계 브로커...활용)
+            // 서버 프로그램은 다른 서버로 갈수 있음. 
+            // 내 php가 다른 서버에 접속하고 그것을 받아서 나에게 주는 형태임. 지금은 php로 하지만 나중에는 python으로 해야 함. 
+
+            // 영화진흥위원회 open api  -> 
+            // https://www.kobis.or.kr/
+            // 이미지 정보를 제공하지는 않더라... 나중에는 tmb 디비를 쓸댙데...
+
+            // 이게 나중에 AI 모델이 됨.
+        }
+     </script>
+
+     <hr>
+     <h2>다른 서버의 데이터 읽어오기 (내 서버를 중계서버로 활용)</h2>
+     <button onclick="bbb()">영화진흥위원회 OPEN API - 오늘의 박스오시프</button>
+     <p id="pp"></p>
+     <script>
+        function bbb(){
+            fetch('./openapi.php')
+            .then(function(res){return res.text()})
+            .then(function(text){
+                document.getElementById('pp').innerHTML=text;
+            })
+
+            //분석은 본인이
+
+            // 언젠가 수행과제..
+            // json 문자열을 분석하여.. 화면에 이쁘게 .. 영화정보 보여주기
+        }
+     </script>
+</body>
+</html>
