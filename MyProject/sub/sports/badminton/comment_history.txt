@@ -1,0 +1,75 @@
+[버전 version : Number : 영문자+숫자10자리]
+
+version--A0000000005 
+점수와 : 의 위치 정렬 수정
+
+version--A0000000006 
+상단의 제목 위치를 가운데로 옮기고 왼쪽정렬
+
+version--A0000000007 
+PC 모바일에서 반응형 css 구현하기
+
+version--A0000000008 
+서버 및 AJAX 구현하기
+save_player.php 작성
+
+
+htdocs/
+
+score_board.html
+score_board.css
+mobile.css
+score_board.js
+
+save_player.php
+load_player.php
+
+save_score.php
+load_score.php
+
+data/
+    player.json
+    score.json
+
+
+① 심판과 선수 이름 입력
+↓
+② [확인] 버튼 클릭
+↓
+③ AJAX로 PHP에 전달
+↓
+④ player.json 파일에 저장
+↓
+⑤ 페이지를 새로 열어도 값 유지
+
+
+score_board_A0000000009
+
+player.json
+      ↓
+load_player.php
+      ↓
+AJAX(fetch)
+      ↓
+화면에 자동 표시
+
+score_board_A0000000010
+점수 수정 하는 방법
+
+score_board_A0000000011
+
+score_board_A0000000012
+모든 경기 등록하기
+
+
+[주석: comment - Number : 영문자+숫자10자리]
+comment-A0000000000  
+현재 <h2> 태그는 기본적으로 화면 전체 너비를 차지하는 블록 요소(block element) 이기 때문에 text-align:center를 주면 글자 자체가 가운데 정렬됩니다.
+질문하신 "페이지 전체에서는 가운데 위치하지만, 제목 글자는 왼쪽 정렬" 하려면 제목들을 하나의 박스로 묶고 그 박스만 가운데 배치하면 됩니다.
+
+
+comment--A0000000002
+id가 score_board인 요소 안에 있는 점수판을 화면 가운데에 배치하고 각 요소의 글자를 중앙에 놓으려면 어떻게 해야 하나요?
+
+comment--A0000000003
+점수판을 농구/배드민턴 전광판처럼 검은 배경 + 큰 노란 숫자 형태로 꾸미고

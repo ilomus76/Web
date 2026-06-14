@@ -12,7 +12,6 @@ function onLoadCompletionOfBody(){
     h4s[0].style.color = 'red';
     h4s[1].style.color = 'blue';
     h4s[2].style.color = 'green';
-
     
 }
 

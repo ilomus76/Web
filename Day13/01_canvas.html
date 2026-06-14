@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas element</title>
+</head>
+<body>
+    <!-- canvas : 네모난 영역 -->
+     <!-- div와 같음 . 단 canvas에서는 요소를 넣지 못함. -->
+    <canvas id="c1" width="300" height="400" style="border:2px solid black"></canvas>
+    <script>
+        // canvas 생긴다음에 script 생김.
+        var canvas = document.getElementById('c1');
+
+        // 캔버스에 그림을 그리기 위해.. 그림 도구를 얻어오기.
+
+        var context = canvas.getContext('2d');
+        // 2차원 평면상에 그림을 그리겠다.. 3d도 있음. 
+
+        // 글씨 색상(붓) 변경하기
+        context.fillStyle = 'red';
+        context.font = "20px serif"; // 20px을 글씨의 높이.. 폰트 사이즈는 높이임... 
+        
+        //그림 도구를 이용하여 캔버스에 글씨를 그리기
+        context.fillText('Hello',10,40); // 글씨의 좌하단 좌표를 지정. , 글씨를 채우는 스타일로 그리겠다.
+        context.fillText('Hello',0,0);  // 그림이 캔버스에 없어 보이지 않음... 좌하단 기준이기 때문에..
+        context.fillText('Hello',0,10); // 픽셀단위.. 
+        context.fillText('Hello',0,400); // 0,400 좌한단 기준으로 찍음.
+
+
+        //윤관선 스타일
+        context.strokeStyle='green';
+        context.font="30px serif";
+        //윤곽선 글씨 그리기.
+        context.strokeText('Hello',100,40);
+
+
+        // 스타일은 마지막 것을 따름.
+
+        // 사각형 도형 그리기
+        // 색깔이 위에서 빨간색이여서 빨강으로 처리됨.
+        context.fillStyle='blue';
+        context.fillRect(10,50,100,40);// 좌측 상단 지점을 먼저 주고 너비와 높이를 주면 그것에 따라 그림.
+        // 좌상단 10,50  너비 : 100, 높이 40 
+
+        //윤곽선 사각형 그리기
+        context.strokeStyle='blue';
+        context.strokeRect(120,50,100,40);
+
+        //직선 그리기...
+        context.beginPath(); // 경로의 시작점.. 선의 경로작업 시작!
+        context.moveTo(10,100); // 선의 시작위치로 붓을 이동
+        context.lineTo(100,150); // 직선의 종료위치를 지정
+        context.lineTo(150,120);
+        //위 경로로 선 그리기
+        context.stroke(); //윤곽을 그려라.   // beginPath와 strok 까지가 전체 한쌍
+
+        // 슬라이드 자료에 사각형, 곡선, 원 , 패턴, 그래이언트 등.. 다앙햔 방법이 소개되어 있음.
+
+        // 도화지안에 이미지를 그리기.
+        var img1 = new Image(); // 이미지 생성자 함수
+        img1.src="./image/ms19.png";
+        // 이미지 파일은 용량이 크기에.. 이미지 객체로 만들어지는데 시간이 걸림..
+        // 그래서 곧바로 그려내라고 하면.. 안 그려지는 경우가 많음.  0.0001초 정도 걸림. 용량 크면 힘듬.
+        // context.drawImage(img1);
+
+        // 그래서 일반적으로.. 이미지객체의 파일로딩작업이 완료되면 실행되는 함수를 만들어 이미지를 그려냄.
+
+        img1.onload=function(){   // 이것은 이미지 객체 요소의 load가 완료되면을 뜻하는 것이고 body의 onload와는 다름. 각 요소/객체마다 onload 메세지가 있음.
+            context.drawImage(img1,10,180); // 이미지의 좌상단 좌표[원본사이즈로 그려짐].. 글씨만 좌하단이 기준 
+            context.drawImage(img1,10,180,100,100); // 좌상단좌표, 너비, 높이 
+            // 이미지의 일부분만 도려내서 그려낼 수 있음.
+            context.drawImage(img1,100,100,100,100,100,200,180,100,100); //  자른위치 : 100,100 지점에서 100 x 100을 자르는데 원본 위치 200,180의 100x100에서 자름.
+            // 앞 4개의 숫자[ 도려낸 위치, 사이즈], 뒤 4개 숫자[그려질 위치, 크기] ,원본사이즈 512 x 512 
+        }
+
+        //하나의 canvas안에 여러개의 이미지를 그려낼 수 있음.
+        var img2 = new Image();
+        img2.src='./image/ms18.png';
+        img2.onload=function(){
+            context.drawImage(img2,150,0,150,150);
+
+            
+        }
+        // 이런걸 왜 하나? 
+        // 웹게임도 이렇게 그리는 것임. 
+
+
+
+        
+
+    </script>
+</body>
+</html>

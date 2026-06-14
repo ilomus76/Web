@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS file reader</title>
+
+</head>
+<body>
+    <!-- 파이썬에서 해본것을 해보자 -->
+     <h2>텍스트 파일 데이터 읽기</h2>
+     <input type="file" id="in1">
+     <button onclick="aaa()">파일 데이터 읽기</button>
+     <textarea id="ta" cols="30" row="10"></textarea> 
+     <!-- 요소들의 아래선을 맞춤. -->
+
+     <script>
+        function aaa(){
+
+            // 사용자가 선택한 파일의 데이터를 읽어오는 능력을 가진 FileReader 객체를 생성하여 읽어오기
+            // 보안상의 문제로... 사용자가 선택한 파일만 읽을 수 있음.. 파일경로를 직접 개발자가 쓸수 없음. 
+            // 자바스크립트는 열기만 하면 실행이 되어 그냥 파일 경로를 정해서 가져오면 보안 문제가 되니 이런 기능을 막음.
+            // 보안상의 문제로.. 사용자의 컴퓨터에 파일을 쓸수 있는 기능은 제공되지 않음. 그래서 filewriter 제공안함. 
+
+            // 사용자가 선택한 파일정보 가져오기
+            var f = document.getElementById('in1').value;
+            // alert(f); // value로 취득한 경로는 실제 파일경로가 아님. 가짜 경로..그래서 fakepath라고 나옴.
+
+            // 가짜 경로로는 파일읽기 불가능.
+
+            // 그래서 의미없음. 주석
+
+            var files = document.getElementById('in1').files; // files 는 여러개 선택될 수 있어서 무조건 배열로 줌. 
+            alert(files[0].name + "\n" + files[0].size + '\n' + files[0].type) // <br> 은 html 여기서는 경고창 + 
+
+            // 서버에서 php 할때 배운 메타정보내용임. 
+
+        }
+
+        //실제 파일데이터를 읽어오기
+        // 1. 파일리더 객체 생성
+        var fr = new FileReader();
+
+        //3. 파일을 익어오는 작업이 오래걸림... 그래서 완료가 되면 자동으로 실행되는 함수를 등록.. 
+        // 파일을 읽고 있으면 후작업을 못하니 그 동안 할수 있다가 읽어오면 그 작업을 실행하게 하는 것.
+
+        // 읽기 요청보다 먼저 등록해야 함.. 이래야 안전함.
+        fr.onload=function(){
+            document.getElementById('ta').innerHTML = fr.result; // 리더가 읽어들인 결과.
+        }
+
+        //2. 파일리더에게 텍스트로 데이터를 읽어달라고 요청.
+        fr.readAsText(files[0], "utf-8");
+     </script>
+
+     <hr>
+     <!-- 사용자가 선택한 이미지의 미리보기 구현 -->
+      <!-- 인스타 할때 사진도 등록.. -->
+       <h2>이미지파일 읽기 및 미리보기</h2>
+       <input type="file" id="in2" multiple onchange="bbb()"> 
+       <!-- //선택이 바뀌면 하자.. -->
+       <!-- <button onclick="bbb()">파일 선택 완료</button> -->
+
+       <hr>
+       <img src="" alt="" id="aa" style="border:4px solid black; max-width:400; max-height: 400px;">
+       <!-- 이미지 사이즈가 크니 최대 400 x 400까지만 해라.. -->
+
+       <script>
+        function bbb(){
+            // alert();
+
+            // 사용자가 선택한 파일들 받기
+            var files = document.getElementById('in2').files;
+            //1. 파일리더 생성
+            var fr = new FileReader();
+            
+            //2. 로딩완료되면 실행될 함수 등록
+            fr.onload = function(){
+                // alert(fr.result);  // 선택한 이미지의 URL 경로 -> base64의 경로 , 이미지를 경로로 만든 것...
+                document.getElementById('aa').src = fr.result; // 선택한 이미지의 URL 경로
+
+            }
+            //3. 파일읽기 요청.. 단.. 이미지 <img>요소에 보여줘야 하기에.. 파일경로(URL) 형태로 읽어달라고 요청.
+            // 아까는 readastext로 했는데 이렇게 하면 안됨.. 이미지이기 때문에.. 
+            fr.readAsDataURL(files[0]) // 첫번째 선택한 이미지 읽기 // 원래는 많으면 for문을 돌려야 함. 지금은 시간때문에 하나만.  
+        }
+       </script>
+</body>
+</html>
+<!-- 이 기능은 지원되지 않는 기능인데 우리가 그것을 한것이다. 추후에 게시판 프로젝트에 넣어라.. -->
+ <!-- 이미지를 여러개 선택하는 것은 안했다.. 여러개 선택하면 우리 프로그램은 마지막 하나만 보여 줬다.. 그것을 위해서는 for문을 돌려야 하는데 지난번에 table를 for문을 돌려서 하는 것을 배웠으니 그것으로 해봐라. -->
+  <!-- flex style도 할수 있음.  -->
+
+  <!-- 이제 GPS없어도 위치정보를 알수 있는데 Geolocation은 지형지물의 위치 ,,, 이런것을 서버의 정보로 할수 있음 그냥 location은 다름. -->

@@ -1,0 +1,38 @@
+/* # : 아이디  */
+/* comment-A0000000001 */
+#project_title{
+
+    width: 600px;       /* 제목 영역 폭 */
+    margin: 0 auto;     /* 0: 좌우 auto: 상하 : 페이지 가운데 배치 */
+
+    /* text-align: center; */
+    text-align: left;   /* 내부 글자는 왼쪽 정렬 */
+    text-decoration: underline;
+
+/* 
+더 간단한 방법 (추천)
+폭을 내용 크기만큼만 사용하고 싶다면:
+#title_area{
+    display: inline-block;
+    text-align: left;
+}
+body{
+    text-align: center;
+}
+이렇게 하면 title_area 자체는 가운데에 위치하고, 내부의 세 줄은 왼쪽으로 정렬됩니다. */
+
+}
+
+#project_title>h2{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#project_title>h3{
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+

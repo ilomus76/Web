@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- version: A0000000009-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Board</title>
+    <link rel="stylesheet" href="./score_board.css">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="./score_board_mobile.css">
+    <script src="./score_board.js" defer></script>
+</head>
+<body onload="">
+    <!-- comment-A0000000000 -->
+    <div id="project_title">
+        <h2> 2026년 1회 &nbsp;로얄 페밀리 차제 배드민턴 대회</h2>
+        <h2> 일시 : 2026.06.11. 토요일 13:00 ~ 16:00</h2>
+        <h2> 장소 : 부천전용배드민턴 체육관(산새체육관)</h2>
+    </div>
+    <hr>
+    
+    
+    <div id="game_configuration">
+        <fieldset>
+            <legend> 게임(Game) 구성(Set) </legend>
+            <!-- <form action="score_board_configuration.php">      -->
+            <form id="player_form">     
+                <label for=""> 심판      :&nbsp;
+                </label><input type="text" placeholder="심판 이름" name="judgement">
+                <hr>
+                <label for=""> 팀A-선수1 :&nbsp;<input type="text" placeholder="선수A 이름" name="playername1" class="player_name">
+                                               <input type="text" placeholder="선수B 이름" name="playername2" class="player_name">
+                <br>
+                <label for=""> 팀B-선수1 :&nbsp;<input type="text" placeholder="선수A 이름" name="playername3" class="player_name">
+                                               <input type="text" placeholder="선수A 이름" name="playername4" class="player_name">
+                <br>
+
+                <div class="form_button_area">
+                    <input type="submit" value="확인">
+                    <input type="submit" value="취소">
+                </div>
+
+            </form>
+        </fieldset>
+    </div>
+    <hr>
+    <!-- 화면상에서 중앙에 보이게 작업 -->
+     <!-- comment-A0000000002 -->
+    <div id="score_board">
+        <div id="team_A">
+            <!-- <h3>Team A</h3> -->
+            <div class="team_name">Team A</div>
+            <!-- <div class="score">0</div> -->
+            <div class="score_area">
+                <span class="score">0</span>
+            </div>
+
+        </div>
+
+        <div id="space">
+            <div class="top"></div>
+            <!-- <div class="separator">:</div> -->
+             <span class="separator">:</span>
+            <!-- <h1>:</h1> -->
+        </div>
+        <div id="team_B">
+            <!-- <h3>Team B</h3> -->
+            <!-- <h3>0</h3> -->
+            <div class="team_name">Team B</div>
+            <!-- <div class="score">0</div> -->
+             <div class="score_area">
+                <span class="score">0</span>
+            </div>
+        </div>    
+
+
+    </div><!-- score_board 종료 -->
+    <hr>
+    <!-- 선수 정보 표시 영역 -->
+    <div id="player_information">
+
+        <div id="judge_view"></div>
+
+        <div id="teamA_player_view"></div>
+
+        <div id="teamB_player_view"></div>
+
+    </div>
+    
+
+
+
+
+</body>
+</html>

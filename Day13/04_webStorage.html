@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web storage</title>
+</head>
+<body>
+    <h3 id="aa"></h3>
+    <hr>
+    <h3 id="bb"></h3>
+
+    <script>
+        //웹 스토리지 : 웹 문서가 데이타를 client의 컴퓨터에 저장할 수 있는 기법(일종의 쿠기(4kB)) -5MB 가능
+
+        // 예) 페이지 방문 횟 저장 및 표시
+        // 웹 스토리지 .. 2가지 저장소
+        //1. localStorage : 브라우저가 닫혀도 데이터를 저장하고 있음.
+        if(!localStorage.cnt){// window.localStorage 임.  // cnt라는 식별자로 된 값이 없는가?
+            localStorage.cnt =0; // cnt 변수 선언과 초기화.. 없으면 만들어.
+
+        }  
+
+        //기존 값에 1 증가 [ 무조건 값은 문자열로 저장되어 있음.]
+        localStorage.cnt = parseInt(localStorage.cnt) +1;
+
+        //출력
+        document.getElementById('aa').innerHTML = localStorage.cnt + "번째 방문입니다.";
+
+        //기록이 계속 남아있어 새로고침해도 계속 증가..
+
+        // 스토리지의 데이타 삭제하기...
+        // localStorage.clear();
+        // 이것은 항상 지우니 방문기록이 1에 멈춤. 
+        // 브라우저를 끄고 다시 open in browser로 해도 카운트값이 남아 있음.
+        //-----------------------------------------------
+
+        //2.sessionStorage : 브라우저가 닫히면 데이터를 잃어버림. 단, 새로고침은..데이터를 유지. 
+        // [새탭은.. 새창과 같아서..데이터유지 안됨]
+
+        if(!sessionStorage.cnt){
+            sessionStorage.cnt=0;
+
+        }
+        sessionStorage.cnt =parseInt(sessionStorage.cnt) + 1;
+        //출력
+        document.getElementById('bb').innerHTML = sessionStorage.cnt + "번째 방문입니다.";
+        // 이것도 sessionStorage.clear(); 가 됨. 
+        // 
+
+
+
+        // 세션과 쿠키는 모두 서버단에서 하는 것이고 중요한 정보 암호 아이디는 서버에 저장하는 것이 세션, 단순한 정보를 클라이언트에 저장하는게 쿠키이다.
+        // 하지만 HTML 5에서는 쿠키에 저장하는 정보를 좀 더 넓혀 클라이언트 단에서도 쿠키에 저장할 수 있게 제공하는 객체가 localStorage와 sessionStorage이다.
+        // 즉 서버에서 하는 php 작업을 클라이언트에서도 javascript로 쿠키의 범위를 좀 넓혀 제공할 수 있는 기능을 부여한 것이 localStorage/sessionStorage이다.
+
+    </script>
+
+
+    
+</body>
+</html>
+
+<!-- 사진선택하기에서 인풋 요소에서 하면 미리보기 기능없는데 그것을 구현해보자 file reader -->
+
