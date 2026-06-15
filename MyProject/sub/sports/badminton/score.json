@@ -1,7 +1,4 @@
 {
-    "game": "3",
-    "teamA": "0",
-    "teamB": "0",
-    "gameOver": "0",
-    "maxScore": "25"
+    "teamA": 11,
+    "teamB": 14
 }

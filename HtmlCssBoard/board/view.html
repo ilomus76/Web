@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세글 작성</title>
+    <!-- 외부 스타일 시트 연결 -->
+     <link rel="stylesheet" href="../css/view.css">
+     <!-- ../ 나가서 css 폴더 안에 있는 write.css -->
+</head>
+<body>
+    <!-- 콘텐츠 표시영역 -->
+     <div class="board_wrap">
+        <!-- 1. 제목 영역 -->
+         <div class="board_title">
+            <h2>자유 게시판- 상세글보기</h2>
+            <p>자유롭게 게시글을 작성하며 이야기를 나누세요</p>
+
+         </div>
+
+        <!-- 2. 상세글 보기 영역(글 보기, 버튼) -->
+         <div class="board_view_wrap">                         
+                <!-- 4교시 -->
+                 <!-- 2.1 상세글 영역(게시글 영역) -->
+                  <div class="board_view">
+                    <div class="title">
+                        <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
+                         글 제목 #1
+
+                    </div>
+                    <div class="info">
+                        <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
+                        <dl>
+                            <dt>번호</dt>
+                            <dd>1</dd>
+                        </dl>
+                        <dl>
+                            <dt>글쓴이</dt>
+                            <dd>sam</dd>
+                        </dl>
+                        <dl>
+                            <dt>작성일</dt>
+                            <dd>2026.06.15</dd>
+                        </dl>
+                        <dl>
+                            <dt>조회</dt>
+                            <dd>10</dd>
+                        </dl>
+                        <div class="content">
+                          <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
+                           Hello world <br>
+                           Nice to meet you <br>
+                           안녕하세요 <br>  
+                            <!--스타일 작업하러 가자.. view.css  -->
+                        </div>
+                    </div>
+
+                  </div>
+                  <!-- 2.2 버튼 영역 -->
+                   <div class="btn_wrap">
+                    <a href="../index.html">목록</a>
+                    <a href="./edit.html">수정</a>
+                   </div>
+         </div>
+
+     </div>
+</body>
+</html>
