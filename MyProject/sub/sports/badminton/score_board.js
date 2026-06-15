@@ -6,6 +6,7 @@ let gameOver = false;
 let maxScore = 21;
 let currentGame = 1;
 let isRunning = false;
+let gameId = 1;
 
 // DOM
 let scoreA, scoreB, statusBox, gameNo;
@@ -18,6 +19,18 @@ function init() {
     scoreB = document.querySelector("#team_B .score");
     statusBox = document.getElementById("game_status");
     gameNo = document.getElementById("game_no");
+
+
+
+    // resetGame();
+    // loadScore();
+
+
+    document.getElementById("player_form").addEventListener("submit", saveInfo);
+
+
+
+   
 
     // A팀 점수 클릭 (증가)
     document.querySelector("#team_A .score_area").addEventListener("click", () => {
@@ -38,19 +51,43 @@ function init() {
             
             isRunning = true;
 
+            
+            console.log("fetch 시작: A 버튼 클릭됨");
             fetch("update_score.php", {
                 method: "POST", 
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({team: "A"})
+                // body: JSON.stringify({team: "A"})
+                body: JSON.stringify({
+                    gameId: gameId,
+                    team: "A",
+                    action: "plus"
+                })             
+                
             })
-            .then(res => res.json())  // res: response , response가 json()형태로 올것이다..
+            .then(res => {      
+                console.log("응답 받음:", res);
+                return res.json();      // res: response , response가 json()형태로 올것이다..
+
+                
+            })    
             .then(data => {
+
+                console.log("서버 응답:", data);
                 teamA = data.teamA;
                 teamB = data.teamB;
                 gameOver = data.gameOver;
 
+                console.log("전체 응답:", data);
+                console.log("result:", data.result);
+
                 checkWin();
                 updateUI();
+
+
+                
+            })
+            .catch(err => {
+                console.error("에러 발생:", err);
             })
             .finally(() => {
                 isRunning = false;
@@ -79,23 +116,38 @@ function init() {
   
             
             isRunning = true;
-
+            console.log("fetch 시작: B 버튼 클릭됨");
             fetch("update_score.php", {
                 method: "POST", 
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({team: "B"})
+                // body: JSON.stringify({team: "B"})
+                body: JSON.stringify({
+                    gameId: gameId,
+                    team: "B",
+                    action: "plus"
+                })   
+                
             })
-            .then(res => res.json())     
+            .then(res => {
+                console.log("응답 받음:", res);
+                return res.json();
+            })     
             // 화살표 함수 (Arrow Function) 입니다.  function hello() {return "안녕";} [일반함수] 
             // const hello = () => {  return "안녕"; };   => 더쉬운 표현   : const hello = () => "안녕";
             .then(data => {
-
+                console.log("서버 응답:", data);
                 teamA = data.teamA;
                 teamB = data.teamB;
                 gameOver = data.gameOver;
 
+                console.log("전체 응답:", data);
+                console.log("result:", data.result);
+
                 checkWin();
                 updateUI();
+            })
+            .catch(err => {
+                console.error("에러 발생:", err);
             })
             .finally(() => {
                 isRunning = false;
@@ -104,21 +156,95 @@ function init() {
         
     });// B팀 점수 클릭 (증가) 의 끝
 
+    ///////////////////////////////////////////////////////////////////////////
     // A팀 점수 감소 버튼
+    // document.getElementById("teamA_minus").onclick = () => {
+    //     if (gameOver) return;
+    //     if (teamA > 0) teamA--;
+    //     updateUI();
+    // };
     document.getElementById("teamA_minus").onclick = () => {
-        if (gameOver) return;
-        if (teamA > 0) teamA--;
-        updateUI();
+
+        if (gameOver || isRunning) return;
+
+        isRunning = true;
+
+        fetch("update_score.php", { 
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                gameId: gameId,
+                team: "A",
+                action: "minus"
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            teamA = data.teamA;
+            teamB = data.teamB;
+            gameOver = data.gameOver;
+
+            checkWin();
+            updateUI();
+        })
+        .finally(() => {
+            isRunning = false;
+        });
     };
+
+        ////
+
+
+
+
+    // document.getElementById("teamB_minus").onclick = () => {
+    //     if (gameOver) return;
+    //     if (teamB > 0) teamB--;
+    //     updateUI();
+    // };
 
     document.getElementById("teamB_minus").onclick = () => {
-        if (gameOver) return;
-        if (teamB > 0) teamB--;
+
+    if (gameOver || isRunning) return;
+
+    isRunning = true;
+
+    fetch("update_score.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            gameId: gameId,
+            team: "B",
+            action: "minus"
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        teamA = data.teamA;
+        teamB = data.teamB;
+        gameOver = data.gameOver;
+
+        checkWin();
         updateUI();
-    };
+    })
+    .finally(() => {
+        isRunning = false;
+    });
+};
+
+
+//////////////////////////////////////////////////////////////////
 
     // RESET
-    document.getElementById("reset_score").onclick = resetGame;
+    // document.getElementById("reset_score").onclick = resetGame;
+    document.getElementById("reset_score").onclick = () => {
+    if (gameOver) return;
+    resetGame();
+    };
+
+
 
     // 다음 경기
     document.getElementById("next_game").onclick = nextGame;
@@ -130,7 +256,26 @@ function init() {
         resetGame();
     });
 
-    updateUI();
+    // updateUI();
+    // fetch("load_score.php")
+    // .then(response => response.json())
+    // .then(data => {
+
+    //     teamA = data.teamA;
+    //     teamB = data.teamB;
+    //     gameOver = data.gameOver;
+    //     maxScore = data.maxScore;
+
+    //     // updateUI();
+        
+    //     loadScore();                  // 시작 시 한 번 읽기
+    //     setInterval(loadScore, 1000); // 주기적으로 읽기
+        
+    // });
+
+    // loadScore();                  // 시작 시 한 번 읽기
+    // setInterval(loadScore, 1000); // 주기적으로 읽기
+
 }
 
 ////////////////////(승리 판단)//////////////////////////////////////////
@@ -151,39 +296,234 @@ function checkWin() {
 }
 
 
+
+
+
 ////////////////////// UI 업데이트//////////////////////////////////////
 
 
+// function updateUI() {
+//     scoreA.innerText = teamA;
+//     scoreB.innerText = teamB;
+
+//     if (!gameOver) {
+//         statusBox.innerText = "경기 중";
+//         statusBox.style.color = "green";
+//     }
+
+//     if (teamA === 0 && teamB === 0 && !gameOver) {
+//         statusBox.innerText = "경기 시작전";
+//         statusBox.style.color = "gray";
+//     }
+
+//     gameNo.innerText = currentGame;
+// }
+
+
 function updateUI() {
+
     scoreA.innerText = teamA;
     scoreB.innerText = teamB;
 
-    if (!gameOver) {
-        statusBox.innerText = "경기 중";
-        statusBox.style.color = "green";
-    }
+    if (gameOver) {
 
-    if (teamA === 0 && teamB === 0 && !gameOver) {
+        statusBox.innerText =
+            (teamA > teamB ? "Team A WIN!" : "Team B WIN!");
+
+        statusBox.style.color = "red";
+    }
+    else if (teamA === 0 && teamB === 0) {
+
         statusBox.innerText = "경기 시작전";
         statusBox.style.color = "gray";
+    }
+    else {
+
+        statusBox.innerText = "경기 중";
+        statusBox.style.color = "green";
     }
 
     gameNo.innerText = currentGame;
 }
 
+///////////////////////  점수 불러오기 ////////////////////////////////////////////
 
-////////////////////// Reset 기능//////////////////////////////////////
-function resetGame() {
-    teamA = 0;
-    teamB = 0;
-    gameOver = false;
 
-    updateUI();  // 위쪽에 있음. 
+function loadScore() {
+
+    // fetch("load_score.php")
+    fetch("load_score.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            gameId: gameId
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+
+            teamA = data.teamA;
+            teamB = data.teamB;
+            gameOver = data.gameOver;
+            // maxScore = data.maxScore;
+
+            
+
+            updateUI();
+        });
 }
 
+////////////////////// Reset 기능//////////////////////////////////////
+// function resetGame() {
 
+//     // if (gameOver) return;   // 경기 종료 시 Reset 금지
+
+//     // teamA = 0;
+//     // teamB = 0;
+//     // gameOver = false;
+//     // fetch("reset_score.php")
+
+
+//     // fetch("reset_game.php")
+//        fetch("reset_game.php", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             // body: JSON.stringify({
+//             //     maxScore: maxScore
+//             // })
+//             body: JSON.stringify({
+//             gameId: gameId
+//             // maxScore: maxScore
+//             })
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+
+//             console.log("reset 응답:", data);
+
+//             teamA = data.teamA;
+//             teamB = data.teamB;
+//             gameOver = data.gameOver;
+
+//             console.log(teamA, teamB, gameOver);
+
+//             // updateScore();
+//             updateUI();  // 위쪽에 있음. 
+//             return data;
+//         })
+//         .catch(err => {
+//                 console.error(" reset 에러 발생 :", err);
+//             })
+
+
+//             // updateUI();
+
+//             // resetGame();
+//             // loadScore();
+//             // resetGame().then(() => loadScore());
+//             // resetGame().then(loadScore)
+// }
+
+
+function resetGame() {
+
+    return fetch("reset_game.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            gameId: gameId
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        teamA = data.teamA;
+        teamB = data.teamB;
+        gameOver = data.gameOver;
+
+        updateUI();
+
+        return data;
+    });
+}
 ///////////////////// 다음 경기 //////////////////////////////////////
 function nextGame() {
     currentGame++;
-    resetGame();   // 바로위에 있음
+    gameOver = false;
+
+
+    // 입력창 다시 활성화
+    document.getElementById("judgement").disabled = false;
+    document.getElementById("player_name1").disabled = false;
+    document.getElementById("player_name2").disabled = false;
+    document.getElementById("player_name3").disabled = false;
+    document.getElementById("player_name4").disabled = false;
+    document.getElementById("max_score").disabled = false;
+
+    // 기존 입력값 지우기(선택사항)
+    document.getElementById("judgement").value = "";
+    document.getElementById("player_name1").value = "";
+    document.getElementById("player_name2").value = "";
+    document.getElementById("player_name3").value = "";
+    document.getElementById("player_name4").value = "";
+
+    // 아래 표시 영역도 초기화(선택사항)
+    document.getElementById("judge_view").innerText = "";
+    document.getElementById("teamA_player_view").innerText = "";
+    document.getElementById("teamB_player_view").innerText = "";
+
+    // resetGame();   // 바로위에 있음
+    // resetGame().then(() => loadScore());
+    resetGame().then(() => {
+        updateUI();
+});
+
 }
+
+
+
+////////////////// 정보 저장 /////////////////////////
+
+function saveInfo(event) {
+
+    // submit 후 페이지 새로고침 방지
+    event.preventDefault();
+
+    let judge = document.getElementById("judgement").value;
+    let playerA = document.getElementById("player_name1").value + "," + document.getElementById("player_name2").value;
+    let playerB = document.getElementById("player_name3").value + "," + document.getElementById("player_name4").value;
+
+
+    fetch("set_config.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            gameId: gameId,
+            maxScore: Number(document.getElementById("max_score").value)
+        })
+    })
+    // fetch("set_config.php", ...)
+    .then(() => {
+        updateUI();
+    });
+
+    // maxScore = Number(document.getElementById("max_score").value);
+    // resetGame();   // 서버에 maxScore 저장
+
+    // 아래 표시 영역 갱신
+    document.getElementById("judge_view").innerText = "심판 : " + judge;
+    document.getElementById("teamA_player_view").innerText ="A팀 : " + playerA;
+    document.getElementById("teamB_player_view").innerText ="B팀 : " + playerB;
+    // 입력창 잠금
+    document.getElementById("judgement").disabled = true;
+    document.getElementById("player_name1").disabled = true;
+    document.getElementById("player_name2").disabled = true;
+    document.getElementById("player_name3").disabled = true;
+    document.getElementById("player_name4").disabled = true;
+    document.getElementById("max_score").disabled = true;
+}
+

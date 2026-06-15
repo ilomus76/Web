@@ -1,164 +1,128 @@
 <?php
 header("Content-Type: application/json");
 
-// 서버에서 php 직접실행 결과
-// {"error":"no data received"}
-// 는 서버(PHP)가 “요청은 받았는데 실제 데이터(body)가 비어 있다”는 뜻입니다.
-// 즉, PHP 문제가 아니라 프론트에서 데이터가 제대로 안 넘어오는 경우가 대부분이에요.
 
-
-
-/////////////////////////////////////////
-// header("Content-Type: application/json");
-
-// $raw = file_get_contents("php://input");
-
-// if (!$raw) {
-//     echo json_encode([
-//         "error" => "no data received"
-//     ]);
-//     exit;
-// }
-
-// $data = json_decode($raw, true);
-
-// $team = $data["team"] ?? null;
-
-// // 테스트 응답
-// echo json_encode([
-//     "teamA" => 0,
-//     "teamB" => 1,
-//     "gameOver" => false,
-//     "receivedTeam" => $team
-// ]);
-
-//////////////////////////////
-
-$raw = file_get_contents("php://input");
-
-if (!$raw) {
-    echo json_encode(["error" => "no data received"]);
-    exit;
+// 먼저 JSON 읽기
+$input = json_decode(file_get_contents("php://input"), true);
+if (!is_array($input)) {
+    $input = [];
 }
 
-$data = json_decode($raw, true);
-$team = $data["team"] ?? "";
+// $gameId = $input["gameId"] ?? 1;
+$gameId = isset($input["gameId"]) ? (int)$input["gameId"] : 1;
 
-// 파일 경로
-$file = __DIR__ . "/score.json";
+$file = __DIR__ . "/games/game_" . $gameId . ".json";
+// 서버에 여러 사람이 접속해서 파일을 저장하는 방법
 
-// 초기값
+// $file = __DIR__ . "/current_game.json";
+// 현재 파일이 있는 폴더 기준으로 JSON 파일 경로를 만든다”
+//PHP의 매직 상수(magic constant) 입니다. 현재 실행 중인 PHP 파일이 위치한 폴더 경로를 반환
+// /var/www/html/game/save.php
+// 여기서 __DIR__ 값은:  /var/www/html/game
+// " /current_game.json" 의미  // 그 폴더 안에 있는 파일 이름
+
+
+
 if (!file_exists($file)) {
-    file_put_contents($file, json_encode([
+    $data = [
         "teamA" => 0,
-        "teamB" => 0
-    ]));
+        "teamB" => 0,
+        "gameOver" => false,
+        "maxScore" => 21
+    ];
+    file_put_contents($file,json_encode($data, JSON_PRETTY_PRINT),LOCK_EX);
+} else {
+    $data = json_decode(file_get_contents($file), true);
+
+    if (!is_array($data)) {
+        $data = [
+            "teamA" => 0,
+            "teamB" => 0,
+            "gameOver" => false,
+            "maxScore" => 21
+        ];
+    }
 }
 
-// 읽기
-$current = json_decode(file_get_contents($file), true);
 
-// 증가
+
+// $data = json_decode(file_get_contents($file), true);  
+// PHP에서 **파일 내용을 “읽어서 문자열로 가져오는 함수
+
+
+// 🔥 안전 초기화 (핵심)
+$data["teamA"] = $data["teamA"] ?? 0;
+$data["teamB"] = $data["teamB"] ?? 0;
+$data["gameOver"] = $data["gameOver"] ?? false;
+$data["maxScore"] = $data["maxScore"] ?? 21;
+
+
+
+
+//  JSON 읽기
+
+// $input = json_decode(file_get_contents("php://input"), true);
+// PHP에서 클라이언트가 서버로 보낸 “원본 데이터(body)”를 그대로 읽는 방법
+// 브라우저나 JS가 보낸 요청의 본문(body)을 통째로 읽는다
+// 아래의 경우 사용
+// fetch() / AJAX로 JSON 보낼 때
+// POST 요청인데 form-data가 아닌 경우
+// API 서버 만들 때
+
+
+
+// $team = $input["team"];
+$team = $input["team"] ?? null;   //team이 없으면 null로 처리
+//$team = $input["team"] ?? null;   //team이 없으면 null로 처리
+// input 안에서 team이라는 이름의 칸을 직접 꺼내라. 순서대로 꺼내는건 아님.
+
+$action = $input["action"] ?? "plus";   
+// PHP에서 “값이 있으면 그걸 쓰고, 없으면 기본값을 쓰는” 문장
+
+
+if ($data["gameOver"]) {
+
+    $data["result"] = "already finished";
+
+    echo json_encode($data);
+    exit;// 종료되면 이 php가 종료됨
+}
+
 if ($team === "A") {
-    $current["teamA"]++;
-} else if ($team === "B") {
-    $current["teamB"]++;
+    if ($action === "plus") $data["teamA"]++;
+
+    if ($action === "minus") 
+        {
+            $data["teamA"]--;
+            $data["teamA"] = max(0, $data["teamA"]);
+        }
 }
 
-// 저장
-file_put_contents($file, json_encode($current, JSON_PRETTY_PRINT));
+if ($team === "B") {
+    if ($action === "plus") $data["teamB"]++;
+    if ($action === "minus") {
+        $data["teamB"]--;
+        $data["teamB"] = max(0, $data["teamB"]);
+    }
+}
 
-// 응답
-echo json_encode([
-    "teamA" => $current["teamA"],
-    "teamB" => $current["teamB"],
-    "gameOver" => false
-]);
+/* 승리 조건 */
+if (($data["teamA"] >= $data["maxScore"] || $data["teamB"] >= $data["maxScore"])
+    && abs($data["teamA"] - $data["teamB"]) >= 2) {
 
-//////////////////////////////////////////////
+    $data["gameOver"] = true;
+}
 
-
-
-
-// // JSON 받기
-// $data = json_decode(file_get_contents("php://input"), true);
-
-// if (!$data) {
-//     echo json_encode(["error" => "no data received"]);
-//     exit;
-// }
-
-// //// 데이타가 들어오는지 디버깅하기 /////////////////////
-// // $data = json_decode($raw, true);
-// // file_put_contents("debug.txt", $raw); // ⭐ 들어오는지 확인
-// // echo json_encode([
-// //     "raw" => $raw,
-// //     "parsed" => $data
-// // ]);
-// ////////////////////////////////////
-
-
-
-
-// $team = $data["team"] ?? "";
-
-// // 현재 저장된 점수 파일
-// // $file = "score.json"; // 동작안됨
-// $file = __DIR__ . "/score.json";
-
-// // 없으면 기본값 생성
-// // if (!file_exists($file)) {
-// //     $init = [
-// //         // => 는 PHP에서 사용하는 “화살표(arrow)” 연산자, teaA 값에 0을 넣는다..
-// //         "teamA" => 0,  
-// //         "teamB" => 0
-// //     ];
-// //     file_put_contents($file, json_encode($init));
-// // }
-
-
-// if (!file_exists($file)) {
-//     file_put_contents($file, json_encode([
-//         "teamA" => 0,
-//         "teamB" => 0
-//     ]));
-// }
-
-
-
-// // 기존 점수 읽기
-// $current = json_decode(file_get_contents($file), true);
-
-
-
-// if (($data["team"] ?? "") === "A") {
-//     $current["teamA"]++;
-// } else if (($data["team"] ?? "") === "B") {
-//     $current["teamB"]++;
-//  }
-
-// // // 점수 증가 처리
-// // if ($team === "A") {
-// //     $current["teamA"] += 1;
-// // } else if ($team === "B") {
-// //     $current["teamB"] += 1;
-// // }
-
-
-
-// // 저장
-// // file_put_contents($file, json_encode($current));
-// file_put_contents($file, json_encode($current, JSON_PRETTY_PRINT));
-
-// // 결과 반환
-// echo json_encode($current);
+// file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
+$result=file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT),LOCK_EX);
+// LOCK_EX 안 넣으면 동시 클릭에서 깨짐 발생 가능
+// var_dump($result);
+// file_put_contents("debug.log", print_r($result, true));
+file_put_contents( "debug.log",date("Y-m-d H:i:s") . " result = " . $result . PHP_EOL, FILE_APPEND);
+file_put_contents( "debug.log",date("Y-m-d H:i:s") . " input=" . print_r($input, true) . " gameId=" . $gameId . PHP_EOL,    FILE_APPEND);
+$data["result"] = $result;
+echo json_encode($data);
 ?>
-
-
-
-
-
-
 
 
 
