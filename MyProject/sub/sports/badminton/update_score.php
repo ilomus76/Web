@@ -1,5 +1,7 @@
 <?php
+//update_score.php
 header("Content-Type: application/json");
+
 
 
 // 먼저 JSON 읽기
@@ -8,8 +10,38 @@ if (!is_array($input)) {
     $input = [];
 }
 
+
+
+
 // $gameId = $input["gameId"] ?? 1;
 $gameId = isset($input["gameId"]) ? (int)$input["gameId"] : 1;
+
+$configFile = __DIR__ . "/games/config_" . $gameId . ".json";
+// $config = json_decode(file_get_contents($configFile), true);
+
+$maxScore = 21;
+// $data["maxScore"] = $config["maxScore"] ?? 21;
+
+// if (file_exists($configFile)) {
+//     $config = json_decode(file_get_contents($configFile), true);
+
+//     if (is_array($config)) {
+//         $maxScore = $config["maxScore"] ?? 21;
+//     }
+// }
+
+if (file_exists($configFile)) {
+    $configRaw = file_get_contents($configFile);
+    $config = json_decode($configRaw, true);
+
+    if (json_last_error() === JSON_ERROR_NONE && is_array($config)) {
+        $maxScore = $config["maxScore"] ?? 21;
+    }
+}
+
+
+
+
 
 $file = __DIR__ . "/games/game_" . $gameId . ".json";
 // 서버에 여러 사람이 접속해서 파일을 저장하는 방법
@@ -54,7 +86,7 @@ if (!file_exists($file)) {
 $data["teamA"] = $data["teamA"] ?? 0;
 $data["teamB"] = $data["teamB"] ?? 0;
 $data["gameOver"] = $data["gameOver"] ?? false;
-$data["maxScore"] = $data["maxScore"] ?? 21;
+// $data["maxScore"] = $data["maxScore"] ?? 21;
 
 
 
@@ -106,12 +138,24 @@ if ($team === "B") {
     }
 }
 
+
+
 /* 승리 조건 */
-if (($data["teamA"] >= $data["maxScore"] || $data["teamB"] >= $data["maxScore"])
+// if (($data["teamA"] >= $data["maxScore"] || $data["teamB"] >= $data["maxScore"])
+//     && abs($data["teamA"] - $data["teamB"]) >= 2) {
+
+//     $data["gameOver"] = true;
+// }
+
+if (($data["teamA"] >= $maxScore || $data["teamB"] >= $maxScore)
     && abs($data["teamA"] - $data["teamB"]) >= 2) {
 
     $data["gameOver"] = true;
 }
+
+
+
+
 
 // file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
 $result=file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT),LOCK_EX);

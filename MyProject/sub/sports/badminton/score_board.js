@@ -367,7 +367,7 @@ function loadScore() {
             teamA = data.teamA;
             teamB = data.teamB;
             gameOver = data.gameOver;
-            // maxScore = data.maxScore;
+            maxScore = data.maxScore;
 
             
 
@@ -443,7 +443,8 @@ function resetGame() {
 
         teamA = data.teamA;
         teamB = data.teamB;
-        gameOver = data.gameOver;
+        // gameOver = data.gameOver;
+        gameOver = false;   // ⭐ 클라이언트 강제 초기화
 
         updateUI();
 

@@ -1,0 +1,9 @@
+
+
+body : 기본적으로 브라우저 전체 너비
+
+1] 내용이 없어도 CSS에서 height, border, margin이 있으면 그대로 공간 생성
+
+2] block 요소는 width를 안 주면 항상 부모 width를 100% 채운다
+
+v
