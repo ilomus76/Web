@@ -1,0 +1,29 @@
+@import url('./common.css');
+
+.map_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    gap: 40px;
+    
+}
+/* map css */
+#map1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 100px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width:200px;        
+    height:200px;  
+    /* 지도에서는 항상 height가 있어야 함. */
+  
+}
+
+/* @media(min-width:412px){
+    #map1{
+    width:200px;
+    height:200px;  
+    }
+} */
