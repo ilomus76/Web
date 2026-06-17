@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARPES-login</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <header>
+        <nav id="menu_bar">
+            <a href="../../index.html">홈</a>
+            <a href="../study/study.html">과학</a>
+            <a href="#">운동</a>
+            <a href="#">건강</a>
+            <a href="../favoritefood/food.html">맛집</a>
+            <a href="./login.html">로그인</a>
+            <a href="../registration/registration.html">회원가입</a>
+        </nav>
+        <div id="header_image">
+
+        </div>
+    </header>
+    <main>
+        
+        <aside id="left_page">
+
+        </aside>
+        <section id="main_page">
+            <form action="./backend/login.php" method="post">
+                <div>
+                    <p>로그인</p>
+                    <hr>
+                    <label for="id">
+                        아이디:&nbsp;<input type="text" placeholder="ID 입력" id="id" name="id">
+                    </label>
+                    <label for="password">
+                        비밀번호 <input type="text" placeholder="비밀번호입력" id="password" name="password">
+                    </label>
+                </div>
+                <hr>
+                <div>
+                    <input type="submit" value="확인">
+                    <input type="cancel" value="취소">
+                </div>
+                <hr>
+
+
+            </form>
+            
+        </section>
+        <aside id="right_page">
+
+        </aside>
+
+    </main>
+    <footer>
+
+    </footer>
+    
+</body>
+</html>
