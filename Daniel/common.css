@@ -1,0 +1,48 @@
+
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-size:10px;
+}
+ul{
+    list-style: none;
+}
+
+
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media(min-width : 412px){
+    header{
+        width:800px;      
+    }    
+}
+
+
+
+a{
+    display: inline-block;
+    text-decoration: none;
+    background-color: white;
+    border-color: black;
+    font-size: 1rem;
+}
+
+a:hover{
+    background-color: #00003333;
+}
+
+#header_image{
+    src: url('./resource/image/colorchecker-classic_01 (1).png');    
+    width:100%;
+}
+

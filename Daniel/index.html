@@ -4,53 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARPES</title>
-
-    <!-- RWD : 반응형 웹 디자인 -->
-    <!-- 1. 모바일 -->
-    <link rel="stylesheet" href="./index_mobile.css" media="(max-width:412px)">
-
-    <!-- 2. 태블릿, 데스크탑 -->
-    <link rel="stylesheet" href="./index_desktop.css" media="(min-width:412px)">
-
-
+        <link rel="stylesheet" href="./index_mobile.css">
 </head>
 <body>
-    <div id="top_head">
-        <a href="#">회원가입</a>
-        <a href="#">로그인</a>
-        <a href="#">---</a>
-        <a href="#">과학</a>
-        <a href="#">운동</a>
-        <a href="#">건강</a>
-        <a href="#">맛집</a>
-        <a href="#">게시판</a>
-        <!-- <h4>ARPES</h4> -->
-    </div>
-    
-    <div id="center_body">
-        <img src="" alt="">
-    </div>
+    <header>
+        <div>
+            <nav id="universial_menu">
+                <a href="">지식</a>
+                <a href="">언어</a>
+                <a href="">운동</a>
+                <a href="">건강</a>
+                <a href="">회원가입</a>
+                <form action="./backend/login/login.php"></form>
+                <a href="">로그인: ID&nbsp;</a><input type="text" placeholder="ID">
+                <a href="">Password :</a><input type="text">
 
-    <div id="middle_body">
+            </nav>
+            <div>
+                <img  id="header_image">
+            </div>
+        </div>
+    </header>
+    <main>
+        <aside>
 
-    </div>
-    
-    <div id="left_body">
-        
-    </div>
+        </aside>
+        <section>
 
-    <div id="right_body">
+        </section>
+    </main>
+    <footer>
+        <div>
 
-    </div>
-    
-    <div id="bottom_body">
+        </div>
 
-    </div>
-
-    <div id="footer">
-        <p> Designed by homepage owner </p>
-
-    </div>
-
+    </footer>
 </body>
 </html>

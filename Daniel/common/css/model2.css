@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:white;
+    display:flex;
+    justify-content:center;
+    font-family:맑은 고딕;
+}
+
+/* 중앙 영역 */
+.wrap{
+    width:100%;
+    max-width:800px;
+    min-height:100vh;
+}
+
+/* 상단 고정 */
+header{
+    position:sticky;
+    top:0;
+    background:white;
+    z-index:1000;
+    border-bottom:1px solid #ddd;
+}
+
+/* 메뉴 */
+.top_menu{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+}
+
+.main_menu{
+    display:flex;
+    gap:15px;
+    list-style:none;
+}
+
+.main_menu li{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.main_menu li:hover{
+    color:blue;
+}
+
+/* 로그인 */
+.login_box{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.login_box input{
+    width:80px;
+    height:28px;
+}
+
+/* 하부 메뉴 */
+.sub_menu{
+    display:flex;
+    gap:20px;
+    padding:10px;
+    background:#f8f8f8;
+}
+
+/* 우주 이미지 */
+.hero{
+    margin-top:10px;
+}
+
+.hero img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* 본문 */
+main{
+    padding:20px;
+    text-align:center;
+}
