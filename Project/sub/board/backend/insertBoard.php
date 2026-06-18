@@ -1,6 +1,22 @@
 <?php
     header('Content-Type: text/plain; charset=utf-8');
 
+
+
+    ///////////////////  로그인 체크 //////////////// 
+    // session_start();
+
+    // if (!isset($_SESSION['user_id'])) {
+    //     echo "LOGIN_REQUIRED";
+    //     exit;
+    // }
+
+    /////////////////////////////////////////////////
+
+
+
+
+
     // 사용자가 json으올 데이터를 보내면 php언어는 특정 위치(php://input)에 이 값을 파일로 보관함. 
     // 그래서 그 파일을 읽어와야 함.
 

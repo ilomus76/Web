@@ -1,3 +1,6 @@
+
+
+
 // 상세글 보기 화면은.. 목록에서 선택될때.. 게시글 번호(no)를 URL로 전달받음. 
 
 //url로 전달된 no값 취득하기..
@@ -22,6 +25,12 @@ fetch(url) // GET 방식으로 할거다...
 .then(function(json){
     // alert(text)
     // alert(json.text)
+
+      if (json.status === "fail") {
+        alert("로그인이 필요합니다.");
+        location.href = "../../login/login.html";
+        return;
+    }
 
     // var jason = JSON.parse(text); // jsson string 을 JS객체로 만들기.. 이거 너무 지겨움. => .text()를 json()으로.
 

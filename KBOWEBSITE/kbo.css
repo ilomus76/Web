@@ -1,0 +1,53 @@
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: sans-serif;
+}
+
+#app {
+    padding: 20px;
+}
+
+/* 🔥 하루 카드 */
+.day-card {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #1c1c1c;
+    border-radius: 12px;
+}
+
+/* 날짜 */
+.date-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #4ade80;
+}
+
+/* 5개 grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+/* 경기 카드 */
+.game {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stadium {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.teams {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.score {
+    color: #fbbf24;
+}

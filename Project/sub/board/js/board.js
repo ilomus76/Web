@@ -5,11 +5,12 @@
 function loaded(){
     // alert();
 
-    
+    // check_login();
+
     fetch('./backend/loadBoardList.php')
     .then(function(response){
         return response.text();
-    })
+        })
     .then(function(text){
 
         var json = JSON.parse(text);
@@ -32,14 +33,21 @@ function loaded(){
         
             document.getElementsByClassName('board_list')[0].innerHTML +=row;           
         
-        }
-
+            }           
             
-            
-        })        
-            
+        })     
+} 
 
-        
+    // function check_login(){
+    //     var reg_ino = document.querySelector('#reg');
+    //         reg_ino.addEventListener('click', function(event){ //event정보를 가진 객체
+    //             var s= `영역안의 좌표 : ${event.offsetX} , ${event.offsetY}<br>`;
+    //             s += `문서안의 좌표 : ${event.clientX} , ${event.clientY}<br>`;
+    //             s += `모니터의 좌표 : ${event.screenX} , ${event.screenY}<br>`;
 
-    } 
+    //             div.innerHTML= s;
+    //         )
+    // }
+
+  
 

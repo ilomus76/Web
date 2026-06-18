@@ -1,5 +1,26 @@
 <?php
+
+
+
+
+
+
     header('Content-Type:application/json; charset=utf-8');
+
+    // /// 로그인 확인///////////////////////////////////
+        if (!isset($_SESSION['user_id'])) {
+            echo json_encode([
+                "status" => "fail",
+                "msg" => "login_required"
+            ]);
+            exit;
+        }
+    // ////////////////////////////////////////////////
+
+
+
+
+
 
     //사용자가 GET 방식으로 요청한 게시글 번호
     $no = $_GET['no'];
