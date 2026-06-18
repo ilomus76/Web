@@ -84,6 +84,13 @@ function loaded(){
             // 즉 php에서 받은 데이타를 js가 가져와서 html에 그리고 rendering 하고 있다.. 인스타그램이 이렇게 하고 있다... 이게 가장 중요함.
             // 이것을 알아야 웹서비스 개념을 이해한것이다. 
 
+            // document.getElementsByClassName('board_list')[0] 에서 [0]을 쓰는 것은 document.getElementsByClassName 가 하나의 요소가 아니라 여러 요소를 가져오기
+            // 때문에 배열을 통해서 각각의 요소를 가져와야 하는 것이다.
+            // 만일 s가 빠진 document.getElementByClassName 를 사용했다면 [0]없이 사용해도 된다. 
+            // 이것은 document.querySelectorAll에도 똑같이 적용이 되는 것이다. 
+
+
+
         } // for....
 
 

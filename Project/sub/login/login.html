@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARPES-login</title>
     <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/verifyForm.js"></script>
 </head>
 <body>
     <header>
@@ -14,6 +15,7 @@
             <a href="#">운동</a>
             <a href="#">건강</a>
             <a href="../favoritefood/food.html">맛집</a>
+            <a href="../board/board.html">게시판</a>
             <a href="./login.html">로그인</a>
             <a href="../registration/registration.html">회원가입</a>
         </nav>
@@ -27,7 +29,7 @@
 
         </aside>
         <section id="main_page">
-            <form action="./backend/login.php" method="post">
+            <form action="./backend/login.php" method="post" onsubmit="return verifyForm()">
                 <div>
                     <p>로그인</p>
                     <hr>
