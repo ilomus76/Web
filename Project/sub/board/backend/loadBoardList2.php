@@ -10,13 +10,6 @@
         exit;
     }
    
-
-
-
-
-
-
-
    
    header('Content-Type:application/json;charset=utf-8');
    
@@ -34,19 +27,19 @@
     $sql = "SELECT * FROM web_board ORDER by no DESC" ;/// primary 키는 절대 중복되지 않는 키
 
     /////////////////////////  pagenation ///////////////
-    // // SELECT * FROM web_board ORDER BY no DESC LIMIT 0, 5; // 0	시작 위치(offset)5	가져올 개수
+    // SELECT * FROM web_board ORDER BY no DESC LIMIT 0, 5; // 0	시작 위치(offset)5	가져올 개수
 
-    // // offset = (page - 1) * 5
+    // offset = (page - 1) * 5
 
 
-    // // $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-    // // $limit = 5;
-    // // $offset = ($page - 1) * $limit;
+    // $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+    // $limit = 5;
+    // $offset = ($page - 1) * $limit;
 
-    // // // 게시글 가져오기
-    // // $sql = "SELECT * FROM web_board
-    // //         ORDER BY no DESC
-    // //         LIMIT $offset, $limit";
+    // // 게시글 가져오기
+    // $sql = "SELECT * FROM web_board
+    //         ORDER BY no DESC
+    //         LIMIT $offset, $limit";
 
     // $result = mysqli_query($db, $sql);
 
@@ -61,11 +54,11 @@
     // $countRow = mysqli_fetch_assoc($countResult);
     // $totalCount = $countRow['cnt'];
 
-    // // echo json_encode([
-    // //     "list" => $list,
-    // //     "totalCount" => $totalCount,
-    // //     "page" => $page
-    // // ]);
+    // echo json_encode([
+    //     "list" => $list,
+    //     "totalCount" => $totalCount,
+    //     "page" => $page
+    // ]);
 
 
 

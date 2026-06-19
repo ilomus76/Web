@@ -1,4 +1,5 @@
 @import url('./common.css');
+@import url('./map_style.css');
 
 .map_container{
     display: flex;
@@ -9,17 +10,36 @@
     
 }
 /* map css */
-#map1{
+/* #map1{
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 10px 100px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width:200px;        
-    height:200px;  
+    height:200px;   */
     /* 지도에서는 항상 height가 있어야 함. */
   
+/* } */
+
+#map1{
+    width:90%;
+    max-width:700px;
+    height:400px;
+
+    margin:20px auto;
+
+    border-top:1px solid black;
+    border-bottom:1px solid black;
 }
+#main_page a{
+    /* background-color: azure; */
+    border-color: black;    
+    border-radius: 2px;
+    margin-right: 10px;
+
+}
+
 
 /* @media(min-width:412px){
     #map1{

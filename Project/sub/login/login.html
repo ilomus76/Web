@@ -16,7 +16,8 @@
             <a href="#">건강</a>
             <a href="../favoritefood/food.html">맛집</a>
             <a href="../board/board.html">게시판</a>
-            <a href="./login.html">로그인</a>
+            <a href="./login.html">로그인/아웃</a>
+            <!-- <a href="./backend/logout.php">로그아웃</a> -->
             <a href="../registration/registration.html">회원가입</a>
         </nav>
         <div id="header_image">
@@ -29,9 +30,10 @@
 
         </aside>
         <section id="main_page">
-            <form action="./backend/login.php" method="post" onsubmit="return verifyForm()">
+            <form action="" method="post" onsubmit="return verifyForm()">
+                <!-- ./backend/login.php -->
                 <div>
-                    <p>로그인</p>
+                    <p id="login_title">로그인</p>
                     <hr>
                     <label for="id">
                         아이디:&nbsp;<input type="text" placeholder="ID 입력" id="id" name="id">
@@ -46,9 +48,15 @@
                     <input type="cancel" value="취소">
                 </div>
                 <hr>
-
-
             </form>
+            <hr>            
+            <p id="logout">로그아웃</p>
+            <label for="id">
+            <button id="logoutbtn" onclick="logout()">로그아웃</button>
+            </label>
+                
+                
+            
             
         </section>
         <aside id="right_page">

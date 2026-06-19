@@ -18,6 +18,8 @@ var no = location.search.split('=')[1];
 
 // 서버의 web_board 테이블에서 no번호에 해당하는 게시글 1개를 json형식으로 받기..
 var url = `../backend/getBoard.php?no=${no}`;
+// var url = `../backend/getBoard.php?no=${no}&page=${page}`;
+
 fetch(url) // GET 방식으로 할거다... 
 // .then(function(res){return res.text()})
 .then(function(res){return res.json()})
@@ -28,9 +30,34 @@ fetch(url) // GET 방식으로 할거다...
 
       if (json.status === "fail") {
         alert("로그인이 필요합니다.");
-        location.href = "../../login/login.html";
+
+        location.replace("../../login/login.html");
+        // location.href = "../../login/login.html";
+        // 즉시 이동이 아니라 “예약 이동
+
         return;
     }
+
+
+      // const list = json.list;
+
+      //   let html = "";
+
+      //   list.forEach(item => {
+      //       html += `
+      //           <li>
+      //               <a href="./view.html?no=${item.no}">
+      //                   ${item.title}
+      //               </a>
+      //           </li>
+      //       `;
+      //   });
+
+      //   document.querySelector("#boardList").innerHTML = html;
+
+      //   renderPagination(data.totalCount, page)
+
+
 
     // var jason = JSON.parse(text); // jsson string 을 JS객체로 만들기.. 이거 너무 지겨움. => .text()를 json()으로.
 

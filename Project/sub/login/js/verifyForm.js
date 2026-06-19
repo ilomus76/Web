@@ -1,3 +1,24 @@
+function logout(){
+        fetch('./backend/logout.php', {
+        method: 'POST',
+        credentials: 'same-origin'
+        })
+        .then(function(response){
+            return response.text();
+        })
+        .then(function(text){
+
+            alert("로그아웃 완료");
+
+            setTimeout(function(){
+                location.href = "../../index.html";
+            }, 500);
+
+        });
+}
+
+
+
 function verifyForm(){
     // alert("함수 실행!");
     // return false;
@@ -37,6 +58,45 @@ function verifyForm(){
         document.getElementById('password').focus();
         return false;
     }
+
+ 
+    const data =
+        "id=" + encodeURIComponent(id)
+        + "&password=" + encodeURIComponent(password);
+
+    fetch('./backend/login.php',{        
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'},
+        body:data,
+    })
+    .then(function(response){
+        return response.text();
+    })
+    .then(function(text){
+        // alert('test');
+
+        var s = encodeURIComponent(id) + '님이 로그인 하셨습니다.'
+        document.getElementById("login_title").innerHTML = s;    
+        
+
+        document.getElementById("id").value = "";
+        document.getElementById("password").value = "";
+
+        setTimeout(function(){
+            location.href = "../../index.html";
+        }, 1000);
+        // if(text.includes("로그인 되었습니다.")){
+        // location.href="../../index.html";
+        }
+
+        
+        
+        // alert(text);
+    )
+
+        
+ return false;
+
 
 
 
@@ -86,4 +146,5 @@ function verifyForm(){
 
 
 }
+
 

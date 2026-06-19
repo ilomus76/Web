@@ -3,12 +3,12 @@
 
 
 
-
+    session_start();
 
     header('Content-Type:application/json; charset=utf-8');
 
     // /// 로그인 확인///////////////////////////////////
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['id'])) {
             echo json_encode([
                 "status" => "fail",
                 "msg" => "login_required"

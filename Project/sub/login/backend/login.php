@@ -1,14 +1,17 @@
 
 <?php
 
+    session_start();
 
     header('Content-Type:text/html; charset=utf-8');
     // 이 부분이 잘못되면 파일을 다운로드 받게 됨...
 
+
+
     $id = $_POST['id'];
     $pw = $_POST['password'];
 
-    echo "$id, $pw";
+    // echo "$id, $pw";
 
     // DB에 연결해서 데이타를 읽어와야 함..
 
@@ -42,13 +45,19 @@
 //     echo "로그인 성공";
 // }
 
-    if($row && $pw == $row['pw']){    
-        echo ("로그인 되었습니다.");
+    if($row && $pw == $row['pw']){  
+        $_SESSION['id'] = $id;  
+        // echo ("로그인 되었습니다.");
+        // echo "$id, $pw";
     }else{
-        echo ("ID나 Password를 확인해 보세요.");
+        // echo ("ID나 Password를 확인해 보세요.");
+        header("Location: ../login.html");
+        
     }
     
     mysqli_close($db);
+
+
 
 
 
