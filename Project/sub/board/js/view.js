@@ -77,7 +77,114 @@ fetch(url) // GET 방식으로 할거다...
     document.querySelector('.board_view .info .col2').innerHTML=json.writer;
     document.querySelector('.board_view .info .col3').innerHTML=json.date;
     document.querySelector('.board_view .info .col4').innerHTML=json.hits;
-    document.querySelector('.board_view .content').innerHTML=json.msg; 
+    // document.querySelector('.board_view .content').innerHTML=json.msg; 
+    document.querySelector('.board_view .content').innerHTML=json.msg.replace(/\n/g, "<br>");
     //완료.. 서버에 업로드
 })
 
+
+
+function board_modify(){
+
+
+
+    
+  
+  // 번호 숫자만 필요하니... '='글자를 기준으로 분리
+  var no = location.search.split('=')[1];
+  // no=4를 쪼개서 no, 4로 배열로 만들거야..
+  location.href = `./edit.html?no=${no}`;
+
+
+  
+//   //확인
+//   //  alert(no);
+
+   
+
+//   // 서버의 web_board 테이블에서 no번호에 해당하는 게시글 1개를 json형식으로 받기..
+//   var url = `../backend/getBoard.php?no=${no}`;
+//   // var url = `../backend/getBoard.php?no=${no}&page=${page}`;
+
+// fetch(url) // GET 방식으로 할거다... 
+// // .then(function(res){return res.text()})
+// .then(function(res){
+//   // alert('res');
+//   alert("여기로 들어오나요?");
+//   return res.json()})
+// // .then(function(text){
+// .then(function(json){
+
+
+//         if (json.status === "fail") {
+//         alert("로그인이 필요합니다.");
+
+//         location.replace("../../login/login.html");
+//         // location.href = "../../login/login.html";
+//         // 즉시 이동이 아니라 “예약 이동
+
+//         return;
+//     }
+
+//   alert('jason.write : ' + json.writer +', json.login_id :' +json.login_id);
+//   // 로그인한 사용자와 작성자가 다르면 수정 버튼 숨김
+//   if(json.writer != json.login_id){
+//       document.querySelector("#btn_modify").style.display = "none";
+//   }
+//     // alert(text)
+//     // alert(json.text)
+
+
+
+
+//       // const list = json.list;
+
+//       //   let html = "";
+
+//       //   list.forEach(item => {
+//       //       html += `
+//       //           <li>
+//       //               <a href="./view.html?no=${item.no}">
+//       //                   ${item.title}
+//       //               </a>
+//       //           </li>
+//       //       `;
+//       //   });
+
+//       //   document.querySelector("#boardList").innerHTML = html;
+
+//       //   renderPagination(data.totalCount, page)
+
+
+
+//     // var jason = JSON.parse(text); // jsson string 을 JS객체로 만들기.. 이거 너무 지겨움. => .text()를 json()으로.
+
+//     // 이제 get board.php 만 만들면 된다...  
+
+//     // 여기로 와서...
+
+//     // 데이터를 HTML요소들에 쓰자..
+//     //1] 글 제목
+//     document.querySelectorAll('.board_view .title')[0].innerHTML=json.title;
+
+//     ///2] 글 번호
+//     document.querySelectorAll('.board_view .info .col1')[0].innerHTML=json.no;
+
+//     // 클래스 선택자로 선택될 요소가 1개라면..all을 사용하지 않아도 됨. 
+
+//     document.querySelector('.board_view .info .col2').innerHTML=json.writer;
+//     document.querySelector('.board_view .info .col3').innerHTML=json.date;
+//     document.querySelector('.board_view .info .col4').innerHTML=json.hits;
+//     // document.querySelector('.board_view .content').innerHTML=json.msg; 
+
+//     document.querySelector('.board_view .content').innerHTML=json.msg.replace(/\n/g, "<br>"); 
+    
+//     //완료.. 서버에 업로드
+// })
+  
+
+
+
+
+
+}

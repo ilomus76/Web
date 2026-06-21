@@ -12,7 +12,7 @@
 a{
     text-decoration: none;
     color:black;
-    font-size: 0.8rem;
+    font-size: 1.0rem;
 }
 
 
@@ -132,9 +132,11 @@ main{
 }
 
 
+/* 다른곳과 다르게  */
 section{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 

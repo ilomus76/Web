@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARPES</title>
-    <link rel="stylesheet" href="../css/view.css">
+    <title>ARPES-board edit</title>
+    <link rel="stylesheet" href="../css/edit.css">
 
-    <script src="../js/view.js" defer> </script>
+    <script src="../js/edit.js" defer> </script>
 </head>
 <body >  
 <!-- <body onload="alert('body load')"> -->
@@ -40,7 +40,8 @@
             <div class="board_wrap">
                 <!-- 1. 제목 영역 -->
                 <div class="board_title">
-                    <h2>자유 게시판- 상세글보기</h2>
+                    <!-- <h2>자유 게시판- 상세글보기</h2> -->
+                    <h2>자유 게시판 - 글 수정</h2>
                     <p>자유롭게 게시글을 작성하며 이야기를 나누세요</p>
 
                 </div>
@@ -50,11 +51,13 @@
                         <!-- 4교시 -->
                         <!-- 2.1 상세글 영역(게시글 영역) -->
                         <div class="board_view">
-                            <div class="title">
+                            <!-- <div class="title"> -->
                                 <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
-                                글 제목 #1
+                                <!-- 글 제목 #1 -->
 
-                            </div>
+                            <!-- </div> -->
+
+                            <input type="text" id="title">
                             <div class="info">
                                 <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
                                 <dl>
@@ -75,9 +78,13 @@
                                 </dl>
                                 <div class="content">
                                 <!-- [js or php를 통한 데이터 표시해야 함.. 지금은 디자인을 위해 레이아웃, 시안을 짜고 있는 것. 지금은 가짜 데이타] -->
-                                Hello world <br>
-                                Nice to meet you <br>
-                                안녕하세요 <br>  
+                                <!-- Hello world <br> -->
+                                <!-- Nice to meet you <br> -->
+                                <!-- 안녕하세요 <br>   -->
+
+                                <textarea id="msg"></textarea>
+
+
                                     <!--스타일 작업하러 가자.. view.css  -->
                                 </div>
                             </div>
@@ -86,8 +93,9 @@
                         <!-- 2.2 버튼 영역 -->
                         <div class="btn_wrap">
                             <a href="../board.html">목록</a>
+                            <a href="#" onclick="updateBoard(); return false;">저장</a>
                             <!-- <a href="./edit.html" onclick="board_modify()">수정</a> -->
-                            <a href="" id="btn_modify" onclick="board_modify();return false;">수정</a>
+                            <!-- <a href="" onclick="board_modify();return false;">수정</a> -->
                             <!-- 사용자가 "수정" 링크 클릭 -->
                             <!-- board_modify() 함수 실행 -->
                             <!-- return false가 실행되면서 <a> 태그의 기본 동작을 취소 -->

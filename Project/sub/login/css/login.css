@@ -27,3 +27,75 @@
     height:200px;  
     }
 } */
+
+
+#main_page{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    gap:10px;
+}
+
+#main_page p{
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+
+#main_page label{
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.1rem;
+
+}
+
+#main_page input{
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.1rem;
+
+}
+
+.submit{
+    background-color: black;
+    color:white;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.1rem;
+
+}
+
+
+
+
+#main_page button{
+    display: inline-block; 
+    /* input은 원래 inline-block */
+
+    min-width : 40px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 1px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+    /* 마우스를 올렸을때.. 커서 모양을 손가락 모양으로 변경 */
+    cursor:pointer;
+}

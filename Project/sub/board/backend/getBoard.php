@@ -36,7 +36,11 @@
 
     //결과표에는 해당되는 게시글 1개만 가져오면 되니.. 반복문 없이..
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC); // 연관배열로 한줄 뽑기
+    $row['id'] = $_SESSION['id'];
     echo json_encode($row);// json 형식으로 응답.. 이제 getBoard.php를 완료... 끝... 자 그러면 데이타 가져왔으니..
     // 그러면 한줄의 데이타 의 타이틀 칸을 출력해 보기 ..view.js
+
+
+
 
 ?>

@@ -28,6 +28,7 @@ session_destroy();
 
 // 메인 페이지로 이동
 header("Location: ../../../index.html");
+// 위 줄 전에 echo, HTML 출력 있으면 로그아웃 실패합니다.
 exit;
 
 

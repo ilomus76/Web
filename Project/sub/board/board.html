@@ -17,8 +17,8 @@
         <nav id="menu_bar">
             <a href="../../index.html">홈</a>
             <a href="../study/study.html">과학</a>
-            <a href="#">운동</a>
-            <a href="#">건강</a>
+            <a href="../sports/sports.html">운동</a>
+            <a href="../health/health.html">건강</a>
             <a href="../favoritefood/food.html">맛집</a>
             <a href="../board/board.html">게시판</a>
             <a href="../login/login.html">로그인/아웃</a>
@@ -70,20 +70,26 @@
 
                     <!-- 2.2 페이지 네애션 영역 ( 원래는 php나 JS로 동적 구성해야 함) -->
                     <div class="board_pagination">
-                        <a href=""> &lt;&lt; </a>
+                        <a href="" class="btn" onclick="firstPage(); return false;"> &lt;&lt; </a>
                         <!-- 엔티티 코드 <<< 를 써도 되지만 엔티티 코드 로 사용 -->
-                        <a href="" class="btn"> &lt; </a>
-                        <a href="" class="btn selected"> 1 </a> 
+                        <a href="" class="btn" onclick="prevPage(); return false;"> &lt; </a>
+                        <a href="" class="btn selected" onclick="changePage(1); return false;"> 1 </a> 
                         <!-- 클래스 명이 2개인것. btn + selected ( JS 로 선택변경할때 이 클래스명을 다른 버튼으로 이동) -->
                         <a href="" class="btn"> 2 </a>
                         <a href="" class="btn"> 3 </a>
                         <a href="" class="btn"> 4 </a>
                         <a href="" class="btn"> 5 </a>
-                        <a href="" class="btn"> &gt; </a>
+                        <a href="" class="btn" onclick="nextPage(); return false;"> &gt; </a>
                         <!-- 엔티티 코드 <<< 를 써도 되지만 엔티티 코드 로 사용 -->
-                        <a href="" class="btn"> &gt;&gt; </a>
+                        <!-- <a href="" class="btn"> &gt;&gt; </a> -->
+                        <a href="" class="btn" onclick="lastPage(); return false;"> &gt;&gt; </a>
 
                         <!-- 모든 페이지네이션이 네모라 스타일링을 같이 하기 위해 클래스지정. -->
+
+
+
+
+
 
                     </div>
 
@@ -95,6 +101,11 @@
                         <!-- 버튼 모양이지만 앵커다. -->
                         <!-- css로 이동 : css만 모아놓는 폴더 css로 가자-->
                         <!-- 외부 스타일시트 연결 -->
+                        <!-- <a href="" id="search" onclick="search();return false">내용검색</a> -->
+                        <button onclick="searchBoard()">검색</button>
+                        <input type="text" id="searchInput" placeholder="제목 검색">
+                        <a href="./board.html">목록</a>
+                        
 
                     </div>
                 </div>

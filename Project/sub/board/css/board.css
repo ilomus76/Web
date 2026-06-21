@@ -186,3 +186,86 @@
     
 } */
 
+/* // 등록 검색 목록 버튼을 싸고 있는 부모 요소 */
+.btn_wrap{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    gap:10px;
+}
+
+.btn_wrap a{
+
+
+    min-width : 40px;
+    border:1px solid black;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+
+    /* 마우스를 올렸을때.. 커서 모양을 손가락 모양으로 변경 */
+    cursor:pointer;
+
+}
+
+/* .btn_wrap a{
+    margin-left: 5px;
+    margin-right: 5px;
+
+} */
+
+
+.btn_wrap button,input{
+    font-size: 20px;
+}
+
+
+/* .btn_wrap button{
+    margin-left: 5px;
+    margin-right: 5px;
+
+} */
+
+.btn_wrap button{
+    display: inline-block; 
+    /* input은 원래 inline-block */
+
+    min-width : 40px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+    /* 마우스를 올렸을때.. 커서 모양을 손가락 모양으로 변경 */
+    cursor:pointer;
+}
+
+
+
+
+
+.btn_wrap input{
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+

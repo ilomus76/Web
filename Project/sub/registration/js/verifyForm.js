@@ -1,3 +1,41 @@
+window.onload = profile;
+// window.onload = function(){
+
+//     var img1 = document.getElementById('img1');
+//     var in1 = document.getElementById('in1');
+//     var in2 = document.getElementById('in2');
+//     var btn1 = document.getElementById('btn1');
+
+//     // 이미지 클릭
+//     img1.addEventListener('click', function(){
+//         in1.click();
+//     });
+
+//     // 이미지 미리보기
+//     in1.addEventListener('change', function(){
+
+//         var file = in1.files[0];
+
+//         if(file){
+
+//             var fr = new FileReader();
+
+//             fr.onload = function(){
+//                 img1.src = fr.result;
+//             };
+
+//             fr.readAsDataURL(file);
+//         }
+
+//     });
+
+//     // 업로드 버튼
+//     btn1.addEventListener('click', profile);
+
+// };
+
+
+
 function verifyForm(){
     // alert("함수 실행!");
     // return false;
@@ -123,7 +161,7 @@ function verifyForm(){
     }
 
 
-
+    
 
 // // 검증용 정규표현식 만들기(규칙정하기)
 //                 var regExp = /^[a-zA-Z]+$/ ;   // 영문자 한개 이상 요구 // ^ 시작이 소문자 a 에서 z , 
@@ -168,6 +206,163 @@ function verifyForm(){
 //                     alert('요구하는 형식에 맞지 않아요~~')
 //                 }
 
+  
 
+    
 }
 
+////////////////////////////////////////////////////////
+
+// function profile(){
+
+//     var in1 = document.getElementById('in1');
+//     var in2 = document.getElementById('in2');
+
+//     var file = in1.files[0];
+
+//     if(!file){
+//         alert('사진을 선택하세요.');
+//         return;
+//     }
+
+//     var formData = new FormData();
+
+//     formData.append('img', file);
+//     formData.append('nickname', in2.value);
+
+//     fetch('./profileUpload.php', {
+//         method:'POST',
+//         body:formData
+//     })
+//     .then(res => res.text())
+//     .then(text => {
+
+//         alert(text);
+
+//     });
+
+// }
+
+
+
+
+function profile(){
+
+    var img1 = document.getElementById('img1');
+    var in1 = document.getElementById('in1');
+    var in2 = document.getElementById('in2');
+    var btn1 = document.getElementById('btn1');
+
+    img1.onclick = function(){
+        in1.click();
+    };
+
+    in1.onchange = function(){
+
+        var file = in1.files[0];
+
+        if(file){
+            var fr = new FileReader();
+
+            fr.onload = function(){
+                img1.src = fr.result;
+            };
+
+            fr.readAsDataURL(file);
+        }
+    };
+
+    btn1.onclick = function(){
+
+        var file = in1.files[0];
+
+        if(!file){
+            alert("사진을 선택하세요.");
+            return;
+        }
+
+        var formData = new FormData();
+
+        formData.append("img", file);
+        formData.append("nickname", in2.value);
+
+        fetch('./backend/profileUpload.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(text => {
+            alert(text);
+        });
+    };
+}
+
+
+// function profile(){
+//    //요소들 참조
+//         var img1 = document.getElementById('img1');
+//         var in1 = document.getElementById('in1'); //숨겨ㅈ져 있는 파일탐색기 선택 input요소
+//         var in2 = document.getElementById('in2');
+//         var btn1 = document.getElementById('btn1');
+
+
+//         //이미지 요소 클릭 이벤트 처리
+
+//         img1.addEventListener('click',function(){
+//             in1.click(); // 숨겨있던 input요소를 강제로 클릭!!!
+//         });
+
+//         //파일 탐색기의 이미지 선택이 완료되면
+//         in1.addEventListener('change',function(){
+//             // 선택한 파일객체 취득
+//             var file = in1.files[0]; // 여러개 선택일 수 있어서 배열임... 그래서 첫번째
+//             // 미리보기 과제... 지도 수업날 한것..
+//             if(file){
+//                 var fr= new FileReader();
+//                 fr.onload=function(){
+//                     img1.src=fr.result;
+
+//                 }
+//                 fr.readAsDataURL(file); // 파일을 경로로 불러들여.... 
+//             }
+//         })
+
+//         // 전송 버튼 클릭 이벤트 처리
+//         btn1.addEventListener('click',function(){
+//             // 선택한 파일 정보 얻기
+//             var file= in1.files[0];
+
+//             //파일이 없으면 전송 안하도록...
+//             if(file){
+//                 //파일과 문자열데이터를 동시에 서버로 전달하려면.. 특별한 택배상자가 필요함.
+//                 var formData = new FormData();
+//                 formData.append('img',file) // 택배상자에 파일 넣기 -식별자와 파일
+//                 formData.append('nickname',in2.value); //문자열로 다르지 않음 -식별자와 값  -글씨를 통째로 보냄.. 대부분 이걸로 보냄.
+//                 // 닉네임 + 프로필사진을 서버로 전송(ajax로)
+
+//                 fetch('./backend/profileUpload.php',{       
+//                 // fetch('./profileUpload.php',{                
+//                     method:'POST',
+//                     body:formData  
+//                     // formData안에 헤더도 있기에 끝
+//                 })
+//                 .then(function(res){
+                     
+                    
+//                     return res.text()})
+//                 .then(function(text){
+//                     // alert('profile access');
+//                     alert(text);
+
+                
+//                 })
+
+//                 //이제 profileUpload.php 만들러 가자
+//             }else{
+//                 alert('사진 변경이 없어서 전송 안함!!!');
+
+//             }
+            
+//         })
+
+//         }
