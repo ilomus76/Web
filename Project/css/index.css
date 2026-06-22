@@ -1,1 +1,8 @@
 @import url('./common.css');
+
+#main2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
+}

@@ -1,0 +1,44 @@
+p{color:red}
+        h3{color:blue}
+        pre{background-color: yellow; color: black}
+        img{
+            width:10%;
+            height:10%;
+        }
+        
+        #logo_image, #link_img{
+            /* width:50%; */
+            width:800px;
+            /* width:200; */
+            /* height:20%; */
+            border:1px solid red;
+
+        }
+        table{
+            border: 1 px;
+            width: 100%; 
+            /* 웹브라우저 기준으로 100% */
+        }
+        #naver_link{
+            width: 30%;
+
+        }
+        div{
+            background-color: yellow;
+            border: 1px solid black;
+            width: 100px;
+            
+        }
+        span{
+            background-color: aqua;
+            border: 1px solid black;
+            /* width: 100px;  */
+            /* span은 인라인이라 크기 속성이 먹지 않음.  */
+        }
+        input{
+            size:40;
+        }
+
+        textarea{
+            resize:none;
+        }
