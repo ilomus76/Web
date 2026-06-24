@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARPES-registration</title>
+    <link rel="stylesheet" href="./css/registration.css">
+    <script src="./js/verifyForm.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="menu_bar">
+            <a href="../../index.html">홈</a>
+            <a href="../study/study.html">과학</a>
+            <a href="../sports/sports.html">운동</a>
+            <a href="../health/health.html">건강</a>
+            <a href="../favoritefood/food.html">맛집</a>
+            <a href="../board/board.html">게시판</a>
+            <a href="../login/login.html">로그인/아웃</a>
+            <!-- <a href="../login/backend/logout.php">로그아웃</a> -->
+            <a href="./registration.html">회원가입</a>
+        </nav>
+        <div id="header_image">
+
+        </div>
+    </header>
+    <main>
+        <aside id="left_page">
+
+        </aside>
+        <section id="main_page">
+            <div id="reg_wrap">
+  
+                <form action="./backend/registration.php" method="post" onsubmit="return verifyForm()">
+                    <h3>회원가입</h3>
+                    <p>회원가입을 위해 필요한 아래의 사항을 적어 주세요.</p>
+                    <div >
+                        <label for="" class="reg_info"><span>이름&nbsp;&nbsp;:</span><input type="text" placeholder="이름" id="name" name="name"></label>
+                        <label for="" class="reg_info"><span>ID:&nbsp;&nbsp;</span><input type="text" placeholder="ID" id="id" name="id"></label>
+                        <label for="" class="reg_info"><span>비밀번호&nbsp;&nbsp;:</span><input type="text" placeholder="비밀번호" id="password" name="password"></label>
+                        <label for="" class="reg_info"><span>생년월일&nbsp;&nbsp;:</span><input type="text" placeholder="생년월일(2000.01.01)" id="birthday" name="birthday"></label>
+                        <label for="" class="reg_info"><span>전화번호&nbsp;&nbsp;:</span><input type="text" placeholder="전화번호(010-0000-0000)" id="tel" name="tel"></label>
+                        <label for="" class="reg_info"><span>이메일&nbsp;&nbsp;:</span><input type="text" placeholder="이메일" id="email" name="email"></label>
+                        <label for="" class="reg_info"><span>성별&nbsp;&nbsp;:</span><input type="text" placeholder="성별" id="sexuality" name="sexuality"></label>
+                        <label for="" class="reg_info"><span>시/도&nbsp;&nbsp;:</span><input type="text" placeholder="시/도" id="city" name="city"></label>
+                        <label for="" class="reg_info"><span>동&nbsp;&nbsp;&nbsp;:</span><input type="text" placeholder="동" id="province" name="province"></label>
+                    </div>
+                    <div id="submit_wrap">
+                        <!-- <input type="submit" value="완료"> -->
+                        <!-- <input type="cancel" value="취소"> -->
+                        <button id="submit" type="submit">완료</button>
+                        <button id="cancel" type="button">취소</button>
+                    </div>
+                </form>
+            </div>
+            <div id="wrap">
+                    <h2>프로필 등록 페이지</h2>
+                    <p>프로필 사진을 등록하고 닉네임을 설정하세요</p>
+                
+                <div>
+                    <img id="img1" src="../../resource/images/ms_01.png" alt="profile image">
+                    <!-- 이미지를 선택했을때 파일 탐색기가 보여지도록...  -->
+                    <input id="in1" type="file" accept="image/*">
+                    <!-- 이미지를 누르면 파일선택 버튼이 눌리게... -->
+                </div>
+                <div>
+                    <input type="text" placeholder="닉네임" id="in2">
+                </div>
+                <div>
+                    <!-- <button id="btn1" onclick="profile()"> 프로필 등록</button> -->
+                    <button id="btn1" "> 프로필 등록</button>
+                </div>
+
+            </div>
+
+
+
+        </section>
+        <aside id="right_page">
+
+        </aside>
+
+    </main>
+    <footer>
+
+    </footer>
+    
+</body>
+</html>

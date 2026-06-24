@@ -18,7 +18,7 @@
 //     echo "<script>
 //         alert('로그인이 필요합니다.');
 //         location.replace('../../login/login.html');
-//         location.href='../../login/login.html';
+//         //location.href='../../login/login.html';
 //     </script>";
 //     exit;
 // }
@@ -28,7 +28,7 @@
     exit;
     }
 
-
+    // header("Location: ../login/login.html");
     // location.href='../../login/login.html';
     // write.html
 ?>

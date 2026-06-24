@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARPES-favorite food page</title>
+    <link rel="stylesheet" href="./css/food.css">
+
+
+    <!-- 카카오지도 API (라이브러리, 모듈) 사용하기 : -->
+    <!-- 모든 지도 API는 실제 서버에 업로드되어야 만 실행됨. 즉 location이 http~로 시작 -->
+    <!-- 카카오이것이기 때문에 반드시 [카카오 개발자 사이트 : developers.kakao.com , developers.naver.com developers.google.com ...]의 튜토리얼 문서를 확인 후 제작 - 이것은 바뀌기 때문에 외우지 마라 -->
+    <!-- HTML과 다르기 때문에 항상 네이버 개발자 사이트를 봐라..  -->
+    <!-- 개발자 사이트 -> 문서 -> 지도 (로컬: 맛집) -->
+    <!-- 개발 가이드에 따라... 앱 생성 및 api key 발급 받기.. 웹서버 도메인 등록까지 완료.. -->
+    <!-- 실제 지도를 불러오는 작업을 수행하는 카카오의 지도 api 라이브러리 적용(외부 스크립트):발급 받은 키를 입력 --> 
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script> -->
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea353142988fe41645bf3e36c4cc6625"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea353142988fe41645bf3e36c4cc6625&libraries=services"></script>
+    <!--  VS Code 의 open with live server 를 이용해서 테스트 해라.-->
+
+
+
+    <!-- 지도를 띄우는 코드 작성 -->
+    <script src="./js/map.js" defer></script> 
+    <!-- defer 로 인해 body가 끝난뒤 js 실행... -->
+</head>
+<body>
+    <header>
+        <nav id="menu_bar">
+            <a href="../../index.html">홈</a>
+            <a href="../study/study.html">과학</a>
+            <a href="../sports/sports.html">운동</a>
+            <a href="../health/health.html">건강</a>
+            <a href="./food.html">맛집</a>
+            <a href="../board/board.html">게시판</a>
+            <a href="../login/login.html">로그인/아웃</a>
+            <!-- <a href="../login/backend/logout.php">로그아웃</a> -->
+            <a href="../registration/registration.html">회원가입</a>
+        </nav>
+        <div id="header_image">
+
+        </div>
+    </header>
+    <main>
+        <aside id="left_page">
+
+        </aside>
+        <section id="main_page">
+            <nav id="nav_for_food">
+            <a href="#" class="menu" data-type="맛집 검색 지도" data-city="부천" data-keyword="소사초등학교 맛집">맛집검색</a>
+            <a href="#" class="menu" data-type="병원 지도" data-city="부천" data-keyword="소사동 병원">병원검색</a>
+            <a href="#" class="menu" data-type="배드민턴장 지도" data-city="부천" data-keyword="부천 배드민턴장">배드민턴장검색</a>
+            <a href="#" class="menu" data-type="수영장 지도" data-city="부천" data-keyword="부천 배드민턴장">수영장 검색</a>
+            <a href="#" class="menu" data-type="은행 지도" data-city="부천" data-keyword="소사동 은행">은행검색</a>
+            <a href="#" class="menu" data-type="버스 지도" data-city="부천" data-keyword="소사동 버스">버스검색</a>
+            <!-- <a href="#" class="menu" >네트워크</a>
+            <a href="#" class="menu" >양자</a>
+            <a href="#" class="menu" >파워</a> -->
+
+
+            </nav>
+            <!-- <div id="map_wrap"> -->
+                <!-- <h2 id="title">맛집검색</h2>
+                <div class="map_container">
+                    <div id="map1">
+
+                    </div>
+
+                </div> -->
+                <!-- //////////////////////////////////////// -->
+                <!-- 지도를 표시할 div 입니다 -->
+                 <hr>
+                 
+                <div class="map_wrap">
+                    <!-- <h3>키워드로 장소검색하고 목록으로 표출하기</h3> -->
+                    <h2 id="title">맛집검색</h2>
+                    <!-- <div id="map1" style="width:80%;height:80%;position:relative;overflow:hidden;"></div> -->
+                    <!-- <div id="map1" style="width:60%;height:60%;position:relative;overflow:hidden;"></div> -->
+                    <div id="map1" ></div>
+
+                    <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                            <div>
+                                <form onsubmit="searchPlaces(); return false;">
+                                    키워드 : <input type="text" value="소사초등학교 맛집" id="keyword" size="15"> 
+                                    <button type="submit">검색하기</button> 
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                    </div>
+                </div> 
+                <!--  -->
+
+        </section>
+        <aside id="right_page">
+
+        </aside>
+
+    </main>
+    <footer>
+
+    </footer>
+    
+</body>
+</html>

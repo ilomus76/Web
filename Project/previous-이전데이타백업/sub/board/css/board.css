@@ -1,0 +1,271 @@
+@import url('./common.css');
+
+
+/* 공통 스타일을 제외한 리스트 페이지만의 스타일링 */
+/* 1. 테이블 표시 영역 */
+/* 왼쪽으로 쏠린것을 넓게 쓰자 */
+/* .board_list{
+    width: 100%;   */
+    /* 부모의 사이즈 기준 100% */
+    /* border-top: 2px solid black;
+    border-bottom: 2px solid black; */
+
+    /* 표안의 선은 td or th들이 그려야 함. 만약 tr로 선을 그리려면 선을 뭉게야 함. */
+    /* border-collapse: collapse;
+} */
+
+/* 테이블의 tr요소의 아래 경계선 그리기 */
+/* .board_list tr{
+    border-bottom: 1px solid #dddddd;
+    
+} */
+.board_list {
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+
+
+
+/* 각 셀마다 스타일 */
+/* .board_list th,td{
+    padding: 1rem 0rem;
+    text-align: center;
+    font-size: 1.4rem; */
+    /* root 가 10픽셀이니 14픽셀에 해당 */
+/* } */
+
+.board_list th,
+.board_list td {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.board_list th:nth-child(1),
+.board_list td:nth-child(1) {
+    width: 10%;   /* 번호 */
+}
+
+.board_list th:nth-child(2),
+.board_list td:nth-child(2) {
+    width: 30%;   /* 제목 */
+}
+
+.board_list th:nth-child(3),
+.board_list td:nth-child(3) {
+    width: 10%;   /* 작성자 */
+}
+
+.board_list th:nth-child(4),
+.board_list td:nth-child(4) {
+    width: 20%;   /* 날짜 */
+}
+
+.board_list th:nth-child(5),
+.board_list td:nth-child(5) {
+    width: 20%;   /* 조회수 */
+}
+
+
+
+
+/* 칸별 너비 지정 */
+.col_no{width:10%;}
+.col_title{width:55%;text-align: left; padding-left: 1rem;}
+.col_writer{width:10%;}
+.col_date{width:15%; white-space: nowrap;}
+.col_hits{width:10%;}
+
+/* 2.페이지 네이션 스타일링 */
+.board_pagination{
+    margin-top:30px;
+    text-align:center;
+}
+/* anchor 요소들을 버튼 모양으로 스타일링 */
+.btn{
+    display: inline-block;
+    /* a요소는 inline요소... 사이즈 조절이 안됨. 그래서 변경.. 인라인이면서 사이즈 변경 가능한 인라인 블럭으로 바꿈 */
+    width: 3.2rem;
+    padding: 1rem 0rem;
+    border: 1px solid #dddddd;
+    font-size: 1.2rem;
+}
+
+/* 선택한 요소의 배경색 및 글자색 변경 */
+.selected{
+    background-color: black;
+    color:white;
+    border-color:black;
+}
+
+/* 버튼 앵커는 페이지 마다 같아 공통css 로 감 */
+
+
+
+
+
+
+/* 
+#board_wrap{
+    margin-top:2px;
+    padding-top:2px;
+    width:100%;
+    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+ */
+
+    /* background-image: url('../../../resource/images/colorchecker-classic.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:800px; */
+/* }
+
+
+
+#board_item, .record_line {   
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row; */
+    /* flex-direction: center; */
+    /* justify-content: center; */
+    /* align-items: center;
+    justify-content: space-around;
+    gap:1px;
+    
+}
+
+#board_item span, .record_line span{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#board_item span,.record_line span{
+    flex:1; */
+    /* flex: 1을 주면 */
+    /* 4개의 span이 부모 너비를 동일한 비율(1:1:1:1) 로 나누어 가집니다. */
+    /* 예를 들어 부모가 800px이면:  800px ÷ 4 = 200px */
+    /* 각 칸이 모두 200px이 되어 가운데 정렬이 정확하게 보입니다. */
+    /* flex의 비율 개념 */
+    /* span:nth-child(1){ flex:1; }   *//* 번호 */
+    /* span:nth-child(2){ flex:2; }   *//* 작성자 */
+    /* span:nth-child(3){ flex:5; }   *//* 제목 */
+    /* span:nth-child(4){ flex:1; }  조회수 */
+/* }
+
+
+#board_caption, #board_caption{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: inherit;
+  
+}
+
+
+#board_caption h3{
+    color:black;
+    font-size:1.5rem;
+}
+#board_caption p{
+    color:black;
+    font-size:0.9rem;
+    
+} */
+
+/* // 등록 검색 목록 버튼을 싸고 있는 부모 요소 */
+.btn_wrap{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    gap:10px;
+}
+
+.btn_wrap a{
+
+
+    min-width : 40px;
+    border:1px solid black;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+
+    /* 마우스를 올렸을때.. 커서 모양을 손가락 모양으로 변경 */
+    cursor:pointer;
+
+}
+
+/* .btn_wrap a{
+    margin-left: 5px;
+    margin-right: 5px;
+
+} */
+
+
+.btn_wrap button,input{
+    font-size: 20px;
+}
+
+
+/* .btn_wrap button{
+    margin-left: 5px;
+    margin-right: 5px;
+
+} */
+
+.btn_wrap button{
+    display: inline-block; 
+    /* input은 원래 inline-block */
+
+    min-width : 40px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+    /* 마우스를 올렸을때.. 커서 모양을 손가락 모양으로 변경 */
+    cursor:pointer;
+}
+
+
+
+
+
+.btn_wrap input{
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+
