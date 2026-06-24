@@ -5,5 +5,66 @@ p{
 }
 
 *{font-style: italic;
-color
+color;
 }
+
+#p1{
+    color:blue;
+
+}
+
+.aa{
+    color:violet;
+}
+
+p.aa{
+    background-color: yellow;
+}
+
+p#p1{
+    font-size:18px;
+}
+
+li,a{
+    color:gray;
+}
+
+#kk>p{
+    color:black;
+}
+
+#kk p{
+    color: lime;
+}
+
+p.aa{}
+p .aa{}
+
+
+#ss ul.gg>li{background-color: aqua;}
+
+p[class]{
+    font-size:30px;
+}
+
+div[id="ss"]{
+    font-weight: bold;
+}
+
+a:link{color:blue}
+a:visited{color:brown}
+a:hover{color:green}
+a:active{color:red}
+
+#ss ul li:first-child{color:red}
+#ss ul li:last-child{color:blue}
+#ss ul li:nth-child(2){color:green}
+#ss ul li:nth-child(2n+1){
+    background-color: lightgreen;
+}
+
+
+
+
+
+
